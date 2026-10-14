@@ -5,6 +5,14 @@ the project intends to follow [Semantic Versioning](https://semver.org/) once it
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-10-14
+
+### Fixed
+
+- Table headers and notes printed as `[net.col.interface]`, `[net.hidden]` and so on when the program was built with the Command Line
+  Tools only (no Xcode app), which is what a Homebrew bottle built on a CI runner gets: the String Catalog was copied into the bundle
+  uncompiled and was not read. The commands now read the catalog directly when the compiled files are missing, and a test covers it.
+
 ## [0.1.0] - 2026-10-14
 
 First public version.

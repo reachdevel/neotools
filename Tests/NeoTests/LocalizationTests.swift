@@ -174,3 +174,38 @@ struct MissingBundleTests {
         #expect(r.stdout.contains("kullanım"))
     }
 }
+
+/// A toolchain without Xcode's string compiler (only the Command Line Tools) puts the catalog into the bundle as it is. The commands must read
+/// it all the same: this was found when `ifconfig` printed `[net.col.interface]` from a Homebrew bottle.
+@Suite("Localization: a bundle that holds the uncompiled catalog")
+struct UncompiledCatalogTests {
+    private func rawBundle() throws -> URL {
+        let root = FileManager.default.temporaryDirectory.appendingPathComponent("neo-raw-\(UUID().uuidString)")
+        let folder = root.appendingPathComponent("neotools_NeoCore.bundle")
+        try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+        let original = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
+            .appendingPathComponent("Sources/NeoCore/Resources/Localizable.xcstrings")
+        try FileManager.default.copyItem(at: original, to: folder.appendingPathComponent("Localizable.xcstrings"))
+        for language in ["en", "tr"] { try FileManager.default.createDirectory(at: folder.appendingPathComponent(language + ".lproj"), withIntermediateDirectories: true) }
+        return root
+    }
+
+    @Test func tablesAndPluralsComeFromTheCatalog() throws {
+        let root = try rawBundle()
+        defer { try? FileManager.default.removeItem(at: root) }
+        let here = URL(fileURLWithPath: "/")
+        for language in ["en", "tr"] {
+            let raw = try Harness.runInTerminal(Harness.neo("neodf"), [], in: here, env: ["NEO_LANG": language, "NEO_L10N_DIR": root.path, "LC_ALL": "en_US.UTF-8"])
+            let compiled = try Harness.runInTerminal(Harness.neo("neodf"), [], in: here, env: ["NEO_LANG": language, "LC_ALL": "en_US.UTF-8"])
+            #expect(!raw.stdout.contains("[df.") && !raw.stdout.contains("[net."), "\(language): \(raw.stdout.prefix(300))")
+            // the same words as with the compiled files (the numbers move a little between two runs)
+            let words = { (text: String) in Set(text.split(whereSeparator: { !$0.isLetter }).map(String.init)) }
+            #expect(words(raw.stdout) == words(compiled.stdout), "\(language)")
+        }
+        let net = try Harness.runInTerminal(Harness.neo("neonet"), [], in: here, env: ["NEO_LANG": "tr", "NEO_L10N_DIR": root.path])
+        #expect(!net.stdout.contains("[net."), "\(net.stdout.prefix(300))")
+        // a plural form: the catalog's `one` and `other`
+        let raw = Strings(language: "en")
+        #expect(raw.text("df.snapshots", [Int64(1)]) == "1 local snapshot" && raw.text("df.snapshots", [Int64(3)]) == "3 local snapshots")
+    }
+}

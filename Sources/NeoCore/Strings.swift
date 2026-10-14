@@ -148,8 +148,30 @@ package final class Strings: @unchecked Sendable {
         let folder = resources + "/" + code + ".lproj"
         made.strings = (NSDictionary(contentsOfFile: folder + "/Localizable.strings") as? [String: String]) ?? [:]
         made.plurals = (NSDictionary(contentsOfFile: folder + "/Localizable.stringsdict") as? [String: [String: Any]]) ?? [:]
+        // A toolchain without Xcode's string compiler (Command Line Tools only) copies the catalog into the bundle as it is: read it directly
+        if made.strings.isEmpty && made.plurals.isEmpty { Strings.readCatalog(resources + "/Localizable.xcstrings", language: code, into: &made) }
         tables[code] = made
         return made
+    }
+
+    /// The strings and plural forms of one language from the String Catalog (JSON), in the shape the compiled files give.
+    private static func readCatalog(_ path: String, language: String, into table: inout Table) {
+        guard let data = FileManager.default.contents(atPath: path),
+              let root = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any],
+              let entries = root["strings"] as? [String: Any] else { return }
+        for (key, value) in entries {
+            guard let languages = (value as? [String: Any])?["localizations"] as? [String: Any],
+                  let one = languages[language] as? [String: Any] else { continue }
+            if let unit = one["stringUnit"] as? [String: Any], let text = unit["value"] as? String {
+                table.strings[key] = text
+            } else if let plural = (one["variations"] as? [String: Any])?["plural"] as? [String: Any] {
+                var forms: [String: Any] = [:]
+                for (category, form) in plural {
+                    if let text = ((form as? [String: Any])?["stringUnit"] as? [String: Any])?["value"] as? String { forms[category] = text }
+                }
+                table.plurals[key] = ["NSStringLocalizedFormatKey": "%#@value@", "value": forms]
+            }
+        }
     }
 
     /// The raw format string of a key, from the first language of the chain that has it; nil when none has. A key with plural forms gives its "other" form.

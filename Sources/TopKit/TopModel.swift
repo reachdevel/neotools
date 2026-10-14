@@ -140,7 +140,7 @@ final class TopSampler {
         var info: processor_info_array_t?
         var infoCount: mach_msg_type_number_t = 0
         guard host_processor_info(thisHost, PROCESSOR_CPU_LOAD_INFO, &count, &info, &infoCount) == KERN_SUCCESS, let info else { return [] }
-        defer { vm_deallocate(mach_task_self_, vm_address_t(bitPattern: info), vm_size_t(infoCount) * vm_size_t(MemoryLayout<integer_t>.size)) }
+        defer { vm_deallocate(mach_task_self(), vm_address_t(bitPattern: info), vm_size_t(infoCount) * vm_size_t(MemoryLayout<integer_t>.size)) }
         return (0..<Int(count)).map { i in
             let base = i * Int(CPU_STATE_MAX)
             let user = UInt64(UInt32(bitPattern: info[base + Int(CPU_STATE_USER)])), sys = UInt64(UInt32(bitPattern: info[base + Int(CPU_STATE_SYSTEM)]))

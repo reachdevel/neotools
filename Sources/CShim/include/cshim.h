@@ -2,6 +2,7 @@
 #define NEO_CSHIM_H
 #include <stddef.h>
 #include <errno.h>
+#include <mach/mach.h>
 
 /// Names of the APFS snapshots of the volume mounted at `mountPoint`, NUL-separated into `out`.
 /// Returns how many there are, or -1 with errno set.
@@ -64,5 +65,8 @@ typedef struct {
 
 /// All interfaces with their counters (NET_RT_IFLIST2). Returns how many, or -1 with errno set. Free `*out` with free().
 int neo_interface_stats_list(neo_interface_stats **out);
+
+/// This process's own task port. Swift 6.0 refuses the imported variable `mach_task_self_` (shared mutable state) and has no function for it.
+static inline mach_port_t neo_task_self(void) { return mach_task_self(); }
 
 #endif

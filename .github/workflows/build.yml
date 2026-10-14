@@ -1,0 +1,36 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: build (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-14, macos-15, macos-26]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # neotools needs Swift 6 (Xcode 16 or newer); the runner images keep several Xcodes side by side
+      - name: Select the newest Xcode
+        run: |
+          newest="$(printf "%s\n" /Applications/Xcode_*.app | sort -V | tail -n 1)"
+          sudo xcode-select -s "$newest"
+          swift --version
+
+      - name: Build
+        run: swift build -c release
+
+      - name: Smoke test
+        run: |
+          .build/release/neodu --version
+          .build/release/neofree
+          NEO_LANG=en .build/release/neotree --plain Sources/CShim | tail -3

@@ -79,7 +79,9 @@ package final class Strings: @unchecked Sendable {
         }
         if let override = getenv("NEO_L10N_DIR"), let found = inside(String(cString: override)) { return found }
         if let here = executableDirectory(), let found = inside(here) { return found }
-        if let first = CommandLine.arguments.first {
+        // `CommandLine.arguments` is refused by the Swift 6.0 compiler (shared mutable state); the C array is not, and may be empty
+        if CommandLine.argc > 0, let argv0 = CommandLine.unsafeArgv[0] {
+            let first = String(cString: argv0)
             let exe = URL(fileURLWithPath: first.hasPrefix("/") ? first : FileManager.default.currentDirectoryPath + "/" + first)
             if let found = inside(exe.resolvingSymlinksInPath().deletingLastPathComponent().path) { return found }
         }

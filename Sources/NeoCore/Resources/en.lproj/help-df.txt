@@ -1,0 +1,36 @@
+{program} - df for macOS that understands APFS containers, purgeable space and snapshots
+
+usage: {program} [-b | -g | -H | -h | -k | -m | -P] [-acIilnY] [-,] [-T type]
+{indent}[--plain] [--json] [file | filesystem ...]
+
+Options are those of macOS df(1).
+
+Sizes:
+  -b, -P          512-byte blocks, POSIX format
+  -g, -k, -m      1 GiB / 1 KiB / 1 MiB blocks
+  -H, --si        human-readable sizes, powers of 1000
+  -h              human-readable sizes, powers of 1024
+  -,              thousands separators in the classic table
+
+Columns:
+  -i              show inode information
+  -I              do not show inode information
+  -Y              show the file system type
+  -c              display a grand total
+
+Which file systems:
+  -a              show every file system, also the hidden ones
+  -l              only local file systems
+  -T type         only file systems of this type (comma-separated list)
+  -n              do not ask the file systems for fresh numbers
+
+Extras:
+  --plain         the classic df table, byte for byte
+  --json          machine-readable output with exact byte counts
+  --access        explain and open the permission needed to read the Trash size
+  --help          show this help
+  --version       show the version
+
+Notes:
+  piped or redirected, with --plain and with -P -b -k -m -g -, the output is
+  plain df text; df's --libxo is not supported

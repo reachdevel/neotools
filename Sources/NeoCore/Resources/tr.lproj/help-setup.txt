@@ -1,0 +1,15 @@
+{program} - du yaz, neodu çalışsın
+
+kullanım: {program} [--install | --uninstall | --status]
+
+Seçenek yoksa birkaç sayfa hangi kabuk ve komutların kurulacağını sorar.
+
+  --install         her kabuğa her komut, soru sormadan
+  --uninstall       hepsini geri al
+  --status          şu an neyin kurulu olduğu
+  --help --version
+
+Örnekler:
+  {program}
+  {program} --install
+  {program} --status

@@ -1,0 +1,36 @@
+{program} - APFS konteynerlerini, silinebilir (purgeable) alanı ve snapshot'ları bilen, macOS için df
+
+kullanım: {program} [-b | -g | -H | -h | -k | -m | -P] [-acIilnY] [-,] [-T tür]
+{indent}[--plain] [--json] [dosya | dosyasistemi ...]
+
+Seçenekler macOS df(1) ile aynıdır.
+
+Boyutlar:
+  -b, -P          512 baytlık bloklar, POSIX biçimi
+  -g, -k, -m      1 GiB / 1 KiB / 1 MiB blok
+  -H, --si        okunaklı boyutlar, 1000 katları
+  -h              okunaklı boyutlar, 1024 katları
+  -,              klasik tabloda binlik ayırıcı
+
+Sütunlar:
+  -i              inode bilgisini göster
+  -I              inode bilgisini gösterme
+  -Y              dosya sistemi türünü göster
+  -c              genel toplamı göster
+
+Hangi dosya sistemleri:
+  -a              gizli olanlar dahil hepsini göster
+  -l              yalnızca yerel dosya sistemleri
+  -T tür          yalnızca bu türdeki dosya sistemleri (virgülle ayrılmış liste)
+  -n              dosya sistemlerinden güncel sayı isteme
+
+Eklentiler:
+  --plain         klasik df tablosu, birebir
+  --json          kesin bayt sayılarıyla makine tarafından okunur çıktı
+  --access        Çöp Sepeti boyutunu okumak için gereken izni anlat ve aç
+  --help          bu yardımı göster
+  --version       sürümü göster
+
+Notlar:
+  boruya, dosyaya, --plain ve -P -b -k -m -g -, ile çıktı düz df metnidir;
+  df'in --libxo seçeneği desteklenmez

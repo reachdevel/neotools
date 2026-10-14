@@ -1,0 +1,11 @@
+import Darwin
+import NeoCore
+import NetKit
+
+setlocale(LC_ALL, "")
+// a process can be started with no arguments at all (argc 0): then the program is called by its own name
+let given = (0..<Int(CommandLine.argc)).compactMap { CommandLine.unsafeArgv[$0].map { String(cString: $0) } }
+let arguments = given.isEmpty ? ["neonet"] : given
+let program = arguments[0].split(separator: "/").last.map(String.init) ?? "neonet"
+let name = program.isEmpty ? "neonet" : program
+exit(finishOutput(runNet(arguments: arguments, program: name), program: name))

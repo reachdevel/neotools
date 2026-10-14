@@ -1,0 +1,33 @@
+{program} - network interfaces, sockets and routes
+
+usage: {program} [-tuxla46pn] [-r] [-i] [-b] [--all] [--json] [--plain]
+
+Without options: the active interfaces, with addresses, MAC, bytes received
+and sent, and the default gateway.
+
+Interfaces:
+  --all         also inactive and virtual interfaces
+  -i            packet, error and byte counters of every interface
+  -b            exact byte counts
+
+Sockets (any of these lists sockets):
+  -t, -u, -x    TCP, UDP, UNIX sockets
+  -4, -6        IPv4 only / IPv6 only
+  -l            listening sockets only
+  -a            listening sockets and connections
+  -p            show the program: PID/PROGRAM
+  -n            port numbers instead of service names
+
+Routes:
+  -r            routing table and DNS servers
+
+Other:
+  --json        output as JSON
+  --plain       no colours
+  --help        show this help
+  --version     show the version
+
+Examples:
+  {program} -tulpn     listening TCP and UDP ports with their programs
+  {program} -tp        TCP connections with their programs
+  {program} -r         routes and DNS servers

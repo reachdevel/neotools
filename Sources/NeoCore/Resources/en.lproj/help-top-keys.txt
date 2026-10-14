@@ -1,0 +1,28 @@
+neotop keys
+
+Moving:
+  up down, k j     move the selection
+  PgUp PgDn        scroll
+  Home End         first / last line
+  space, right     expand the selected line
+  left             collapse it (or go to its parent)
+  E / C            expand / collapse everything
+
+Sorting (again to reverse):
+  w p e g c m t i n   watt, P cores, E cores, GPU, cpu, memory, network,
+                      disk, name
+
+Showing:
+  /                filter by text; Esc clears it
+  s                clean names / full paths
+  d                disk column
+  b                bits / bytes
+  f                freeze / resume the display
+  + -              interval longer / shorter
+
+Other:
+  W                save these settings
+  ?                this help (any key closes it)
+  q, Ctrl-C        quit
+
+neotop only reads. There is no key to kill or change a process.

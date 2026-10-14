@@ -1,0 +1,43 @@
+{program} - macOS için free: belleği Activity Monitor'ün saydığı gibi gösterir
+
+Kullanım:
+ {program} [seçenekler]
+
+Seçenekler procps-ng free ile aynıdır.
+
+Birimler:
+ -b, --bytes         çıktıyı bayt olarak göster
+     --kilo          kilobayt (1000) olarak göster
+     --mega          megabayt olarak göster
+     --giga          gigabayt olarak göster
+     --tera          terabayt olarak göster
+     --peta          petabayt olarak göster
+ -k, --kibi          kibibayt olarak göster
+ -m, --mebi          mebibayt olarak göster
+ -g, --gibi          gibibayt olarak göster
+     --tebi          tebibayt olarak göster
+     --pebi          pebibayt olarak göster
+ -h, --human         okunaklı boyutlar
+     --si            1024 yerine 1000 katlarını kullan
+
+Satırlar ve sütunlar:
+ -t, --total         RAM + takas toplamını göster
+ -w, --wide          buffers ve cache ayrı sütunlarda
+ -l, --lohi          kabul edilir, etkisi yok
+
+Tekrar:
+ -s, --seconds N     her N saniyede bir yeniden yaz
+ -c, --count N       N kez yazıp çık
+
+Eklentiler:
+     --plain         Linux tarzı tablo
+     --json          kesin bayt sayılarıyla makine tarafından okunur çıktı
+     --pressure      bellek baskısı seviyesini de göster
+ -V, --version       sürümü yaz ve çık
+     --help          bu yardımı göster ve çık
+
+Notlar:
+  used = uygulama + wired + sıkıştırılmış
+  buff/cache = önbellekteki dosyalar + purgeable
+  available = free + buff/cache; shared her zaman 0
+  -w ile "buffers" purgeable bellek, "cache" önbellekteki dosyalardır

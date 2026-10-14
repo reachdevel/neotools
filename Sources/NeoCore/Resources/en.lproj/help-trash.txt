@@ -1,0 +1,29 @@
+{program} - rm that puts things in the Trash, like deleting from the Finder
+
+usage: {program} [-f | -i] [-dIPRrvWx] [--plain] file ...
+
+Options are those of macOS rm(1).
+
+What to remove:
+  -d              remove empty directories
+  -R, -r          remove directories and what is in them
+  -x              accepted and ignored: a directory moves as a whole
+
+Asking and telling:
+  -f              do not prompt, ignore files that do not exist
+  -i              prompt before each file
+  -I              prompt once before removing more than three files,
+                  or recursively
+  -v              print each file that was moved
+
+Not used here:
+  -P              accepted and ignored: nothing is overwritten
+  -W              not supported here; use --plain
+
+Extras:
+  --plain         run the real rm instead of using the Trash (also --permanent)
+  --help          show this help
+  --version       show the version
+
+Notes:
+  errors and exit codes are rm's; a volume without a Trash is an error

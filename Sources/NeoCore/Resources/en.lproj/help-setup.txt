@@ -1,0 +1,15 @@
+{program} - type du, get neodu
+
+usage: {program} [--install | --uninstall | --status]
+
+Without options, a few pages ask which shells and which commands.
+
+  --install         every command in every shell, no questions
+  --uninstall       take everything out again
+  --status          what is set up now
+  --help --version
+
+Examples:
+  {program}
+  {program} --install
+  {program} --status

@@ -1,0 +1,38 @@
+{program} - du for macOS that counts files evicted to iCloud as if they were on disk
+
+usage: {program} [-AclnSx] [-H | -L | -P] [-g | -h | -k | -m | --si]
+{indent}[-a | -s | -d depth] [-B blocksize] [-I mask] [-t threshold]
+{indent}[--local] [--plain] [file ...]
+
+Options are those of macOS du(1).
+
+Sizes:
+  -A              apparent size instead of disk usage
+  -B blocksize    count in blocksize-byte blocks
+  -g, -k, -m      1 GiB / 1 KiB / 1 MiB blocks
+  -h, --si        human-readable sizes, powers of 1024 / 1000
+
+Entries:
+  -a              an entry for each file
+  -d depth        an entry for each directory this many levels deep
+  -s              an entry for each operand only
+  -c              display a grand total
+  -t threshold    only directories of at least this size, e.g. 10M
+
+Which files:
+  -H, -L, -P      follow symlinks on the command line / everywhere / never
+  -I mask         ignore files and directories whose name matches mask
+  -l              count every hard link, not each file once
+  -n              ignore files and directories with the nodump flag
+  -x              do not cross mount points
+  -r              accepted and ignored
+
+Extras:
+  -S              sort the lines by size, largest first; with -r, smallest
+  --local         count only what is stored on this Mac, exactly like du
+  --plain         no spinner, live table or notes
+  --help          show this help
+  --version       show the version
+
+Notes:
+  piped or redirected, and with --plain, the output is plain du text

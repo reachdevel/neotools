@@ -1,0 +1,44 @@
+{program} - Linux seçenekleriyle ps
+
+kullanım: {program} [seçenekler]
+
+Hangi süreçler:
+  -e, -A            hepsi (ax: terminali olan ya da seninkiler)
+  -p liste          süreç numarasına göre
+  -C liste          program adına göre
+  -u liste          kullanıcıya göre
+  -U liste          gerçek kullanıcıya göre
+  --ppid liste      üst sürece göre
+  -t liste          terminale göre
+  -a                terminali olan, oturum lideri olmayan
+  -N                diğer hepsi
+
+Ne gösterilsin:
+  -f                UID PID PPID C STIME TTY TIME CMD
+  u                 USER PID %CPU %MEM VSZ RSS TTY STAT START TIME COMMAND
+  -o liste          bu sütunlar, pid,ppid,cmd ya da pid=NO
+  -O liste          PID, bunlar, sonra STAT TTY TIME COMMAND
+  --forest, f       çocuklar üst süreçlerinin altında
+  -H                çocuklar içeride
+  --no-headers      başlık satırı yok
+  w, ww             daha geniş komut sütunu
+
+Hangi sırayla:
+  --sort anahtar,-anahtar   bu sütunlara göre, - aşağı doğru
+  k anahtar         aynısı, BSD biçimiyle
+
+-o ve --sort için sütunlar:
+  pid ppid pgid tpgid uid ruid gid user ruser group tty stat s pri ni
+  %cpu %mem vsz rss time etime etimes lstart start stime c f comm cmd args
+
+Diğer:
+  --plain argümanlar   macOS'un ps'ini bu argümanlarla çalıştır
+  --help --version
+
+Örnekler:
+  {program} aux
+  {program} -ef
+  {program} auxf
+  {program} -eo pid,ppid,%cpu,cmd --sort=-%cpu
+  {program} -C nginx
+  {program} -p 1,$$ -o pid,ppid,etime,cmd

@@ -1,0 +1,58 @@
+{program} - processes by core type and power, for Apple Silicon
+
+usage: {program} [-i seconds] [-n count] [--once] [--sort key] [--top N]
+{indent}[--filter system|apps|text] [--expand name] [--processes] [--idle]
+{indent}[--describe] [--bytes] [--net|--no-net] [--disk|--no-disk] [--path]
+{indent}[--no-system] [--json] [--plain]
+
+Columns:
+  P CORES, E CORES    time spent on performance / efficiency cores, in percent
+                      of one core
+  GPU                 time the process kept the GPU busy, in percent of the
+                      whole GPU
+  WATT                power the processes used: CPU, plus the process's share
+                      of the GPU's power
+  MEMORY              physical footprint
+  NET                 network received + sent per second, in bits
+
+Running:
+  -i seconds          sample interval, 0.1 to 60
+  -n count            print that many tables, then stop
+  --once              print one table instead of the live view
+
+Rows:
+  --sort key          watt, p, e, gpu, cpu, mem, net, disk, name
+  --top N             only the first N rows
+  --filter x          system, apps, or text in the name
+  --expand name       show the roles inside an application
+  --processes         show every process
+  --idle              open the idle rows
+  --no-system         leave out System (macOS)
+
+Columns shown:
+  --net, --disk       always show these columns
+  --no-net, --no-disk hide them
+  --bytes             network speeds in bytes instead of bits
+  --path              full paths instead of names
+  --describe          add a description of what a process is, where one is known
+
+Output:
+  --json              output as JSON
+  --plain             no colours or bars
+  --help --version
+
+Live view keys:
+  q quit    up down, k j move    space expand    / filter    ? help
+  s path    d disk    b bits/bytes    f freeze    + - interval    W save
+  w p e g c m t i n   sort by watt, P, E, GPU, cpu, memory, network, disk, name
+
+Notes:
+  root and kernel processes need sudo to be read; their share is derived from
+  the totals
+  percentages are time on a core, not work done: a P core does more in the
+  same time
+
+Examples:
+  {program}		live view
+  {program} --once --top 5	the five applications that use the most power
+  {program} --once --expand "Google Chrome"

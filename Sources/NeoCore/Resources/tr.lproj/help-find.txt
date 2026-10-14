@@ -1,0 +1,66 @@
+{program} - macOS için find; Finder etiketleri, purgeable ve bulutta duran dosyalarla
+
+kullanım: {program} [-H | -L | -P] [-dsx] [-f yol] [yol ...] [ifade]
+{indent}[--tag [ad]] [--purgeable] [--evicted] [--quarantined]
+{indent}[--no-spotlight] [--json] [--plain]
+
+Seçenekler macOS find(1) ile aynıdır.
+
+Gezinti:
+  -H, -L, -P          sembolik bağları komut satırında / her yerde / hiç izleme
+  -d                  bir dizinin içindekini dizinden önce gez (-depth)
+  -s                  girdileri alfabetik sırayla gez
+  -x                  bağlama noktalarını geçme (-xdev)
+  -f yol              yol, - ile başlasa veya ! ya da ( olsa bile
+
+Testler (n sayısı tam n, +n n'den fazla, -n n'den az demektir):
+  -name desen         ad desene uyar (* ? [..])
+  -iname desen        aynısı, harf farkını yok sayarak
+  -path desen         yolun tamamı uyar (-wholename)
+  -ipath desen        aynısı, harf farkını yok sayarak (-iwholename)
+  -type t             b c d f l p s: blok, karakter, dizin, dosya, sembolik
+                      bağ, boru, soket
+  -empty              boş dosya veya dizin
+  -size n[ckMGTP]     512 baytlık bloklarla boyut; veya bayt (c), KiB, MiB,
+                      GiB, TiB, PiB
+  -mtime n            n gün önce değişti; n birim alabilir: 1h30m (s m h d w)
+  -atime n, -ctime n, -Btime n
+                      n gün önce erişildi, değişti, oluşturuldu
+  -mmin n             n dakika önce değişti
+  -amin n, -cmin n, -Bmin n
+                      n dakika önce erişildi, değişti, oluşturuldu
+  -newer dosya        dosyadan daha yakın zamanda değişti
+  -user ad, -group ad, -uid n, -gid n
+                      sahibi
+  -perm [-+]kip       izin bitleri (sekizlik); -kip: bunların hepsi açık,
+                      +kip: biri açık
+  -links n, -inum n, -xattr, -xattrname ad, -depth n
+
+Operatörler:
+  ( ifade )   ! ifade, -not   ifade -a ifade   ifade -o ifade   -true   -false
+
+Eylemler ve gezinti denetimi:
+  -print  -print0  -prune  -quit
+  -maxdepth n  -mindepth n  -xdev  -depth
+
+Eklentiler:
+  --tag [ad]          Finder etiketi olan dosyalar; ad verilmezse etiketli
+                      tüm dosyalar ve etiketleri
+  --purgeable         macOS'un yere ihtiyaç duyunca silebileceği dosyalar
+  --evicted           bu Mac'te saklanmayan iCloud dosyaları
+  --quarantined       indirilmiş ve henüz açılmamış dosyalar
+  --no-spotlight      --tag için Spotlight'a sormak yerine her dosyayı oku
+  --json              JSON olarak yaz
+  --plain             aynı argümanlarla gerçek /usr/bin/find'ı çalıştır
+  --help --version
+
+Notlar:
+  yol verilmezse arama "." içinde başlar
+  diğer find birincilleri (-exec -delete -regex -newerXY ...) reddedilir:
+  --plain kullanın
+
+Örnekler:
+  {program} -name '*.md'
+  {program} ~/Documents -type f -size +100M
+  {program} . -mtime -7 -name '*.swift'
+  {program} ~ --purgeable -size +10M

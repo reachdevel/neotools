@@ -1,0 +1,36 @@
+{program} - boyutlu klasör ağacı, kimsenin okumadığı klasörleri katlar
+
+kullanım: {program} [YOL...] [seçenekler]
+
+Göster:
+  -a                gizli girdileri de
+  -d                yalnızca klasörler
+  -L n              en çok n seviye
+  -f                her girdinin tam yolu
+  -x                tek dosya sisteminde kal
+  --no-size         boyut yok
+  --local           yalnızca iCloud'da olan dosyalar sıfır sayılır
+
+Hangileri:
+  -I desen          eşleşen adları çıkar (a|b)
+  -P desen          yalnızca eşleşen dosyalar
+  --sort anahtar    name size time
+  -r                ters sırayla
+  --dirsfirst       klasörler dosyalardan önce
+
+Katlanan klasörler (node_modules, .git, sanal ortamlar, derleme çıktıları...):
+  --show            hepsini aç
+  --show=liste      yalnızca bu adları aç
+  --fold liste      bu adları da kat
+
+Çıktı:
+  --json            JSON olarak yaz
+  --plain           renk yok
+  --help --version
+
+Örnekler:
+  {program}
+  {program} -L 2 ~/Projeler
+  {program} --sort size --dirsfirst src
+  {program} --show=node_modules uygulama
+  {program} -I '*.log|tmp' -P '*.swift' .

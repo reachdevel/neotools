@@ -1,0 +1,36 @@
+{program} - a directory tree with sizes, folding the folders nobody reads
+
+usage: {program} [PATH...] [options]
+
+Show:
+  -a                also hidden entries
+  -d                folders only
+  -L n              at most n levels
+  -f                the whole path of each entry
+  -x                stay on one file system
+  --no-size         no sizes
+  --local           files only in iCloud count as nothing
+
+Which:
+  -I pattern        leave out names that match (a|b)
+  -P pattern        only files that match
+  --sort key        name size time
+  -r                the other way round
+  --dirsfirst       folders before files
+
+Folded folders (node_modules, .git, virtual environments, build output...):
+  --show            open them all
+  --show=list       open only these names
+  --fold list       fold these names too
+
+Output:
+  --json            output as JSON
+  --plain           no colours
+  --help --version
+
+Examples:
+  {program}
+  {program} -L 2 ~/Projects
+  {program} --sort size --dirsfirst src
+  {program} --show=node_modules app
+  {program} -I '*.log|tmp' -P '*.swift' .

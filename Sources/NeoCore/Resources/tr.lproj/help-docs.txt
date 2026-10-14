@@ -1,0 +1,99 @@
+{program} - belgelere bak, biçimlerini değiştir, birleştir ve böl
+
+kullanım: {program} info|text|convert|merge|split|images|strip|ocr|shrink YOL... [seçenekler]
+
+Komutlar:
+  info              her dosyada ne var
+  text              metin, ekrana ya da dosyalara
+  convert           biçimi değiştir
+  merge             PDF ve resimleri tek PDF'te birleştir
+  split             PDF'ten sayfa kes
+  images            PDF içindeki resimleri çıkar
+  strip             yazarı, tarihleri ve geçmişi çıkar
+  ocr               taranmış PDF'i aranabilir yap
+  shrink            taranmış PDF'i küçült
+
+YOL bir dosya ya da klasördür.
+
+convert:
+  --to biçim        yeni dosyanın biçimi
+  --app             Word: pdf'i Pages yapsın
+  --dpi n           resimler: inç başına nokta
+  --quality n       jpg ve heic: 1-100
+
+Nereden nereye:
+  pdf               txt png jpg heic tiff
+  docx rtf odt,
+  html md txt       docx rtf odt html md txt pdf
+  csv tsv json,
+  jsonl xlsx,
+  parquet           csv tsv json jsonl xlsx parquet md html
+  pptx xlsx         pdf
+  pages             pdf docx txt md html rtf odt
+  numbers           pdf xlsx csv tsv json jsonl md html
+  key               pdf pptx txt
+
+Tablolar:
+  --sheet ad        Excel dosyasından bir sayfa, adıyla ya da numarasıyla
+  --no-header       ilk satır veridir
+  --delimiter c     okurken: bir karakter ya da tab, semicolon, pipe
+  --excel           Excel'in olduğu gibi açtığı csv
+  --as-text         her değer metin kalır
+
+merge:
+  --out dosya       yeni PDF
+
+split:
+  --pages liste     3  3-7  5-  1,4,6-8
+  --each            her sayfa ayrı dosya
+  --every n         her n sayfa bir dosya
+
+images:
+  --min n           n pikselden küçük resimleri alma
+
+ocr ve shrink:
+  --lang liste      tr,en  metnin dilleri
+  --dpi n           shrink: resimler inç başına n noktaya örneklenir
+  --quality n       shrink: jpeg kalitesi, 1-100
+
+info:
+  --sort anahtar    name size modified pages format
+  --reverse         ters sırayla
+
+text, convert, split, images, strip, ocr ve shrink:
+  --pages liste     PDF'in sayfaları
+  --out dizin       oraya yaz
+  --trash-original  özgün dosya Çöp Sepeti'ne gider
+  --keep-dates      yeni dosyalar özgün dosyanın tarihlerini alır
+  -n, --dry-run     neyin yazılacağını göster
+
+Hangi dosyalar (her komut):
+  --larger boyut,
+  --smaller boyut   dosya boyutuna göre (örn. 500K, 5M, 2G)
+  --since tarih,
+  --before tarih    değiştirildiği güne göre (örn. 2025-12-25)
+  --pages-over n    n sayfadan uzun PDF'ler
+  --format liste    pdf,docx ...
+  -r                klasörlerin içine gir
+  --download        yalnızca iCloud'da olan dosyaları indir
+
+Çıktı (her komut):
+  --json            JSON olarak yaz
+  -v, --verbose     neyin dışarıda kaldığını da söyle
+  --plain           renk yok
+  --help --version
+
+Örnekler:
+  {program} info ~/Documents -r --sort pages
+  {program} text rapor.pdf | grep -i toplam
+  {program} split kitap.pdf --pages 12-20
+  {program} merge kapak.pdf tarama1.jpg tarama2.jpg --out dosya.pdf
+  {program} images brosur.pdf --min 200
+  {program} convert slayt.pdf --to png --dpi 200
+  {program} convert rapor.docx --to pdf
+  {program} convert notlar.md --to docx
+  {program} convert satis.xlsx --to parquet
+  {program} text veri.csv --to jsonl | jq .ad
+  {program} strip rapor.docx --trash-original
+  {program} ocr tarama.pdf --lang tr,en
+  {program} shrink tarama.pdf --dpi 150

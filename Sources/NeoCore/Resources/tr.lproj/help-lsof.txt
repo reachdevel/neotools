@@ -1,0 +1,46 @@
+{program} - macOS için lsof: bunu kim açık tutuyor, hızlıca
+
+kullanım: {program} [-?abClnPRtUw] [-c c] [+c w] [-d d] [-F f] [-i i] [-o] [-p s]
+{indent}[-r t] [-s p:s] [-u s] [+L [n]] [+D D] [+d d] [adlar]
+{indent}[--deleted] [--listening] [--mic] [--json] [--plain]
+
+Seçenekler lsof(8) ile aynıdır, {program}'in uyguladığı kısımlar için.
+
+Ne listelensin:
+  adlar               dosya, dizin veya bağlama noktası
+  +D D, +d D          D dizininin altındaki veya doğrudan içindeki açık dosyalar
+  -p s, -c c, -u s    süreç no, komut adı (/regex/ olabilir) veya kullanıcıya
+                      göre; öndeki ^ hariç tutar
+  -i [i]              ağ dosyaları: [46][TCP|UDP][:port veya servis]
+  -s p:s              protokol durumları, örn. -sTCP:LISTEN,
+                      -sTCP:^ESTABLISHED
+  -d d                tanıtıcılar (cwd, txt, 0-2, ^3...)
+  -U                  UNIX alan soketleri
+  +L [n]              n'den az bağı olan dosyalar (+L1: silinmiş ama hâlâ açık)
+  -a                  seçimleri VEYA yerine VE ile birleştir
+
+Ne yazılsın:
+  -t                  yalnızca süreç numaraları
+  -l                  adlar yerine kullanıcı numaraları
+  -R                  üst süreci göster
+  -n                  sayısal ana makine
+  -P                  servis adı yerine sayısal port
+  -o                  OFFSET başlığı
+  +c w                komut genişliği (0 = hepsi)
+  -r t                her t saniyede tekrarla
+  -F alanlar          makine tarafından okunur çıktı: p c u L R f a t s o i P n
+                      (-F0 alanları NUL ile bitirir)
+  -b, -C, -w          kabul edilir, etkisi yok
+
+Eklentiler:
+  --deleted           silinmiş ama hâlâ açık dosyalar
+  --listening         birinin dinlediği TCP portları
+  --mic               şu an ses kaydeden süreçler
+  --json              sonucu JSON olarak ver
+  --plain             aynı argümanlarla gerçek lsof'u çalıştır
+  --help --version
+
+Notlar:
+  diğer lsof seçenekleri reddedilir: bunlarla {program} --plain çalıştırın
+  ana makine adları hiç aranmaz
+  başka kullanıcıların süreçleri için lsof'ta olduğu gibi sudo gerekir

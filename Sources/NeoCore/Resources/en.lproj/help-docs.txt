@@ -1,0 +1,99 @@
+{program} - look at documents, change their format, join and cut them
+
+usage: {program} info|text|convert|merge|split|images|strip|ocr|shrink PATH... [options]
+
+Commands:
+  info              what is in each file
+  text              the text, on the screen or in files
+  convert           change the format
+  merge             join PDFs and pictures into one PDF
+  split             cut pages out of a PDF
+  images            take the pictures out of a PDF
+  strip             take the author, the dates and the history out
+  ocr               make a scanned PDF searchable
+  shrink            make a scanned PDF smaller
+
+PATH is a file or a folder.
+
+convert:
+  --to format       the format of the new file
+  --app             Word: let Pages make the pdf
+  --dpi n           pictures: dots per inch
+  --quality n       jpg and heic: 1-100
+
+From and to:
+  pdf               txt png jpg heic tiff
+  docx rtf odt,
+  html md txt       docx rtf odt html md txt pdf
+  csv tsv json,
+  jsonl xlsx,
+  parquet           csv tsv json jsonl xlsx parquet md html
+  pptx xlsx         pdf
+  pages             pdf docx txt md html rtf odt
+  numbers           pdf xlsx csv tsv json jsonl md html
+  key               pdf pptx txt
+
+Tables:
+  --sheet name      one sheet of an Excel file, by name or number
+  --no-header       the first row is data
+  --delimiter c     for reading: a character, or tab, semicolon, pipe
+  --excel           csv that Excel opens as it is
+  --as-text         every value stays text
+
+merge:
+  --out file        the new PDF
+
+split:
+  --pages list      3  3-7  5-  1,4,6-8
+  --each            one file per page
+  --every n         one file for each n pages
+
+images:
+  --min n           leave out pictures under n pixels
+
+ocr and shrink:
+  --lang list       tr,en  the languages of the text
+  --dpi n           shrink: pictures are sampled at n dots per inch
+  --quality n       shrink: jpeg quality, 1-100
+
+info:
+  --sort key        name size modified pages format
+  --reverse         the other way round
+
+text, convert, split, images, strip, ocr and shrink:
+  --pages list      the pages of a PDF
+  --out dir         write there
+  --trash-original  the original goes to the Trash
+  --keep-dates      new files get the dates of the original
+  -n, --dry-run     show what would be written
+
+Which files (every command):
+  --larger size,
+  --smaller size    by file size (e.g. 500K, 5M, 2G)
+  --since date,
+  --before date     by the day it was changed (e.g. 2025-12-25)
+  --pages-over n    PDFs with more than n pages
+  --format list     pdf,docx ...
+  -r                go into folders
+  --download        bring down files that are only in iCloud
+
+Output (every command):
+  --json            output as JSON
+  -v, --verbose     also say what was left out
+  --plain           no colours
+  --help --version
+
+Examples:
+  {program} info ~/Documents -r --sort pages
+  {program} text report.pdf | grep -i total
+  {program} split book.pdf --pages 12-20
+  {program} merge cover.pdf scan1.jpg scan2.jpg --out file.pdf
+  {program} images brochure.pdf --min 200
+  {program} convert slides.pdf --to png --dpi 200
+  {program} convert report.docx --to pdf
+  {program} convert notes.md --to docx
+  {program} convert sales.xlsx --to parquet
+  {program} text data.csv --to jsonl | jq .name
+  {program} strip report.docx --trash-original
+  {program} ocr scan.pdf --lang tr,en
+  {program} shrink scan.pdf --dpi 150

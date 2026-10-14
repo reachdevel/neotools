@@ -1,0 +1,62 @@
+{program} - look at photos and videos, change their format, make them smaller
+
+usage: {program} info|convert|shrink|strip PATH... [options]
+
+Commands:
+  info              what is in each file
+  convert           change the format or the codec
+  shrink            same format, smaller
+  strip             take the location out, without touching the picture
+
+PATH is a file or a folder.
+
+convert:
+  --to format       jpg png heic avif webp tiff, mp4 mov m4v
+
+convert and shrink:
+  --quality n       1-100
+  --max n           longest edge in pixels
+  --p n             shorter edge, as in 720p
+  --codec c         video: h264 or hevc
+  --strip what      gps or all
+
+strip:
+  --all             all metadata, not only the location
+
+info:
+  --sort key        name size taken length dimensions format
+  --reverse         the other way round
+
+convert, shrink and strip:
+  --out dir         write there
+  --trash-original  move the original to the Trash when the new file is written
+  --keep-dates      the new file gets the dates of the original
+  -n, --dry-run     show what would be written
+  --no-subtitles    MKV: do not save the subtitles next to the new file
+  -j n              photos at a time
+
+Which files (every command):
+  --larger size,
+  --smaller size    by file size (e.g. 500K, 5M, 2G)
+  --since date,
+  --before date     by the day taken (e.g. 2025-12-25)
+  --gps, --no-gps   with or without a location
+  --format list     jpg,heic,mp4 ...
+  --wider n,
+  --longer n        longest edge above n pixels, video above n seconds
+  --only kind       photo or video
+  -r                go into folders
+  --download        bring down files that are only in iCloud
+
+Output (every command):
+  --json            output as JSON
+  -v, --verbose     also say what was left out
+  --plain           no colours
+  --help --version
+
+Examples:
+  {program} info Pictures --sort size --reverse
+  {program} convert IMG_0042.heic
+  {program} shrink Pictures -r --larger 5M --max 1920 --out small
+  {program} shrink clip.mov --p 720 --codec hevc
+  {program} strip holiday --trash-original

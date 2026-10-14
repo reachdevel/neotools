@@ -1,0 +1,62 @@
+{program} - fotoğraf ve videolara bak, biçimlerini değiştir, küçült
+
+kullanım: {program} info|convert|shrink|strip YOL... [seçenekler]
+
+Komutlar:
+  info              her dosyada ne var
+  convert           biçimi ya da codec'i değiştir
+  shrink            aynı biçimde, daha küçük
+  strip             resme dokunmadan konumu çıkar
+
+YOL bir dosya ya da klasördür.
+
+convert:
+  --to biçim        jpg png heic avif webp tiff, mp4 mov m4v
+
+convert ve shrink:
+  --quality n       1-100
+  --max n           uzun kenar, piksel
+  --p n             kısa kenar, 720p'deki gibi
+  --codec c         video: h264 ya da hevc
+  --strip ne        gps veya all
+
+strip:
+  --all             yalnızca konumu değil, tüm metadata'yı
+
+info:
+  --sort anahtar    name size taken length dimensions format
+  --reverse         ters sırayla
+
+convert, shrink ve strip:
+  --out dizin       oraya yaz
+  --trash-original  yeni dosya yazılınca özgün dosyayı Çöp Sepeti'ne taşı
+  --keep-dates      yeni dosya özgün dosyanın tarihlerini alır
+  -n, --dry-run     neyin yazılacağını göster
+  --no-subtitles    MKV: altyazıları yeni dosyanın yanına kaydetme
+  -j n              aynı anda fotoğraf sayısı
+
+Hangi dosyalar (her komut):
+  --larger boyut,
+  --smaller boyut   dosya boyutuna göre (örn. 500K, 5M, 2G)
+  --since tarih,
+  --before tarih    çekim gününe göre (örn. 2025-12-25)
+  --gps, --no-gps   konumu olanlar, olmayanlar
+  --format liste    jpg,heic,mp4 ...
+  --wider n,
+  --longer n        uzun kenar n pikselden, video n saniyeden büyük
+  --only tür        photo ya da video
+  -r                klasörlerin içine gir
+  --download        yalnızca iCloud'da olan dosyaları indir
+
+Çıktı (her komut):
+  --json            JSON olarak yaz
+  -v, --verbose     neyin dışarıda kaldığını da söyle
+  --plain           renk yok
+  --help --version
+
+Örnekler:
+  {program} info Resimler --sort size --reverse
+  {program} convert IMG_0042.heic
+  {program} shrink Resimler -r --larger 5M --max 1920 --out kucuk
+  {program} shrink klip.mov --p 720 --codec hevc
+  {program} strip tatil --trash-original

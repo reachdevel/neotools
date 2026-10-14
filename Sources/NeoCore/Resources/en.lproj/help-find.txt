@@ -1,0 +1,66 @@
+{program} - find for macOS, with Finder tags, purgeable and evicted files
+
+usage: {program} [-H | -L | -P] [-dsx] [-f path] [path ...] [expression]
+{indent}[--tag [name]] [--purgeable] [--evicted] [--quarantined]
+{indent}[--no-spotlight] [--json] [--plain]
+
+Options are those of macOS find(1).
+
+Walking:
+  -H, -L, -P          follow symlinks on the command line / everywhere / never
+  -d                  contents of a directory before the directory (-depth)
+  -s                  entries in alphabetical order
+  -x                  do not cross mount points (-xdev)
+  -f path             a path, even if it starts with - or is ! or (
+
+Tests (a number n means exactly n, +n more than n, -n less than n):
+  -name pattern       the name matches the pattern (* ? [..])
+  -iname pattern      the same, ignoring case
+  -path pattern       the whole path matches (-wholename)
+  -ipath pattern      the same, ignoring case (-iwholename)
+  -type t             b c d f l p s: block, character, directory, file,
+                      symlink, pipe, socket
+  -empty              an empty file or directory
+  -size n[ckMGTP]     size in 512-byte blocks, or in bytes (c), KiB, MiB, GiB,
+                      TiB, PiB
+  -mtime n            modified n days ago; n may have units: 1h30m (s m h d w)
+  -atime n, -ctime n, -Btime n
+                      accessed, changed, created n days ago
+  -mmin n             modified n minutes ago
+  -amin n, -cmin n, -Bmin n
+                      accessed, changed, created n minutes ago
+  -newer file         modified more recently than file
+  -user name, -group name, -uid n, -gid n
+                      the owner
+  -perm [-+]mode      permission bits (octal); -mode: all of these set,
+                      +mode: any of them
+  -links n, -inum n, -xattr, -xattrname name, -depth n
+
+Operators:
+  ( expr )   ! expr, -not   expr -a expr   expr -o expr   -true   -false
+
+Actions and walk control:
+  -print  -print0  -prune  -quit
+  -maxdepth n  -mindepth n  -xdev  -depth
+
+Extras:
+  --tag [name]        files with a Finder tag; without a name, all tagged files
+                      and their tags
+  --purgeable         files macOS may remove when it needs space
+  --evicted           iCloud files that are not stored on this Mac
+  --quarantined       downloaded files that were not opened yet
+  --no-spotlight      for --tag, read every file instead of asking Spotlight
+  --json              output as JSON
+  --plain             run the real /usr/bin/find with the same arguments
+  --help --version
+
+Notes:
+  without a path the search starts in "."
+  other find primaries (-exec -delete -regex -newerXY ...) are refused:
+  use --plain
+
+Examples:
+  {program} -name '*.md'
+  {program} ~/Documents -type f -size +100M
+  {program} . -mtime -7 -name '*.swift'
+  {program} ~ --purgeable -size +10M

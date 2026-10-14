@@ -1,0 +1,42 @@
+{program} - free for macOS: memory the way Activity Monitor counts it
+
+Usage:
+ {program} [options]
+
+Options are those of procps-ng free.
+
+Units:
+ -b, --bytes         show output in bytes
+     --kilo          show output in kilobytes
+     --mega          show output in megabytes
+     --giga          show output in gigabytes
+     --tera          show output in terabytes
+     --peta          show output in petabytes
+ -k, --kibi          show output in kibibytes
+ -m, --mebi          show output in mebibytes
+ -g, --gibi          show output in gibibytes
+     --tebi          show output in tebibytes
+     --pebi          show output in pebibytes
+ -h, --human         show human-readable output
+     --si            use powers of 1000 not 1024
+
+Rows and columns:
+ -t, --total         show total for RAM + swap
+ -w, --wide          buffers and cache in separate columns
+ -l, --lohi          accepted, has no effect
+
+Repeat:
+ -s, --seconds N     repeat printing every N seconds
+ -c, --count N       repeat printing N times, then exit
+
+Extras:
+     --plain         the Linux-style table
+     --json          machine-readable output with exact byte counts
+     --pressure      also show the memory pressure level
+ -V, --version       output version information and exit
+     --help          display this help and exit
+
+Notes:
+  used = app + wired + compressed; buff/cache = cached files + purgeable
+  available = free + buff/cache; shared is always 0
+  with -w, "buffers" is purgeable memory and "cache" is cached files

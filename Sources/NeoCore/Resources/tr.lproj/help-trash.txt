@@ -1,0 +1,29 @@
+{program} - Finder'dan silmek gibi, her şeyi Çöp Sepeti'ne koyan rm
+
+kullanım: {program} [-f | -i] [-dIPRrvWx] [--plain] dosya ...
+
+Seçenekler macOS rm(1) ile aynıdır.
+
+Ne silinir:
+  -d              boş dizinleri sil
+  -R, -r          dizinleri ve içindekileri sil
+  -x              kabul edilir, yok sayılır: dizin bütün olarak taşınır
+
+Sorma ve bildirme:
+  -f              sorma, olmayan dosyaları yok say
+  -i              her dosyadan önce sor
+  -I              üçten fazla dosya silmeden veya özyinelemeli silmeden
+                  önce bir kez sor
+  -v              taşınan her dosyayı yaz
+
+Burada kullanılmayanlar:
+  -P              kabul edilir, yok sayılır: hiçbir şeyin üstüne yazılmaz
+  -W              burada desteklenmez; --plain kullanın
+
+Eklentiler:
+  --plain         Çöp Sepeti yerine gerçek rm'yi çalıştır (--permanent de olur)
+  --help          bu yardımı göster
+  --version       sürümü göster
+
+Notlar:
+  hatalar ve çıkış kodları rm'ninkidir; Çöp Sepeti olmayan birim bir hatadır

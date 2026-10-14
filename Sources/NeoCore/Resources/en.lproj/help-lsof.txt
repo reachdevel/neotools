@@ -1,0 +1,45 @@
+{program} - lsof for macOS: who has this open, fast
+
+usage: {program} [-?abClnPRtUw] [-c c] [+c w] [-d d] [-F f] [-i i] [-o] [-p s]
+{indent}[-r t] [-s p:s] [-u s] [+L [n]] [+D D] [+d d] [names]
+{indent}[--deleted] [--listening] [--mic] [--json] [--plain]
+
+Options are those of lsof(8), for the parts {program} implements.
+
+What to list:
+  names               files, directories or mount points
+  +D D, +d D          open files below directory D, or directly in it
+  -p s, -c c, -u s    processes by id, command name (/regex/ allowed) or user;
+                      a ^ in front excludes
+  -i [i]              network files: [46][TCP|UDP][:port or service]
+  -s p:s              protocol states, e.g. -sTCP:LISTEN or -sTCP:^ESTABLISHED
+  -d d                descriptors (cwd, txt, 0-2, ^3...)
+  -U                  UNIX domain sockets
+  +L [n]              files with fewer than n links (+L1: deleted but open)
+  -a                  AND the selections instead of ORing them
+
+What to print:
+  -t                  process ids only
+  -l                  user ids instead of names
+  -R                  show the parent
+  -n                  numeric hosts
+  -P                  numeric ports instead of service names
+  -o                  OFFSET header
+  +c w                command width (0 = all)
+  -r t                repeat every t seconds
+  -F fields           machine-readable output: p c u L R f a t s o i P n
+                      (-F0 ends fields with NUL)
+  -b, -C, -w          accepted, no effect
+
+Extras:
+  --deleted           deleted files that are still open
+  --listening         TCP ports somebody is listening on
+  --mic               processes that are recording audio right now
+  --json              the result as JSON
+  --plain             run the real lsof with the same arguments
+  --help --version
+
+Notes:
+  other lsof options are refused: run {program} --plain with them
+  host names are never looked up
+  processes of other users need sudo, as for lsof

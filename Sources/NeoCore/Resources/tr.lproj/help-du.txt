@@ -1,0 +1,38 @@
+{program} - iCloud'a taşınmış (evicted) dosyaları diskteymiş gibi sayan, macOS için du
+
+kullanım: {program} [-AclnSx] [-H | -L | -P] [-g | -h | -k | -m | --si]
+{indent}[-a | -s | -d derinlik] [-B blokboyutu] [-I maske] [-t eşik]
+{indent}[--local] [--plain] [dosya ...]
+
+Seçenekler macOS du(1) ile aynıdır.
+
+Boyutlar:
+  -A              disk kullanımı yerine görünür (apparent) boyut
+  -B blokboyutu   boyutları blokboyutu baytlık bloklarla say
+  -g, -k, -m      1 GiB / 1 KiB / 1 MiB blok
+  -h, --si        okunaklı boyutlar, 1024 / 1000 katları
+
+Satırlar:
+  -a              her dosya için bir satır
+  -d derinlik     bu kadar seviye derinlikteki her dizin için bir satır
+  -s              yalnızca her operand için bir satır
+  -c              genel toplamı göster
+  -t eşik         yalnızca bu boyutta veya daha büyük dizinler, ör. 10M
+
+Hangi dosyalar:
+  -H, -L, -P      sembolik bağları komut satırında / her yerde / hiç izleme
+  -I maske        adı maskeye uyan dosya ve dizinleri yok say
+  -l              her sabit bağı (hard link) ayrı say, dosyayı bir kez değil
+  -n              nodump bayrağı olan dosya ve dizinleri yok say
+  -x              bağlama noktalarını (mount) geçme
+  -r              kabul edilir, yok sayılır
+
+Eklentiler:
+  -S              satırları boyuta göre sırala, en büyük başta; -r ile en küçük
+  --local         yalnızca bu Mac'te saklananı say, tıpkı du gibi
+  --plain         döner simge, canlı tablo ve not yok
+  --help          bu yardımı göster
+  --version       sürümü göster
+
+Notlar:
+  boruya, dosyaya ve --plain ile çıktı düz du metnidir

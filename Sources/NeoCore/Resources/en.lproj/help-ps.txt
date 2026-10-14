@@ -1,0 +1,44 @@
+{program} - ps with the options of Linux
+
+usage: {program} [options]
+
+Which processes:
+  -e, -A            all (ax: with a terminal, or yours)
+  -p list           by process id
+  -C list           by program name
+  -u list           by user
+  -U list           by real user
+  --ppid list       by parent
+  -t list           by terminal
+  -a                with a terminal, not session leaders
+  -N                all the others
+
+What to show:
+  -f                UID PID PPID C STIME TTY TIME CMD
+  u                 USER PID %CPU %MEM VSZ RSS TTY STAT START TIME COMMAND
+  -o list           these columns, pid,ppid,cmd or pid=ID
+  -O list           PID, these, then STAT TTY TIME COMMAND
+  --forest, f       children under their parents
+  -H                children indented
+  --no-headers      no header line
+  w, ww             wider command column
+
+In what order:
+  --sort key,-key   by these columns, - for downwards
+  k key             the same, BSD style
+
+Columns for -o and --sort:
+  pid ppid pgid tpgid uid ruid gid user ruser group tty stat s pri ni
+  %cpu %mem vsz rss time etime etimes lstart start stime c f comm cmd args
+
+Other:
+  --plain args      run the ps of macOS with args
+  --help --version
+
+Examples:
+  {program} aux
+  {program} -ef
+  {program} auxf
+  {program} -eo pid,ppid,%cpu,cmd --sort=-%cpu
+  {program} -C nginx
+  {program} -p 1,$$ -o pid,ppid,etime,cmd

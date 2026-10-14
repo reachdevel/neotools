@@ -1,0 +1,28 @@
+neotop tuşları
+
+Gezinme:
+  yukarı aşağı, k j   seçimi taşı
+  PgUp PgDn           kaydır
+  Home End            ilk / son satır
+  boşluk, sağ         seçili satırı aç
+  sol                 kapat (ya da üst satıra git)
+  E / C               hepsini aç / kapat
+
+Sıralama (tekrar: ters):
+  w p e g c m t i n   watt, P çekirdek, E çekirdek, GPU, cpu, bellek, ağ,
+                      disk, ada göre
+
+Gösterim:
+  /                   metne göre süz; Esc temizler
+  s                   temiz adlar / tam yollar
+  d                   disk sütunu
+  b                   bit / bayt
+  f                   görüntüyü dondur / sürdür
+  + -                 aralığı uzat / kısalt
+
+Diğer:
+  W                   bu ayarları kaydet
+  ?                   bu yardım (herhangi bir tuş kapatır)
+  q, Ctrl-C           çık
+
+neotop yalnızca okur. Bir süreci öldürmek ya da değiştirmek için tuş yok.

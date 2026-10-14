@@ -1,0 +1,58 @@
+{program} - Apple Silicon için çekirdek türüne ve güce göre süreçler
+
+kullanım: {program} [-i saniye] [-n sayı] [--once] [--sort anahtar] [--top N]
+{indent}[--filter system|apps|metin] [--expand ad] [--processes] [--idle]
+{indent}[--describe] [--bytes] [--net|--no-net] [--disk|--no-disk] [--path]
+{indent}[--no-system] [--json] [--plain]
+
+Sütunlar:
+  P ÇEKİRDEK, E ÇEKİRDEK
+                      performans / verimlilik çekirdeklerinde geçen süre,
+                      tek çekirdeğin yüzdesi
+  GPU                 sürecin GPU'yu meşgul ettiği süre, tüm GPU'nun yüzdesi
+  WATT                süreçlerin kullandığı güç: CPU artı sürecin GPU
+                      gücündeki payı
+  BELLEK              fiziksel bellek ayak izi
+  AĞ                  saniyedeki ağ alma + gönderme, bit olarak
+
+Çalışma:
+  -i saniye           örnekleme aralığı, 0,1 ile 60
+  -n sayı             o kadar tablo yaz, sonra dur
+  --once              canlı görünüm yerine tek tablo yaz
+
+Satırlar:
+  --sort anahtar      watt, p, e, gpu, cpu, mem, net, disk, name
+  --top N             yalnızca ilk N satır
+  --filter x          system, apps veya addaki metin
+  --expand ad         bir uygulamanın içindeki rolleri göster
+  --processes         her süreci göster
+  --idle              boşta satırlarını aç
+  --no-system         System (macOS)'u çıkar
+
+Gösterilen sütunlar:
+  --net, --disk       bu sütunları her zaman göster
+  --no-net, --no-disk gizle
+  --bytes             ağ hızını bit yerine bayt göster
+  --path              adlar yerine tam yollar
+  --describe          bilinen yerlerde sürecin ne olduğunu anlatan açıklama ekle
+
+Çıktı:
+  --json              JSON olarak yaz
+  --plain             renk ve çubuk yok
+  --help --version
+
+Canlı görünüm tuşları:
+  q çık    yukarı aşağı, k j git    boşluk aç    / süz    ? yardım
+  s yol    d disk    b bit/bayt    f dondur    + - aralık    W kaydet
+  w p e g c m t i n   watt, P, E, GPU, cpu, bellek, ağ, disk, ada göre sırala
+
+Notlar:
+  root ve çekirdek süreçleri okumak için sudo gerekir; payları toplamlardan
+  hesaplanır
+  yüzdeler çekirdekte geçen süredir, yapılan iş değil: P çekirdek aynı sürede
+  daha çok iş yapar
+
+Örnekler:
+  {program}		canlı görünüm
+  {program} --once --top 5	en çok güç kullanan beş uygulama
+  {program} --once --expand "Google Chrome"

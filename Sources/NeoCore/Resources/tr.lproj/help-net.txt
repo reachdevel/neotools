@@ -1,0 +1,33 @@
+{program} - ağ arayüzleri, soketler ve rotalar
+
+kullanım: {program} [-tuxla46pn] [-r] [-i] [-b] [--all] [--json] [--plain]
+
+Seçeneksiz: aktif arayüzler; adresler, MAC, alınan ve gönderilen bayt ve
+varsayılan ağ geçidi ile.
+
+Arayüzler:
+  --all         pasif ve sanal arayüzler de
+  -i            her arayüzün paket, hata ve bayt sayaçları
+  -b            tam bayt sayıları
+
+Soketler (bunlardan biri soketleri listeler):
+  -t, -u, -x    TCP, UDP, UNIX soketleri
+  -4, -6        yalnızca IPv4 / yalnızca IPv6
+  -l            yalnızca dinleyen soketler
+  -a            dinleyen soketler ve bağlantılar
+  -p            programı göster: PID/PROGRAM
+  -n            servis adları yerine port numaraları
+
+Rotalar:
+  -r            yönlendirme tablosu ve DNS sunucuları
+
+Diğer:
+  --json        JSON olarak yaz
+  --plain       renk yok
+  --help        bu yardımı göster
+  --version     sürümü göster
+
+Örnekler:
+  {program} -tulpn     dinleyen TCP ve UDP portları, programlarıyla
+  {program} -tp        TCP bağlantıları, programlarıyla
+  {program} -r         rotalar ve DNS sunucuları

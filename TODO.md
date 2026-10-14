@@ -7,7 +7,8 @@ yours to claim it. Tasks marked **needs hardware** cannot be finished without a 
 ## Release and distribution
 
 - [x] Homebrew tap `reachdevel/tap` and formula (`brew install reachdevel/tap/neotools`, `brew test`), with the bundle installed next to the commands.
-- [ ] Bottles (prebuilt packages) for the tap, built by its GitHub Actions, so that `brew install` does not compile. Who: maintainer
+- [x] Bottles (prebuilt packages) for the tap, built by its GitHub Actions: macOS 15 and 26 on Apple silicon, macOS 15 on Intel.
+- [ ] Bottles for macOS 14 (Apple silicon) and for Intel on macOS 26 (the first was built by CI but not published; the second has no runner yet); until then those Macs compile from source. Who: maintainer
 - [ ] Submit the formula to homebrew-core when the project qualifies. Who: maintainer
 - [ ] GitHub Actions: build and run the tests that do not need a particular machine (mark GPU, Trash, iCloud, Spotlight and terminal tests so CI can skip them). Who: maintainer
 - [ ] Release notes, a `v0.1.0` tag, checksums. Who: maintainer

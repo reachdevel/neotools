@@ -255,6 +255,7 @@ threads and Apple's hardware. Anything tiny loses a few milliseconds to the star
 - [docs/TRANSLATING.md](docs/TRANSLATING.md): how to translate neotools into your language and send it to the project.
 - [CHANGELOG.md](CHANGELOG.md): what changed in each version.
 - [SECURITY.md](SECURITY.md): how to report a vulnerability.
+- [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md): how we treat each other.
 - [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md): the open source code that is compiled in, and its licences.
 - [LICENSE](LICENSE): MIT.
 

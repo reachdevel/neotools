@@ -4,7 +4,7 @@ Thank you for wanting to help. neotools is a family of macOS-native Swift comman
 page tells how to build it, how it is organised, the rules the code follows, and how to add a command, a fix or a language.
 
 Open tasks are in [TODO.md](TODO.md) and the direction is in [ROADMAP.md](ROADMAP.md). For a security problem, see
-[SECURITY.md](SECURITY.md) and do not open a public issue.
+[SECURITY.md](SECURITY.md) and do not open a public issue. Everyone taking part follows the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Build and test
 

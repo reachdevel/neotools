@@ -1,0 +1,24 @@
+name: Feature request
+description: An option, a command or a behaviour you would like neotools to have
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please look at the [ROADMAP](https://github.com/reachdevel/neotools/blob/main/ROADMAP.md) and [TODO](https://github.com/reachdevel/neotools/blob/main/TODO.md) first: it may be planned already.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to do?
+      description: "The task, not the solution. Which classic command do you use today, and what is missing or wrong?"
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you like to type, and what should it print?
+      render: sh
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: What do you do now instead?

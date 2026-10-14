@@ -1,0 +1,50 @@
+name: Bug report
+description: A neotools command crashed, hung, printed a wrong number or differs from the original it replaces
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time. For a **security problem**, do not open an issue: see [SECURITY.md](https://github.com/reachdevel/neotools/security/policy).
+  - type: input
+    id: version
+    attributes:
+      label: neotools version
+      description: "Output of `neodu --version` (or the command that failed)"
+      placeholder: "neodu 0.1.0"
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: macOS and chip
+      description: "For example: macOS 26.1, Apple M2. Output of `sw_vers` and `uname -m`."
+    validations:
+      required: true
+  - type: dropdown
+    id: install
+    attributes:
+      label: How did you install it?
+      options: [Homebrew, Release download, Built from source]
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: The command you ran
+      description: "Exactly as typed, and whether the output was a terminal or a pipe."
+      render: sh
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected, and what happened
+      description: "If the original command (`du`, `df`, `find`...) behaves differently, show both outputs. Paste text, not screenshots."
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: "Does `--plain` change it? Is the file on iCloud, an external disk or a network share?"

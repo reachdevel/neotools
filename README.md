@@ -168,7 +168,10 @@ Most of the work is done by Apple's own frameworks, and the parts that matter ar
 
 - macOS 14 (Sonoma) or newer. neotools is developed and tested on **macOS 26 with Apple silicon** (a MacBook Air M1). Other
   versions and Intel Macs should work but are not tested; please report what you find.
-- To build: the Swift 6 toolchain (Xcode 16 or newer, or a Swift 6 toolchain from swift.org).
+- Homebrew installs a prebuilt package on macOS 15 and 26 (Apple silicon) and macOS 15 (Intel); on other versions it builds from source in a
+  minute or two.
+- To build from source: Swift 6.0 or newer (the Command Line Tools 16 or newer are enough, the Xcode app is not needed). Every push is built
+  on macOS 14, 15 and 26.
 - `neotop` is built for Apple silicon (the split between performance and efficiency cores).
 
 ## Build from source

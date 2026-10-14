@@ -6,7 +6,9 @@ yours to claim it. Tasks marked **needs hardware** cannot be finished without a 
 
 ## Release and distribution
 
-- [ ] Homebrew tap and formula (`brew install`, `brew test`), with the bundle `neotools_NeoCore.bundle` installed next to the commands. Who: maintainer
+- [x] Homebrew tap `reachdevel/tap` and formula (`brew install reachdevel/tap/neotools`, `brew test`), with the bundle installed next to the commands.
+- [ ] Bottles (prebuilt packages) for the tap, built by its GitHub Actions, so that `brew install` does not compile. Who: maintainer
+- [ ] Submit the formula to homebrew-core when the project qualifies. Who: maintainer
 - [ ] GitHub Actions: build and run the tests that do not need a particular machine (mark GPU, Trash, iCloud, Spotlight and terminal tests so CI can skip them). Who: maintainer
 - [ ] Release notes, a `v0.1.0` tag, checksums. Who: maintainer
 - [ ] Decide on prebuilt (notarized) binaries; needs a paid Developer ID. Who: maintainer
@@ -43,8 +45,8 @@ yours to claim it. Tasks marked **needs hardware** cannot be finished without a 
 
 ## Documentation
 
-- [ ] Set the repository's social preview (Settings > General > Social preview) to `docs/assets/social-preview.png`. Who: maintainer
-- [ ] Put the repository URL in the README install section. Who: maintainer
+- [x] Set the repository's social preview (Settings > General > Social preview) to `docs/assets/social-preview.png`. Who: maintainer
+- [x] Put the repository URL in the README install section.
 - [ ] A man page for each command, generated from `--help`. Who:
 - [ ] Shell completions (zsh, bash, fish). Who:
 - [ ] A short "which command replaces what" cheat sheet. Who:

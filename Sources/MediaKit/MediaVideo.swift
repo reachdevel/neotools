@@ -124,8 +124,9 @@ private func readSphericalProjection(ofFile path: String) -> String? {
 func projectionKind(_ name: String?) -> CFString? {
     guard #available(macOS 15.0, *) else { return nil }
     switch name {
-    case "equirectangular": return kCMFormatDescriptionProjectionKind_Equirectangular
-    case "half-equirectangular": return kCMFormatDescriptionProjectionKind_HalfEquirectangular
+    // the values of kCMFormatDescriptionProjectionKind_Equirectangular and _HalfEquirectangular, which an Xcode 16.2 SDK does not declare
+    case "equirectangular": return "Equirectangular" as CFString
+    case "half-equirectangular": return "HalfEquirectangular" as CFString
     default: return nil
     }
 }

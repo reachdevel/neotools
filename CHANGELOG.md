@@ -5,6 +5,8 @@ the project intends to follow [Semantic Versioning](https://semver.org/) once it
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-10-19
+
 ### Changed
 
 - **`neodocs`**: a Markdown list is separated from the paragraph under it by a blank line (the line was read as part of the last item).

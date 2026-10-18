@@ -1,6 +1,6 @@
 /// `SF_DATALESS` from `<sys/stat.h>`: set in `st_flags` on evicted (cloud-only) files.
 /// Version of the neotools family.
-public let neotoolsVersion = "0.1.1"
+public let neotoolsVersion = "0.2.0"
 
 public let datalessFlag: UInt32 = 0x4000_0000
 

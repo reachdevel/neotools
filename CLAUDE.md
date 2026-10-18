@@ -27,6 +27,15 @@
 - Do not install, publish or push anything, and do not create tags, without explicit confirmation.
 - Do not touch the user's real dotfiles or home from tests; scratch homes only. Never empty the Trash.
 - Review claims before you act on them: Swift imports CoreFoundation `Create`/`Copy` functions as managed (ARC releases them), `takeRetainedValue()` hands the +1 to ARC, a `defer` runs on `return`. Check a "leak" or "missing check" against the header and the code a few lines away, and try a hostile input before you call something a bug.
+- One conversation does not carry unrelated `neo` commands: 24 of them ran in a single session, 51 % of requests carried more than 400k tokens of context (median 404k, peak 952k, 1.35 billion cache-read tokens in total), and 19 compactions did not hold the line. `/clear` at the boundary between `neomedia` and `neodocs`; it pays once for the files it reloads and saves the next command from inheriting a 400k context. `/compact` only when the same task continues.
+
+## Reading this repo
+
+- `Sources/CWebP`, `CVPX`, `CDAV1D`, `CVORBIS`, `CFLAC`, `CCARQUET` are upstream and are in `.claudeignore`. Never read them; only `Sources/CShim` is ours. There is no C++ and no Node.js in this project.
+- Two files are large but genuinely needed, so read them with `offset`/`limit`, never whole:
+  - `Sources/NeoCore/Resources/Localizable.xcstrings` (355 KB) - grep for a key, read the slice around it
+  - `Tests/NeoTests/MediaFixtures.swift` (309 KB) - read the structure, not the payload
+- `docs/` is 380 KB but 254 KB of that is one PNG. The Markdown is fine to read.
 
 ## Facts worth knowing
 

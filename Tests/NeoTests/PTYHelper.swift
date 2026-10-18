@@ -14,13 +14,13 @@ final class Terminal {
     let process = Process()
     private(set) var screen = ""
 
-    init(command: String, arguments: [String] = [], environment: [String: String] = [:], directory: URL = FileManager.default.temporaryDirectory, rows: UInt16 = 40) throws {
+    init(command: String, arguments: [String] = [], environment: [String: String] = [:], directory: URL = FileManager.default.temporaryDirectory, rows: UInt16 = 40, columns: UInt16 = 100) throws {
         let m = posix_openpt(O_RDWR | O_NOCTTY)
         guard m >= 0, grantpt(m) == 0, unlockpt(m) == 0, let name = ptsname(m) else { throw CocoaError(.fileReadUnknown) }
         let s = open(name, O_RDWR | O_NOCTTY)
         guard s >= 0 else { throw CocoaError(.fileReadUnknown) }
         master = m; slave = s
-        var size = winsize(ws_row: rows, ws_col: 100, ws_xpixel: 0, ws_ypixel: 0)
+        var size = winsize(ws_row: rows, ws_col: columns, ws_xpixel: 0, ws_ypixel: 0)
         _ = ioctl(m, TIOCSWINSZ, &size)
         process.executableURL = Harness.neo(command)
         process.arguments = arguments

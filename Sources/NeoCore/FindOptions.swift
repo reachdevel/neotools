@@ -120,6 +120,13 @@ enum FindKnown {
         return arg.hasPrefix("-") && !arg.hasPrefix("--") && flags.last == "f" && flags.allSatisfy { globalFlags.contains($0) }
     }
 
+    /// A word with glob characters that is no existing path: `neofind '*.md'` means `-name '*.md'`, anywhere the expression allows a primary.
+    static func isBarePattern(_ arg: String) -> Bool {
+        guard !arg.hasPrefix("-"), !arg.contains("/"), arg.contains(where: { "*?[".contains($0) }) else { return false }
+        var st = stat()
+        return lstat(arg, &st) != 0
+    }
+
     static func isPrimaryName(_ arg: String) -> Bool {
         implemented.contains(arg) || refusedPrimaries.contains(arg) || isNewerXY(arg)
     }
@@ -189,7 +196,7 @@ func parseFindArguments(_ argv: [String], program: String) -> FindParse {
     }
     if rest.first == "--" { rest.removeFirst() }
     var operands: [String] = extraRoots
-    while let a = rest.first, !a.hasPrefix("-") || a == "-", a != "!", a != "(" {
+    while let a = rest.first, !a.hasPrefix("-") || a == "-", a != "!", a != "(", !FindKnown.isBarePattern(a) {
         operands.append(a); rest.removeFirst()
     }
     o.roots = operands
@@ -340,6 +347,7 @@ func parseFindArguments(_ argv: [String], program: String) -> FindParse {
             o.tagListing = true
             return t(.tag(nil))
         default:
+            if FindKnown.isBarePattern(tok) { return t(.name(cString(tok), fold: false)) }
             if tok.hasPrefix("--tag=") {
                 need(.extFlags)
                 return t(.tag(String(tok.dropFirst(6))))

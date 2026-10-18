@@ -56,11 +56,12 @@ Extras:
 
 Notes:
   without a path the search starts in "."
+  a quoted pattern without -name is a name: '*.md' means -name '*.md'
   other find primaries (-exec -delete -regex -newerXY ...) are refused:
   use --plain
 
 Examples:
-  {program} -name '*.md'
+  {program} '*.md' -type f
   {program} ~/Documents -type f -size +100M
   {program} . -mtime -7 -name '*.swift'
   {program} ~ --purgeable -size +10M

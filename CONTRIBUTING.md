@@ -35,6 +35,7 @@ One SwiftPM package, one executable per command (not a multi-call binary), a few
 | `NeoCore` | what every command needs: the terminal and the live table, text and units, the bulk directory scanner, `Messages` (the translations), and the smaller commands (`neodu`, `neodf`, `neofree`, `neotrash`, `neolsof`, `neofind`, `neotree`, `neops`, `neo-setup`) |
 | `MediaKit` | `neomedia`: ImageIO, AVFoundation, the Matroska reader, the embedded codecs |
 | `DocsKit` | `neodocs`: PDFKit, Vision, AppKit text, the PDF structure reader, spreadsheets, Parquet |
+| `SweepKit` | `neosweep`: the categories, the scanner (private sizes), the full-screen view, and the one door every deletion goes through |
 | `TopKit`, `NetKit`, `MicKit` | `neotop` (IOKit, IOReport), `neonet` (SystemConfiguration), the microphone query of `neolsof` |
 | `CShim` | small C helpers for APIs Swift cannot reach directly |
 | `CWebP`, `CVPX`, `CDAV1D`, `CVORBIS`, `CFLAC`, `CCARQUET` | vendored C libraries (see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)); do not edit them, except through the wrapper files |

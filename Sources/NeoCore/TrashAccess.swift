@@ -3,7 +3,7 @@ import Darwin
 import Foundation
 
 /// `neotrash --access`: reading ~/.Trash needs Full Disk Access, which macOS never asks for. Say what to do, and open the page.
-enum TrashAccess {
+package enum TrashAccess {
     static func run(program: String) -> Int32 {
         let style = TerminalStyle(plainFlag: false, plainEnvName: "NEOTRASH_PLAIN", requireStdout: false, requireStderr: false)
         let messages = Messages(ascii: !style.utf8)
@@ -37,7 +37,7 @@ enum TrashAccess {
     ///  2. `TERM_PROGRAM`: terminals announce themselves.
     ///  3. The parent processes, up to the first one inside an `.app` (does not work where the shell is started by a helper
     ///     daemon, as iTerm2 and tmux do).
-    static func terminalApplication() -> String? {
+    package static func terminalApplication() -> String? {
         let env = ProcessInfo.processInfo.environment
         if let id = env["__CFBundleIdentifier"], let name = applicationName(bundleIdentifier: id) { return name }
         if let program = env["TERM_PROGRAM"], let name = knownTerminals[program], !name.isEmpty { return name }

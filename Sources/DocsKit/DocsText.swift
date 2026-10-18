@@ -308,6 +308,7 @@ func markdown(of a: NSAttributedString) -> String {
                 lines.append(String(repeating: "  ", count: depth) + marker + " " + body)
                 lastWasList = true
             } else {
+                if lastWasList { lines.append("") }                // a line straight under a list item would belong to the item
                 var level = 0
                 if let f = marked.attribute(.font, at: r.location, effectiveRange: nil) as? NSFont, text.count < 200 {
                     let ratio = f.pointSize / body

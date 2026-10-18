@@ -53,7 +53,7 @@ struct DocsAppleTests {
         let box = try Box()
         try Data("x".utf8).write(to: URL(fileURLWithPath: box.path("a.pages")))
         let r = try box.run(["convert", "a.pages", "--to", "csv"])
-        #expect(r.status == 1 && r.stderr.contains("cannot be changed into"), "\(r)")
+        #expect(r.status == 1 && r.stderr.contains("cannot be changed into") && r.stderr.contains("open it in Pages"), "an Apple file without a route of ours is sent to its app: \(r)")
     }
 
     /// Opens real windows of Pages, Numbers and Keynote: only when asked for (`NEODOCS_TEST_APPS=1`).

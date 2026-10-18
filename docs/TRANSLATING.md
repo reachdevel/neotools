@@ -22,11 +22,11 @@ Application names are the ones macOS shows (the code asks the system), so "Clock
 
 Both live in `Sources/NeoCore/Resources/`:
 
-1. **`Localizable.xcstrings`**: one String Catalog with every short message (about 570 keys). Open it in Xcode (it has a catalog
+1. **`Localizable.xcstrings`**: one String Catalog with every short message (about 800 keys). Open it in Xcode (it has a catalog
    editor) or edit the JSON in any editor. Keys look like `net.hidden`, `top.derivedNote`, `docs.error.zipTooBig`. The
    `proc.*` keys (about 190) are the descriptions of macOS processes that `neotop --describe` shows.
 2. **`<language>.lproj/help-<command>.txt`**: one plain text file per command, for example `tr.lproj/help-du.txt`. Copy the
-   English file and translate it. There are 14 files: `df docs du find free lsof media net ps setup top top-keys trash tree`.
+   English file and translate it. There are 15 files: `df docs du find free lsof media net ps setup sweep top top-keys trash tree`.
 
 The language code is the usual one: `fr`, `de`, `es`, `pt`, `pt_BR`, `ja`, `zh_Hans`... A code with a region (`pt_BR`) is tried
 first, then the language alone (`pt`), then English.

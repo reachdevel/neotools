@@ -22,16 +22,19 @@ convert:
   --quality n       jpg ve heic: 1-100
 
 Nereden nereye:
-  pdf               txt png jpg heic tiff
+  pdf               txt docx rtf odt html md pages, png jpg heic tiff
   docx rtf odt,
-  html md txt       docx rtf odt html md txt pdf
+  html md txt       birbirine, pdf, pages
   csv tsv json,
   jsonl xlsx,
-  parquet           csv tsv json jsonl xlsx parquet md html
-  pptx xlsx         pdf
-  pages             pdf docx txt md html rtf odt
-  numbers           pdf xlsx csv tsv json jsonl md html
-  key               pdf pptx txt
+  parquet           birbirine, md html, numbers
+  xlsx              ayrıca pdf
+  pptx              pdf txt md key
+  pages             pdf docx rtf odt html md txt
+  numbers           pdf xlsx csv tsv json jsonl parquet md html
+  key               pdf pptx txt md
+  PDF'ten yazısı, başlıkları ve listeleri alınır; düzeni ve tabloları değil.
+  Taranmış PDF'te yazı yoktur: önce ocr. pages, numbers, key: uygulama gerekir.
 
 Tablolar:
   --sheet ad        Excel dosyasından bir sayfa, adıyla ya da numarasıyla
@@ -92,6 +95,8 @@ Hangi dosyalar (her komut):
   {program} convert slayt.pdf --to png --dpi 200
   {program} convert rapor.docx --to pdf
   {program} convert notlar.md --to docx
+  {program} convert rapor.pdf --to docx
+  {program} convert notlar.md --to pages
   {program} convert satis.xlsx --to parquet
   {program} text veri.csv --to jsonl | jq .ad
   {program} strip rapor.docx --trash-original

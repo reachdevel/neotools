@@ -43,7 +43,7 @@ public struct TerminalStyle: Sendable {
     public var ellipsis: String { utf8 ? "…" : "..." }
 
     private static let brailleFrames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"], asciiFrames = ["|", "/", "-", "\\"]
-    var spinnerFrames: [String] { utf8 ? TerminalStyle.brailleFrames : TerminalStyle.asciiFrames }
+    package var spinnerFrames: [String] { utf8 ? TerminalStyle.brailleFrames : TerminalStyle.asciiFrames }
     public var arrow: String { utf8 ? "→" : "->" }
     package func dim(_ s: String) -> String { color ? "\u{1B}[2m\(s)\u{1B}[22m" : s }
     package func bold(_ s: String) -> String { color ? "\u{1B}[1m\(s)\u{1B}[22m" : s }
@@ -144,7 +144,7 @@ private let cleanupInstalled: Void = {
 
 /// If the user presses Ctrl-C while a status line is up, give the terminal its cursor back before dying; and take away what the run was making.
 /// Installed once, however often it is asked for.
-func installSignalCleanup() { _ = cleanupInstalled }
+package func installSignalCleanup() { _ = cleanupInstalled }
 
 private let showCursor: StaticString = "\u{1B}[?25h"
 

@@ -6,3 +6,4 @@ DerivedData/
 .swiftpm/
 /dist/
 .claude/
+/tasks/

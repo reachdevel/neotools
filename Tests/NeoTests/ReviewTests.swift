@@ -67,7 +67,7 @@ func outcomeToBrokenPipe(_ command: String, _ arguments: [String], timeout: Doub
     process.executableURL = URL(fileURLWithPath: "/bin/sh")
     process.arguments = ["-c", "trap '' PIPE; exec \"$@\"", "sh", Harness.neo(command).path] + arguments
     process.currentDirectoryURL = FileManager.default.temporaryDirectory
-    process.environment = ["PATH": "/usr/bin:/bin", "LC_ALL": "C", "NEO_LANG": "en"]
+    process.environment = ["PATH": "/usr/bin:/bin", "LC_ALL": "C", "NEO_LANG": "en"].merging(command == "neosweep" ? ["HOME": robustnessScratchHome] : [:]) { _, new in new }
     process.standardInput = FileHandle.nullDevice
     let out = Pipe(), err = Pipe()
     try out.fileHandleForReading.close()

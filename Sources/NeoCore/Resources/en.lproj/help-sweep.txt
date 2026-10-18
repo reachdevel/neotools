@@ -1,0 +1,34 @@
+{program} - find what can be deleted on this Mac, see what it really frees, and delete it
+
+usage: {program} [--scan] [--list] [--detail id] [--top n] [--json] [--plain] [--leftovers file] [category ...]
+
+On a terminal, with no options, a full-screen view opens with three menus:
+Disk clean, Large files and iCloud. Deleting is for good (nothing goes to
+the Trash) and asks you to type a word first. Only a fixed list of
+categories is ever offered; nothing else is deleted. The options below
+only report, and delete nothing.
+
+Reports:
+  --scan          scan the categories and print the table
+  --list          list the categories that exist on this Mac
+  --detail id     the items of one category, largest first
+  --top n         how many items --detail shows (default 20)
+  category ...    only these categories (see --list)
+  --leftovers file  write why each name of the Library is, or is not, taken
+                  for the leftover of a removed application
+
+Output:
+  --json          machine-readable output
+  --plain         no full-screen view, no progress line or decoration
+  --help          show this help
+  --version       show the version
+
+Examples:
+  {program}                       the full-screen view
+  {program} --scan                what could be freed, by category
+  {program} --detail huggingface  the models, largest first
+  {program} --json npm pip uv     sizes of three categories as JSON
+
+Notes:
+  "frees" is what deleting really gives back (bytes that clones, snapshots
+  and other links do not share); it is a lower bound

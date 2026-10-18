@@ -78,7 +78,7 @@ struct SetupCommandTests {
         try original.write(to: zshrc, atomically: true, encoding: .utf8)
 
         let install = try setup(home, ["--install"])
-        #expect(install.status == 0 && install.stdout.contains("Done: 13 commands in 3 shells."), "\(install)")
+        #expect(install.status == 0 && install.stdout.contains("Done: 14 commands in 3 shells."), "\(install)")
         #expect(install.stdout.contains("source \(home.path)/.zshrc") && install.stdout.contains("neo-setup.log"))
         let written = try #require(read(zshrc))
         #expect(written.hasPrefix(original + "\n" + setupBegin))
@@ -92,7 +92,7 @@ struct SetupCommandTests {
         #expect(read(home.appendingPathComponent(".zshrc.neo-setup-backup")) == original)            // still the file as it was
 
         let status = try setup(home, ["--status"])
-        #expect(status.status == 0 && status.stdout.contains("du df lsof find tree top ps rm ifconfig netstat free media docs"), "\(status)")
+        #expect(status.status == 0 && status.stdout.contains("du df lsof find tree top ps rm ifconfig netstat free media docs sweep"), "\(status)")
 
         let gone = try setup(home, ["--uninstall"])
         #expect(gone.status == 0 && gone.stdout.contains("Removed from 3 shells."), "\(gone)")
@@ -125,7 +125,7 @@ struct SetupCommandTests {
         defer { try? FileManager.default.removeItem(at: home) }
         #expect(try setup(home, ["--install"]).status == 0)
         let en = try setup(home, ["--status"])
-        #expect(en.stdout.contains("so the system command runs instead: du (neodu)") && en.stdout.contains("so these do not work: free (neofree) media (neomedia) docs (neodocs)"), "\(en)")
+        #expect(en.stdout.contains("so the system command runs instead: du (neodu)") && en.stdout.contains("so these do not work: free (neofree) media (neomedia) docs (neodocs) sweep (neosweep)"), "\(en)")
         let tr = try setup(home, ["--status"], env: ["NEO_LANG": "tr", "LC_ALL": "en_US.UTF-8"])
         #expect(tr.stdout.contains("yerine sistemin komutu çalışır: du (neodu)") && tr.stdout.contains("bu yüzden bunlar çalışmaz: free (neofree)"), "\(tr)")
         // with the commands on the PATH there is nothing to say
@@ -237,7 +237,7 @@ struct SetupCommandTests {
         #expect(en.stdout.hasPrefix("neo-setup - type du, get neodu") && tr.stdout.hasPrefix("neo-setup - du yaz, neodu çalışsın"))
         #expect(!en.stdout.contains("{") && !tr.stdout.contains("{"))
         let done = try setup(home, ["--install"], env: ["NEO_LANG": "tr"])
-        #expect(done.stdout.contains("Bitti: 13 komut kuruldu (3 kabuk)."), "\(done)")
+        #expect(done.stdout.contains("Bitti: 14 komut kuruldu (3 kabuk)."), "\(done)")
     }
 }
 

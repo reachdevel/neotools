@@ -1,10 +1,10 @@
-<p align="center"><img src="docs/assets/social-preview.png" alt="neotools: Swift, macOS, Open Source. Twelve macOS-native commands for the terminal." width="720"></p>
+<p align="center"><img src="docs/assets/social-preview.png" alt="neotools: Swift, macOS, Open Source. Thirteen macOS-native commands for the terminal." width="720"></p>
 
-# neotools: du, df, top, find, lsof, ps and rm, rebuilt for macOS
+# neotools: du, df, top, find, lsof, ps and rm, rebuilt for macOS, and a disk cleaner
 
 **Modern, macOS-native replacements for the classic Unix commands that macOS has outgrown, written in Swift.**
 
-neotools is a family of **12 command-line tools** for the Mac terminal. They know what Finder and Activity Monitor know (iCloud,
+neotools is a family of **13 command-line tools** for the Mac terminal. They know what Finder and Activity Monitor know (iCloud,
 APFS, purgeable space, the Trash, performance and efficiency cores, the GPU) and the classic tools never learned. Piped, they print
 what the original prints, so scripts keep working; on a terminal you get the modern view.
 
@@ -15,6 +15,8 @@ what the original prints, so scripts keep working; on a terminal you get the mod
   to macOS.
 - **`neofind`**, **`neolsof`** and **`neotrash`** are `find`, `lsof` and `rm` with Finder tags, deleted-but-open files and an
   undo.
+- **`neosweep`** is a full-screen disk cleaner that tells the truth about how much space deleting something really frees, and finds what
+  deleted applications and removed Homebrew packages left behind.
 - **`neomedia`** and **`neodocs`** convert, shrink and inspect photos, videos, PDFs, Word, Excel, CSV and Parquet files with
   nothing else to install.
 - **`neo-setup`** is optional: it makes `du` run `neodu`, `df` run `neodf` and so on in your shell, and takes it all back out
@@ -28,7 +30,7 @@ With [Homebrew](https://brew.sh):
 brew install reachdevel/tap/neotools
 ```
 
-That installs all twelve commands and `neo-setup` (macOS 14 or newer, see [Requirements](#requirements)). Check it:
+That installs all thirteen commands and `neo-setup` (macOS 14 or newer, see [Requirements](#requirements)). Check it:
 
 ```sh
 neodf          # your disks, the way Finder sees them
@@ -47,6 +49,7 @@ See [Build from source](#build-from-source).
 | [`neotop`](docs/commands/neotop.md) | `top` | **Activity Monitor for the terminal.** Applications instead of helper processes, ranked by watts, with performance cores, efficiency cores, GPU, memory, network and disk in one table. |
 | [`neofree`](docs/commands/neofree.md) | (`free`, which macOS lacks) | **`free` for macOS.** The familiar table with Activity Monitor's numbers, and the memory pressure. |
 | [`neotrash`](docs/commands/neotrash.md) | `rm` | **Delete with an undo.** Same options as `rm`, but files go to the Trash like in Finder, so "Put Back" works. |
+| [`neosweep`](docs/commands/neosweep.md) | (a disk cleaner, which macOS lacks) | **A disk cleaner that tells the truth.** Shows where the space is from the top, finds caches, downloads, big files, applications with the data they left behind, and Homebrew leftovers, says what deleting each one *really* frees (clones and snapshots counted right), and deletes what you choose. |
 | [`neofind`](docs/commands/neofind.md) | `find` | **`find` for the Mac you have.** Finder tags, purgeable files, files evicted to iCloud, quarantined downloads; up to 5x faster on large trees. |
 | [`neolsof`](docs/commands/neolsof.md) | `lsof` | **Who has it open?** Files, ports, deleted files that still use space, and who is recording audio, up to 7x faster, and without waiting for DNS. |
 | [`neotree`](docs/commands/neotree.md) | (`tree`, which macOS lacks) | **A folder tree with sizes** that folds `node_modules`, `.git`, virtualenvs and build output into one line each. |
@@ -94,6 +97,10 @@ neofind . -type f -size +100M -mtime +30d --purgeable
 neotree --sort size --dirsfirst src
 neotrash -r build dist                    # to the Trash, undoable from Finder
 
+# clean up
+neosweep                                  # full screen: caches, big files, iCloud, with the real size
+neosweep --scan                           # the same as a table, for scripts
+
 # network and open files
 neonet -tulpn                             # listening sockets with their programs
 neolsof -i :8080                          # who is using port 8080
@@ -119,7 +126,7 @@ neo-setup --uninstall
 ```
 
 After `neo-setup --install`, `du` runs `neodu`, `df` runs `neodf`, and `find`, `lsof`, `tree`, `top`, `ps`, `rm`, `ifconfig` and
-`netstat` do the same; `free`, `media` and `docs` exist as short names. Things to know:
+`netstat` do the same; `free`, `media`, `docs` and `sweep` exist as short names. Things to know:
 
 - The functions exist in **interactive shells only** (zsh, bash, fish). Scripts, cron and IDE tasks keep running the system
   commands, so nothing that already works can change.

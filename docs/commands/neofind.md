@@ -23,6 +23,7 @@ The options of macOS `find` (`-H -L -P -d -s -x -f`), the primaries `-name -inam
 
 - **Faster.** Directories are read with one bulk call, several at a time. `find /Applications` 11.0 s, `neofind` 2.1 s.
 - **Without a path it searches `.`** (`find` stops with a usage error).
+- **A bare pattern is a name:** `neofind '*.md' -type f` is `neofind . -name '*.md' -type f`, and `neofind -type f '*.md'` works too. Only a word with `*`, `?` or `[` that is not an existing path and has no `/` counts; quote it, or the shell expands it first.
 - **`-mtime` and friends accept units:** `-mtime -1h30m` (`s m h d w`).
 - **Extras:**
   - `--tag [name]`: files with a Finder tag. Without a name, all tagged files, with their tags. Asks Spotlight for files under your

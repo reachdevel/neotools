@@ -38,11 +38,11 @@ struct SetupPagesTests {
         #expect(t.press("\r", thenExpect: "Short names for commands macOS does not have"))
         #expect(t.screen.contains("free") && t.screen.contains("neofree") && t.screen.contains("enter finish"))
         t.clear(); t.press("\r")
-        #expect(t.expect("Done: 13 commands in 3 shells."))
+        #expect(t.expect("Done: 14 commands in 3 shells."))
         #expect(t.expect("source \(h.path)/.zshrc"))
         #expect(t.finish() == 0)
         #expect(t.modesRestored)
-        #expect(try status(h).contains("du df lsof find tree top ps rm ifconfig netstat free media docs"))
+        #expect(try status(h).contains("du df lsof find tree top ps rm ifconfig netstat free media docs sweep"))
     }
 
     @Test func keysMoveSelectAndGoBack() throws {
@@ -63,10 +63,10 @@ struct SetupPagesTests {
         t.press(" ")
         #expect(t.press("\r", thenExpect: "3/3"))
         t.clear(); t.press("\r")
-        #expect(t.expect("Done: 12 commands in 1 shell."))
+        #expect(t.expect("Done: 13 commands in 1 shell."))
         #expect(t.finish() == 0)
         let s = try status(h)
-        #expect(s.contains("fish") && s.contains("du df lsof find tree top rm ifconfig netstat free media docs"), "\(s)")
+        #expect(s.contains("fish") && s.contains("du df lsof find tree top rm ifconfig netstat free media docs sweep"), "\(s)")
         #expect(s.contains("not set up") || s.contains("shell not installed"))
         #expect(!FileManager.default.fileExists(atPath: h.appendingPathComponent(".zshrc").path))
     }
@@ -81,7 +81,7 @@ struct SetupPagesTests {
         for _ in 0..<6 { t.press(down) }
         t.press(" ")
         t.press("\r"); t.press("\r")
-        #expect(t.expect("Done: 12 commands in 3 shells."))
+        #expect(t.expect("Done: 13 commands in 3 shells."))
         #expect(t.finish() == 0)
         // and again: the pages now show ps off
         let second = try Terminal(home: h)

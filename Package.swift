@@ -18,6 +18,7 @@ let package = Package(
         .executable(name: "neodocs", targets: ["neodocs"]),
         .executable(name: "neotree", targets: ["neotree"]),
         .executable(name: "neops", targets: ["neops"]),
+        .executable(name: "neosweep", targets: ["neosweep"]),
         .executable(name: "neo-setup", targets: ["neosetup"]),
     ],
     targets: [
@@ -47,6 +48,7 @@ let package = Package(
         .target(name: "MicKit", dependencies: ["NeoCore"]),                                // CoreAudio: only `neolsof --mic`
         .target(name: "MediaKit", dependencies: ["NeoCore", "CWebP", "CVPX", "CDAV1D", "CVORBIS", "CFLAC"]),
         .target(name: "DocsKit", dependencies: ["NeoCore", "CCARQUET"]),
+        .target(name: "SweepKit", dependencies: ["NeoCore"]),                              // the categories and the sizes of `neosweep`
         .executableTarget(name: "neodu", dependencies: ["NeoCore"]),
         .executableTarget(name: "neodf", dependencies: ["NeoCore"]),
         .executableTarget(name: "neofree", dependencies: ["NeoCore"]),
@@ -59,7 +61,8 @@ let package = Package(
         .executableTarget(name: "neodocs", dependencies: ["NeoCore", "DocsKit"]),
         .executableTarget(name: "neotree", dependencies: ["NeoCore"]),
         .executableTarget(name: "neops", dependencies: ["NeoCore"]),
+        .executableTarget(name: "neosweep", dependencies: ["NeoCore", "SweepKit"]),
         .executableTarget(name: "neosetup", dependencies: ["NeoCore"]),
-        .testTarget(name: "NeoTests", dependencies: ["NeoCore", "MediaKit", "DocsKit", "TopKit", "NetKit", "MicKit", "CShim", "CCARQUET"]),
+        .testTarget(name: "NeoTests", dependencies: ["NeoCore", "MediaKit", "DocsKit", "TopKit", "NetKit", "MicKit", "SweepKit", "CShim", "CCARQUET"]),
     ]
 )

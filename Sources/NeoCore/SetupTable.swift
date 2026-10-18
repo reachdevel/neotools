@@ -65,6 +65,7 @@ let setupShortNames: [SetupEntry] = [
     SetupEntry(typed: "free", neo: "neofree", kind: .shortName, note: nil),
     SetupEntry(typed: "media", neo: "neomedia", kind: .shortName, note: nil),
     SetupEntry(typed: "docs", neo: "neodocs", kind: .shortName, note: nil),
+    SetupEntry(typed: "sweep", neo: "neosweep", kind: .shortName, note: nil),
 ]
 
 let setupEverything: [SetupEntry] = setupCommands + setupShortNames

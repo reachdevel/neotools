@@ -1,0 +1,34 @@
+{program} - bu Mac'te nelerin silinebileceğini bulur, gerçekte ne kadar yer açtığını gösterir ve siler
+
+kullanım: {program} [--scan] [--list] [--detail kod] [--top n] [--json] [--plain] [--leftovers dosya] [kategori ...]
+
+Bir terminalde, seçeneksiz çalıştırılınca üç menülü tam ekran bir görünüm
+açılır: Disk temizliği, Büyük dosyalar ve iCloud. Silme kalıcıdır (hiçbir şey
+Çöp Kutusu'na gitmez) ve önce bir kelime yazmanızı ister. Yalnızca sabit bir
+kategori listesi sunulur; başka hiçbir şey silinmez. Aşağıdaki seçenekler
+yalnızca bildirir, hiçbir şey silmez.
+
+Raporlar:
+  --scan          kategorileri tara ve tabloyu yaz
+  --list          bu Mac'te bulunan kategorileri listele
+  --detail kod    bir kategorinin öğeleri, en büyük başta
+  --top n         --detail kaç öğe gösterir (varsayılan 20)
+  kategori ...    yalnızca bu kategoriler (bkz. --list)
+  --leftovers dosya  Library'deki her adın, kaldırılmış bir uygulamanın artığı
+                  sayılıp sayılmadığını ve nedenini dosyaya yaz
+
+Çıktı:
+  --json          makine tarafından okunur çıktı
+  --plain         tam ekran görünüm, ilerleme satırı ve süs yok
+  --help          bu yardımı göster
+  --version       sürümü göster
+
+Örnekler:
+  {program}                       tam ekran görünüm
+  {program} --scan                ne kadar yer açılabilir, kategori kategori
+  {program} --detail huggingface  modeller, en büyük başta
+  {program} --json npm pip uv     üç kategorinin boyutları JSON olarak
+
+Notlar:
+  "açar" silmenin gerçekten geri verdiği yerdir (klonların, anlık
+  görüntülerin ve başka bağların paylaşmadığı baytlar); bir alt sınırdır

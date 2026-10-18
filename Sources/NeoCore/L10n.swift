@@ -139,6 +139,7 @@ public struct Messages: Sendable {
     public func trashHelp(_ program: String) -> String { help("trash", program) }
     public func mediaHelp(_ program: String) -> String { help("media", program) }
     public func docsHelp(_ program: String) -> String { help("docs", program) }
+    public func sweepHelp(_ program: String) -> String { help("sweep", program) }
     public func treeHelp(_ program: String) -> String { help("tree", program) }
     public func psHelp(_ program: String) -> String { help("ps", program) }
     public func setupHelp(_ program: String) -> String { help("setup", program) }

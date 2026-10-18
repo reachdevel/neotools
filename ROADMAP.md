@@ -6,8 +6,9 @@ its contract can be made. Open tasks, with room for names, are in [TODO.md](TODO
 The rule for every new command stays the same: **"behaves exactly like X, plus ..."**, checked against X by tests, or a new tool
 with a written contract that says what it reads, what it never changes, and what it does not do.
 
-## Now: a first public release (0.1.0)
+## Now: 0.2.0, with `neosweep`
 
+- `neosweep` in the release: the formula's description and caveats name thirteen commands, and the release notes come from the changelog.
 - Homebrew: the tap `reachdevel/tap` ships with 0.1.0 (the formula installs the translation bundle next to the commands); a submission to homebrew-core follows when the project qualifies.
 - Continuous integration on a macOS runner (build and the tests that do not depend on a particular machine).
 - Release notes, a signed tag and checksums.
@@ -34,6 +35,7 @@ with a written contract that says what it reads, what it never changes, and what
 | `neotree --git` | fold what `.gitignore` says |
 | `neops` | threads (`-L`, `nlwp`), `sid`, `-l`, `-F` |
 | `neomedia` | a scrolling `info` for big folders; a default video quality that follows the source's bit rate |
+| `neosweep` | the dot-folders directly in `~` (the guard never accepts the home itself as a root); a measurement of the orphan finder on more Macs |
 | `neodocs` | Word headers and footers; `strip` of Excel/PowerPoint comments; a native reader for Pages/Numbers/Keynote (today the Apple apps convert them) |
 | a real 360 camera file | check that the 360 mark survives re-encoding on GoPro/Insta360 files and on macOS 14 |
 

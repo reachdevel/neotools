@@ -115,6 +115,17 @@ extension DocsRun {
 }
 
 extension DocsRun {
+    /// The text of a document as a text document: a Word file, a page of HTML... or a PDF, read as a text flow.
+    func loadDocument(_ item: DocItem) throws -> TextDocument {
+        guard item.kind == .pdf else { return try loadTextDocument(path: item.path, ext: item.ext) }
+        let pdf = try openPDF(item.path)
+        let pages = pageNumbers(pdf)
+        guard !pages.isEmpty else { throw DocsFailure.other(messages.label("docs.error.noSuchPages", pdf.pageCount)) }
+        let doc = pdfTextDocument(pdf, pages: pages)
+        guard !doc.text.string.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { throw DocsFailure.other(messages.label("docs.error.noText")) }
+        return doc
+    }
+
     /// A text document written in another format.
     func convertText(_ item: DocItem, format: String, named: DocItem? = nil) throws {
         guard docsTextFormats.contains(format), format != item.ext else { throw DocsFailure.other(messages.label("docs.error.noRoute", item.ext.uppercased(), format)) }
@@ -123,7 +134,7 @@ extension DocsRun {
         // a result that is already there is not made again: the document is not read, laid out and written to be thrown away (a second run over a folder)
         let target = outputFolder(for: owner) + "/" + base + "." + format
         if FileManager.default.fileExists(atPath: target) { _ = skip(owner, target); return }
-        let doc = try loadTextDocument(path: item.path, ext: item.ext)
+        let doc = try loadDocument(item)
         var notes: [String] = []
         if doc.images > 0, ["txt", "md"].contains(format) { notes.append(messages.label("docs.note.picturesNotCarried", doc.images, format)) }
         for n in notes { warn("\(display(owner.path)): \(n)") }
@@ -149,6 +160,7 @@ extension DocsRun {
         let folder = Self.folder(of: final)
         let source = (item.path as NSString).standardizingPath
         let absolute = source.hasPrefix("/") ? source : FileManager.default.currentDirectoryPath + "/" + source
+        if step.native { try convertToApple(item, final: final, step: step, source: absolute); return }
         guard let middle = step.middle else {
             try emitFile(item, to: final) { temp in
                 let full = temp.hasPrefix("/") ? temp : FileManager.default.currentDirectoryPath + "/" + temp
@@ -172,9 +184,61 @@ extension DocsRun {
         case "docx": try convertText(made, format: target, named: item)
         case "xlsx": try convertTable(made, format: target, named: item)
         default:
-            let zip = try ZipArchive(path: temp)
-            let text = try pptxSlides(zip).map { $0 + "\n" }.joined(separator: "\n")
+            let text = try slidesText(path: temp, format: target)
             try emit(item, to: final) { Data(text.utf8) }
         }
+    }
+}
+
+extension DocsRun {
+    /// A file saved as the app's own (`.pages`, `.numbers`, `.key`). What the app does not open itself is written first as a Word or Excel file, next to the result.
+    func convertToApple(_ item: DocItem, final: String, step: AppleStep, source: String) throws {
+        if o.dryRun { _ = try emitFile(item, to: final) { _ in }; return }
+        if FileManager.default.fileExists(atPath: final) { _ = skip(item, final); return }
+        var opened = source
+        var notes: [String] = []
+        if let prepare = step.prepare {
+            let folder = Self.folder(of: final)
+            do { try FileManager.default.createDirectory(atPath: folder, withIntermediateDirectories: true) } catch { throw DocsFailure.cannotWrite(error.localizedDescription) }
+            let temp = (folder == "." ? FileManager.default.currentDirectoryPath : folder) + "/.neodocs-\(UUID().uuidString)." + prepare
+            Cleanup.add(temp)
+            defer { unlink(temp); Cleanup.remove(temp) }
+            let data: Data
+            if prepare == "docx" {
+                data = try writeTextDocument(try loadDocument(item), as: "docx")
+            } else {
+                var rendered: (data: Data, notes: [String])?
+                try eachTable(item, first: true) { t, _ in
+                    notes += tableNotes(t)
+                    rendered = try renderTable(t, format: "xlsx")
+                }
+                guard let made = rendered else { throw DocsFailure.unreadable }
+                notes += made.notes
+                data = made.data
+            }
+            guard !data.isEmpty else { throw DocsFailure.cannotWrite(Messages().label("docs.detail.empty")) }
+            do { try data.write(to: URL(fileURLWithPath: temp)) } catch { throw DocsFailure.cannotWrite(error.localizedDescription) }
+            opened = temp
+            for n in notes { warn("\(display(item.path)): \(n)") }
+            try emitFile(item, to: final, notes: notes) { out in
+                let full = out.hasPrefix("/") ? out : FileManager.default.currentDirectoryPath + "/" + out
+                try appleExport(app: step.app, format: nil, source: opened, destination: full)
+            }
+            return
+        }
+        try emitFile(item, to: final) { out in
+            let full = out.hasPrefix("/") ? out : FileManager.default.currentDirectoryPath + "/" + out
+            try appleExport(app: step.app, format: nil, source: opened, destination: full)
+        }
+    }
+}
+
+extension DocsRun {
+    /// The words of a presentation, slide by slide: a blank line between slides in a text, a rule in Markdown.
+    func slidesText(path: String, format: String) throws -> String {
+        let zip: ZipArchive
+        do { zip = try ZipArchive(path: path) } catch let z as ZipError { throw DocsFailure.other(zipMessage(z)) }
+        let slides = try pptxSlides(zip).map { $0 + "\n" }
+        return slides.joined(separator: format == "md" ? "\n---\n\n" : "\n")
     }
 }

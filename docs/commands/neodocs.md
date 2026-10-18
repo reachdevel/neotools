@@ -29,15 +29,21 @@ files and Parquet are read and written by the program itself.
 
 | from | to |
 |---|---|
-| `pdf` | `txt png jpg heic tiff` (one picture per page, `--dpi`, default 150) |
-| `docx rtf odt html md txt` | `docx rtf odt html md txt pdf` |
-| `csv tsv json jsonl xlsx parquet` | `csv tsv json jsonl xlsx parquet md html` |
-| `pptx xlsx` | `pdf` |
-| `pages` | `pdf docx txt md html rtf odt` |
-| `numbers` | `pdf xlsx csv tsv json jsonl md html` |
-| `key` | `pdf pptx txt` |
+| `pdf` | `txt docx rtf odt html md pages`, and `png jpg heic tiff` (one picture per page, `--dpi`, default 150) |
+| `docx rtf odt html md txt` | each other, `pdf`, `pages` |
+| `csv tsv json jsonl xlsx parquet` | each other, `md html`, `numbers` |
+| `xlsx` | also `pdf` |
+| `pptx` | `pdf txt md key` |
+| `pages` | `pdf docx rtf odt html md txt` |
+| `numbers` | `pdf xlsx csv tsv json jsonl parquet md html` |
+| `key` | `pdf pptx txt md` |
 
-Pages, Numbers and Keynote files, and `pptx`/`xlsx` to PDF, are converted by the Apple apps, driven through `osascript`.
+A PDF becomes a text flow: the words, the headings (from the size of the type), the lists and the paragraphs (the lines of a
+paragraph are joined again), in the order PDFKit reads them. The layout, the columns, the tables and the pictures are not
+carried. A scan has no text: `neodocs` says so and points to `ocr`, which makes it searchable first.
+
+Pages, Numbers and Keynote files (both ways), and `pptx`/`xlsx` to PDF, are converted by the Apple apps, driven through `osascript`.
+The apps open a Word, Excel or PowerPoint file; the other formats are written as one of these first (`odt`, `html`, `md`, `txt` and a PDF's text as `docx`, `csv`, `tsv`, `json`, `jsonl` and `parquet` as `xlsx`). A conversion that makes no sense (`docx` to `numbers`) is refused; for a Pages, Numbers or Keynote file with no route of ours the message says to open it in the app and use File > Export To.
 The app is started out of sight if it was not running and quit again afterwards. The first time an app starts it may show a
 "What's New" window that waits for a click; `neodocs` gives up after 120 seconds and says so. Version 15 of the apps is used
 when installed, else version 14. `--app` lets Pages make the PDF of a Word file (more faithful than our layout).

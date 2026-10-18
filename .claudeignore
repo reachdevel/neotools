@@ -1,0 +1,24 @@
+# Upstream C libraries - not ours, never reviewed, never edited.
+# 778 files / 13.7 MB of libwebp, libvpx, dav1d, libvorbis, dr_flac, carquet.
+# A single broad grep or Read across these is a ~3.4M token mistake.
+Sources/CWebP/
+Sources/CVPX/
+Sources/CDAV1D/
+Sources/CVORBIS/
+Sources/CFLAC/
+Sources/CCARQUET/
+
+# Build output (also in .gitignore; repeated so Read and Bash are covered too).
+.build/
+.swiftpm/
+DerivedData/
+dist/
+
+# Binary assets - no code review needs the bytes, only the reference to them.
+*.png
+
+# NOTE: two large-but-legitimately-readable files are NOT ignored here, because
+# localization and media-test work genuinely need them:
+#   Sources/NeoCore/Resources/Localizable.xcstrings   355 KB (~89k tokens)
+#   Tests/NeoTests/MediaFixtures.swift                 309 KB (~77k tokens)
+# The project CLAUDE.md tells Claude to read these with offset/limit instead.

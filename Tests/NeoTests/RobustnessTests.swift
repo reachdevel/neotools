@@ -10,12 +10,21 @@ import Foundation
 /// What a command may never do, whatever it is given: die from a signal (a crash), or hang. Errors are fine; they must be errors.
 struct Outcome { var signaled: Bool; var timedOut: Bool; var status: Int32; var stderr: String }
 
+/// An empty home for the commands that scan the home (`neosweep`); the real one is never looked at by a test.
+let robustnessScratchHome: String = {
+    let url = FileManager.default.temporaryDirectory.appendingPathComponent("neo-robust-home")
+    try? FileManager.default.createDirectory(at: url, withIntermediateDirectories: true)
+    return url.path
+}()
+
 func outcome(_ command: String, _ arguments: [String], emptyEnvironment: Bool = false, output: String? = nil, timeout: Double = 25) throws -> Outcome {
     let process = Process()
     process.executableURL = Harness.neo(command)
     process.arguments = arguments
     process.currentDirectoryURL = FileManager.default.temporaryDirectory
-    process.environment = emptyEnvironment ? [:] : ["PATH": "/usr/bin:/bin", "LC_ALL": "C", "NEO_LANG": "en"]
+    var environment: [String: String] = emptyEnvironment ? [:] : ["PATH": "/usr/bin:/bin", "LC_ALL": "C", "NEO_LANG": "en"]
+    if command == "neosweep" { environment["HOME"] = robustnessScratchHome }       // it scans the home: an empty one, never the real one
+    process.environment = environment
     process.standardInput = FileHandle.nullDevice
     process.standardOutput = output.flatMap { FileHandle(forWritingAtPath: $0) } ?? FileHandle.nullDevice
     let err = Pipe()
@@ -43,7 +52,7 @@ private let weirdArguments: [[String]] = [
 @Suite("robustness: no command crashes or hangs on strange input")
 struct RobustnessTests {
     // neotrash is left out of the file arguments that exist on purpose: it would move them. Its own cases are below.
-    static let commands = ["neodu", "neodf", "neofree", "neolsof", "neofind", "neonet", "neomedia", "neodocs", "neotree", "neops", "neo-setup"]
+    static let commands = ["neodu", "neodf", "neofree", "neolsof", "neofind", "neonet", "neomedia", "neodocs", "neotree", "neops", "neo-setup", "neosweep"]
 
     @Test(arguments: commands) func strangeArgumentsNeverCrashOrHang(_ command: String) throws {
         var bad: [String] = []
@@ -133,13 +142,13 @@ struct RobustnessTests {
     }
 
     @Test(arguments: commands + ["neotop", "neotrash"]) func anEmptyEnvironmentIsNotAProblem(_ command: String) throws {
-        let args: [String: [String]] = ["neodu": ["/usr/bin"], "neodf": [], "neofree": [], "neolsof": ["-p", "1"], "neofind": ["/usr/bin/true"], "neonet": [], "neotop": ["--once", "-i", "0.3"], "neotrash": ["/nonexistent-neo"], "neomedia": ["info", "/usr/bin"], "neodocs": ["info", "/usr/bin"], "neotree": ["/usr/bin"], "neops": ["-p", "1"]]
+        let args: [String: [String]] = ["neodu": ["/usr/bin"], "neodf": [], "neofree": [], "neolsof": ["-p", "1"], "neofind": ["/usr/bin/true"], "neonet": [], "neotop": ["--once", "-i", "0.3"], "neotrash": ["/nonexistent-neo"], "neomedia": ["info", "/usr/bin"], "neodocs": ["info", "/usr/bin"], "neotree": ["/usr/bin"], "neops": ["-p", "1"], "neosweep": ["--scan"]]
         let o = try outcome(command, args[command] ?? [], emptyEnvironment: true)
         #expect(!o.signaled && !o.timedOut, "\(command): status \(o.status) \(o.stderr)")
     }
 
     @Test(arguments: commands + ["neotop", "neotrash"]) func aFullOrClosedOutputIsAnErrorNotACrash(_ command: String) throws {
-        let args: [String: [String]] = ["neodu": ["/usr/bin"], "neodf": [], "neofree": [], "neolsof": ["-p", "1"], "neofind": ["/usr/bin"], "neonet": [], "neotop": ["--once", "-i", "0.3"], "neotrash": ["/nonexistent-neo"], "neomedia": ["info", "/usr/bin"], "neodocs": ["info", "/usr/bin"], "neotree": ["/usr/bin"], "neops": ["-p", "1"]]
+        let args: [String: [String]] = ["neodu": ["/usr/bin"], "neodf": [], "neofree": [], "neolsof": ["-p", "1"], "neofind": ["/usr/bin"], "neonet": [], "neotop": ["--once", "-i", "0.3"], "neotrash": ["/nonexistent-neo"], "neomedia": ["info", "/usr/bin"], "neodocs": ["info", "/usr/bin"], "neotree": ["/usr/bin"], "neops": ["-p", "1"], "neosweep": ["--scan"]]
         // macOS has no /dev/full: the output is a pipe nobody reads and SIGPIPE is ignored, so that every write fails (see ReviewTests)
         let o = try outcomeToBrokenPipe(command, args[command] ?? [])
         #expect(!o.signaled && !o.timedOut, "\(command): status \(o.status) \(o.stderr)")
@@ -149,7 +158,8 @@ struct RobustnessTests {
         // argc 0 is possible for a process started by another program: the command takes its own name
         var pid: pid_t = 0
         var argv: [UnsafeMutablePointer<CChar>?] = [nil]
-        var env: [UnsafeMutablePointer<CChar>?] = [nil]
+        var env: [UnsafeMutablePointer<CChar>?] = command == "neosweep" ? [strdup("HOME=\(robustnessScratchHome)"), nil] : [nil]        // neosweep scans the home: an empty one
+        defer { for pointer in env { free(pointer) } }
         let devnull = open("/dev/null", O_RDWR)
         var actions: posix_spawn_file_actions_t?
         posix_spawn_file_actions_init(&actions)

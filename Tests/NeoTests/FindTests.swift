@@ -200,6 +200,32 @@ struct FindRuleTests {
         #expect(bare.stdout == ".\n")
     }
 
+    @Test func aBarePatternMeansName() throws {
+        let root = FindFixture.shared.root
+        let cases: [(neo: [String], find: [String])] = [
+            (["*.md"], [".", "-name", "*.md"]),
+            (["*.md", "-type", "f"], [".", "-name", "*.md", "-type", "f"]),
+            ([".", "*.md", "-type", "f"], [".", "-name", "*.md", "-type", "f"]),
+            (["-type", "f", "*.md"], [".", "-type", "f", "-name", "*.md"]),
+            ([".", "-type", "f", "*.md", "-size", "+0c"], [".", "-type", "f", "-name", "*.md", "-size", "+0c"]),
+            (["*.md", "-o", "*.txt"], [".", "-name", "*.md", "-o", "-name", "*.txt"]),
+        ]
+        for c in cases {
+            let n = try Harness.run(neofind, c.neo, in: root)
+            let o = try Harness.run(realFind, c.find, in: root)
+            #expect(n.stdout == o.stdout, "\(c.neo)")
+            #expect(n.status == o.status, "\(c.neo)")
+        }
+    }
+
+    @Test func aGlobThatExistsIsStillAPath() throws {
+        let dir = FindFixture.shared.root.appendingPathComponent("empty")
+        try Data().write(to: dir.appendingPathComponent("a*b"))
+        defer { try? FileManager.default.removeItem(at: dir.appendingPathComponent("a*b")) }
+        let n = try Harness.run(neofind, ["a*b"], in: dir)
+        #expect(n.stdout == "a*b\n")
+    }
+
     @Test func noPathNoteAppearsOnATerminalOnly() throws {
         let r = try Harness.runInTerminal(neofind, ["-name", "notes.md"], in: FindFixture.shared.root)
         #expect(r.stdout.contains("no path given"))

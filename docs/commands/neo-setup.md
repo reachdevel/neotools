@@ -37,7 +37,7 @@ A backup of a file is written once (`<file>.neo-setup-backup`) before the first 
 
 - **Same-name functions:** `du`, `df`, `lsof`, `find`, `tree`, `top`, `ps`, `rm` run the neo command if it is installed and the
   original if it is not, so removing neotools never breaks `du`.
-- **Short names:** `free`, `media`, `docs` (there is no original behind them).
+- **Short names:** `free`, `media`, `docs`, `sweep` (there is no original behind them).
 - **`ifconfig`** runs `neonet` only when called without arguments; **`netstat`** runs `neonet` only in the Linux-style forms it
   answers (`-tulpn`, `-an`, `-r`, `-i`...); everything else goes to the originals.
 

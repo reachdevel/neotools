@@ -56,11 +56,12 @@ Eklentiler:
 
 Notlar:
   yol verilmezse arama "." içinde başlar
+  -name olmadan tırnaklı desen bir addır: '*.md' yani -name '*.md'
   diğer find birincilleri (-exec -delete -regex -newerXY ...) reddedilir:
   --plain kullanın
 
 Örnekler:
-  {program} -name '*.md'
+  {program} '*.md' -type f
   {program} ~/Documents -type f -size +100M
   {program} . -mtime -7 -name '*.swift'
   {program} ~ --purgeable -size +10M

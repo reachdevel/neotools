@@ -83,7 +83,8 @@ let docsPictureFormats = ["png", "jpg", "heic", "tiff"]
 let docsTableFormats = ["csv", "tsv", "json", "jsonl", "xlsx", "parquet", "md", "html"]
 let docsTextFormats = ["txt", "md", "html", "docx", "rtf", "odt", "pdf"]
 let docsPresentationFormats = ["pptx"]
-let docsTargetFormats = Array(Set(docsTextFormats + docsPictureFormats + docsTableFormats + docsPresentationFormats)).sorted()
+let docsAppleFormats = ["pages", "numbers", "key"]
+let docsTargetFormats = Array(Set(docsTextFormats + docsPictureFormats + docsTableFormats + docsPresentationFormats + docsAppleFormats)).sorted()
 
 func parseDocsArguments(_ argv: [String], program: String) -> DocsParse {
     var o = DocsOptions()

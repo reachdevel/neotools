@@ -5,6 +5,26 @@ the project intends to follow [Semantic Versioning](https://semver.org/) once it
 
 ## [Unreleased]
 
+### Changed
+
+- **`neodocs`**: a Markdown list is separated from the paragraph under it by a blank line (the line was read as part of the last item).
+- **`neosweep`**: Disk clean is the first entry of the menu and This Mac the last; connected disks are no longer menu entries (they are under `/Volumes` in This Mac); the descriptions of the menu are rewritten in English and Turkish; in This Mac the Applications and Homebrew rows and the data of installed applications are grey and are not opened; the pane on the right greys links and what cannot be deleted; the confirmation lists every place of a thing; two copies of one application are chosen separately; the list of what is not sure whose no longer holds names that an installed application, a command-line tool or macOS owns.
+
+### Added
+
+- **`neofind`**: a word with `*`, `?` or `[` that is not an existing path is read as `-name`: `neofind '*.md' -type f` and `neofind -type f '*.md'` (without a path the search starts in `.`).
+- **`neodocs convert`**: a PDF becomes `docx rtf odt html md` (the words, headings, lists and paragraphs, not the layout; a scan is told to go through `ocr` first); Word, text and table files and a PDF's text become `.pages`, `.numbers` and `.key` files (`docx rtf odt html md txt pdf` to `pages`, `xlsx csv tsv json jsonl parquet` to `numbers`, `pptx` to `key`) through the Apple apps; `pptx` and `key` become `txt` or `md`; `numbers` becomes `parquet`. `--help` shows what turns into what.
+- **`neosweep`**, a full-screen disk cleaner: This Mac (the disk from the top, with what is unknown said out loud), Disk clean (caches, logs,
+  package-manager stores, model downloads, emulators, the Trash, iPhone backups, Xcode, simulators, virtual machines, old installers),
+  Applications (with what they left in the Library, and what is left of applications that are gone), Homebrew (packages, apps, old versions,
+  data left behind, removed through `brew`), Large files, iCloud, and every connected disk. It shows what deleting something really frees (the private size, so clones and snapshots are counted right),
+  deletes for good after you type a word, warns about running applications and about your own data, and only reports what needs
+  administrator rights. `--scan`, `--list`, `--detail` and `--json` give the same as reports for scripts.
+  Sizes are shown as Finder shows them (decimal GB, figures lined up with the unit in its own column), a dash stands for what cannot be said, rows are sorted while they are
+  added up, `f` shows a row in Finder, the system and hidden entries are one row, and an item lists its folders with what each takes. Disk clean also knows about
+  developer tools (caches, downloads, installed versions of about a hundred tools, listed only when they are on the Mac). What removed applications and packages left behind (Library folders, Homebrew data and settings) is in Disk clean. Sizes always have two decimals (0,86 GB, 0,13 KB). `n` chooses nothing, `A` everything (`a` what is safe), on a terminal of 120 columns a pane on the right shows what is in the row under the cursor (`v` switches it), names lose their middle instead of pushing the sizes away, the width of letters written with a separate accent (and wide characters) is counted right, opening a folder of the disk does not add it up again, deleting is real: no category is held back any more, and `NEO_TRASH=1` moves to the Trash instead (for trying it), "Not sure whose they are" lists what the careful leftover search leaves out, with the reason beside each (nothing chosen, not looked at by default), the rebuildable folders of your projects (`node_modules`, `.venv`, `target`, caches) are a category of Disk clean, `--leftovers file` writes why each name of the Library is or is not taken for a leftover, Homebrew places are named by what they are, `o` opens the parts of an application, an application is chosen with everything it left (also in `~/.cache` and `~/.config`) and applications in folders of Applications are listed, the confirmation says where each thing is, links in the disk view are shown as links, the Turkish word to type is `silelim` and the column `KAZAN`, what was added up in the last 15 minutes (the biggest files too) is remembered (in `~/.cache/neosweep`) so that going back to a page does not add it up again, `r` adds it up again, a row that is still being added up is not opened, and iCloud is browsed like Finder's iCloud Drive, folder by folder.
+- `neo-setup` offers the short name `sweep` for `neosweep`.
+
 ## [0.1.1] - 2026-10-14
 
 ### Fixed

@@ -9,7 +9,7 @@ import Foundation
 
 /// The String Catalog and the help files (`CONTRIBUTING.md`), read as the program reads them: from the built resource bundle.
 private let bundle: Bundle = Strings.findBundle()!
-private let commands = ["du", "df", "free", "trash", "lsof", "find", "net", "top", "media", "docs", "tree", "ps", "setup"]
+private let commands = ["du", "df", "free", "trash", "lsof", "find", "net", "top", "media", "docs", "tree", "ps", "setup", "sweep"]
 
 private func table(_ language: String) -> [String: Any] {
     guard let dir = bundle.path(forResource: language, ofType: "lproj") else { return [:] }

@@ -11,13 +11,31 @@ enum AppleApp: String {
 }
 
 /// How a file is turned into another with an Apple app: the app writes `format` (to the target itself, or to a file of `middle` that we read ourselves).
+/// `native`: the app saves its own file (`.pages`, `.numbers`, `.key`); it opens `prepare` for that, a file we write first (nil: the file itself).
 struct AppleStep {
     var app: AppleApp
     var format: String                  // the word the app's export command knows
     var middle: String?                 // nil: the app writes the target
+    var native = false
+    var prepare: String? = nil
+}
+
+/// What the apps open themselves: Pages a Word file, Numbers an Excel file, Keynote a PowerPoint file. The other formats are written as one of these first
+/// (Pages does not open `odt`, `html` or `md`; Numbers reads the header of a `csv` wrongly).
+private let pagesSources: Set<String> = ["docx", "doc", "rtf", "odt", "html", "htm", "txt", "md", "markdown"]
+private let numbersSources: Set<String> = ["xlsx", "csv", "tsv", "json", "jsonl", "ndjson", "parquet"]
+
+private func nativeStep(ext: String, target: String) -> AppleStep? {
+    switch target {
+    case "pages" where pagesSources.contains(ext) || ext == "pdf": return AppleStep(app: .pages, format: "", middle: nil, native: true, prepare: ext == "docx" ? nil : "docx")
+    case "numbers" where numbersSources.contains(ext): return AppleStep(app: .numbers, format: "", middle: nil, native: true, prepare: ext == "xlsx" ? nil : "xlsx")
+    case "key" where ext == "pptx": return AppleStep(app: .keynote, format: "", middle: nil, native: true)
+    default: return nil
+    }
 }
 
 func appleStep(ext: String, target: String, forceApp: Bool) -> AppleStep? {
+    if docsAppleFormats.contains(target) { return nativeStep(ext: ext, target: target) }
     switch ext {
     case "pages":
         switch target {
@@ -30,14 +48,14 @@ func appleStep(ext: String, target: String, forceApp: Bool) -> AppleStep? {
         switch target {
         case "pdf": return AppleStep(app: .numbers, format: "PDF", middle: nil)
         case "xlsx": return AppleStep(app: .numbers, format: "Microsoft Excel", middle: nil)
-        case "csv", "tsv", "json", "jsonl", "md", "html": return AppleStep(app: .numbers, format: "Microsoft Excel", middle: "xlsx")
+        case "csv", "tsv", "json", "jsonl", "parquet", "md", "html": return AppleStep(app: .numbers, format: "Microsoft Excel", middle: "xlsx")
         default: return nil
         }
     case "key":
         switch target {
         case "pdf": return AppleStep(app: .keynote, format: "PDF", middle: nil)
         case "pptx": return AppleStep(app: .keynote, format: "Microsoft PowerPoint", middle: nil)
-        case "txt": return AppleStep(app: .keynote, format: "Microsoft PowerPoint", middle: "pptx")
+        case "txt", "md": return AppleStep(app: .keynote, format: "Microsoft PowerPoint", middle: "pptx")
         default: return nil
         }
     case "pptx": return target == "pdf" ? AppleStep(app: .keynote, format: "PDF", middle: nil) : nil
@@ -58,9 +76,9 @@ func appleAppURL(_ app: AppleApp) -> URL? { appleApp(app)?.url }
 
 private func isRunning(_ id: String) -> Bool { !NSRunningApplication.runningApplications(withBundleIdentifier: id).isEmpty }
 
-/// Opens `source` in the app, exports it to `destination` and closes it again. The app is started out of sight when it is not running, and quit afterwards when we started it.
+/// Opens `source` in the app, exports it to `destination` (`format` nil: saves it as the app's own file) and closes it again. The app is started out of sight when it is not running, and quit afterwards when we started it.
 /// An app that waits for the person (a welcome window, a warning about fonts) never answers: after `timeout` seconds it is an error that says so.
-func appleExport(app: AppleApp, format: String, source: String, destination: String, timeout: Int = 120) throws {
+func appleExport(app: AppleApp, format: String?, source: String, destination: String, timeout: Int = 120) throws {
     // the apps of version 15 are sandboxed: an export to a place outside the home folder (/tmp, /var) makes them crash. The file is written in the person's own
     // caches folder and moved from there.
     guard let caches = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first else { throw DocsFailure.cannotWrite(Messages().label("docs.detail.noCaches")) }
@@ -76,7 +94,7 @@ func appleExport(app: AppleApp, format: String, source: String, destination: Str
     } catch { throw DocsFailure.cannotWrite(error.localizedDescription) }
 }
 
-private func appleExportRaw(app: AppleApp, format: String, source: String, destination: String, timeout: Int) throws {
+private func appleExportRaw(app: AppleApp, format: String?, source: String, destination: String, timeout: Int) throws {
     guard let found = appleApp(app) else { throw DocsFailure.appMissing(app.rawValue) }
     let appURL = found.url, id = found.id
     let wasRunning = isRunning(id)
@@ -98,6 +116,7 @@ private func appleExportRaw(app: AppleApp, format: String, source: String, desti
         }
     }
     // the file names are arguments of the script, never part of its text
+    let command = format.map { "export d to dst as \($0)" } ?? "save d in dst"
     let script = """
     on run argv
         set src to POSIX file (item 1 of argv)
@@ -105,7 +124,7 @@ private func appleExportRaw(app: AppleApp, format: String, source: String, desti
         tell application id "\(id)"
             set d to open src
             try
-                export d to dst as \(format)
+                \(command)
             on error message
                 try
                     close d saving no

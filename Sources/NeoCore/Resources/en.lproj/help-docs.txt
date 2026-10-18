@@ -22,16 +22,19 @@ convert:
   --quality n       jpg and heic: 1-100
 
 From and to:
-  pdf               txt png jpg heic tiff
+  pdf               txt docx rtf odt html md pages, png jpg heic tiff
   docx rtf odt,
-  html md txt       docx rtf odt html md txt pdf
+  html md txt       each other, pdf, pages
   csv tsv json,
   jsonl xlsx,
-  parquet           csv tsv json jsonl xlsx parquet md html
-  pptx xlsx         pdf
-  pages             pdf docx txt md html rtf odt
-  numbers           pdf xlsx csv tsv json jsonl md html
-  key               pdf pptx txt
+  parquet           each other, md html, numbers
+  xlsx              also pdf
+  pptx              pdf txt md key
+  pages             pdf docx rtf odt html md txt
+  numbers           pdf xlsx csv tsv json jsonl parquet md html
+  key               pdf pptx txt md
+  A PDF becomes its words, headings and lists, not its layout or tables.
+  A scan has no words: run ocr first. pages, numbers and key need the app.
 
 Tables:
   --sheet name      one sheet of an Excel file, by name or number
@@ -92,6 +95,8 @@ Examples:
   {program} convert slides.pdf --to png --dpi 200
   {program} convert report.docx --to pdf
   {program} convert notes.md --to docx
+  {program} convert report.pdf --to docx
+  {program} convert notes.md --to pages
   {program} convert sales.xlsx --to parquet
   {program} text data.csv --to jsonl | jq .name
   {program} strip report.docx --trash-original

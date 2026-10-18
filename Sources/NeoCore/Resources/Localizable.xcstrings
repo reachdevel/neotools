@@ -9276,6 +9276,5190 @@
           }
         }
       }
+    },
+    "sweep.usage": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "usage: %@ [--scan] [--list] [--detail id] [--top n] [--json] [--plain] [--leftovers file] [category ...]"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "kullanım: %@ [--scan] [--list] [--detail id] [--top n] [--json] [--plain] [--leftovers dosya] [kategori ...]"
+          }
+        }
+      }
+    },
+    "sweep.err.needsValue": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: option %2$@ needs a value"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: %2$@ seçeneği bir değer ister"
+          }
+        }
+      }
+    },
+    "sweep.err.badNumber": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: %2$@: not a valid number: %3$@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: %2$@: geçerli bir sayı değil: %3$@"
+          }
+        }
+      }
+    },
+    "sweep.err.unknownCategory": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: unknown category: %2$@ (see --list)"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: bilinmeyen kategori: %2$@ (bkz. --list)"
+          }
+        }
+      }
+    },
+    "sweep.scanning": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scanning %1$lld of %2$lld"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Taranıyor: %1$lld / %2$lld"
+          }
+        }
+      }
+    },
+    "sweep.col.id": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ID"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KOD"
+          }
+        }
+      }
+    },
+    "sweep.col.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "NAME"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AD"
+          }
+        }
+      }
+    },
+    "sweep.col.kind": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KIND"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TÜR"
+          }
+        }
+      }
+    },
+    "sweep.col.items": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ITEMS"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ÖĞE"
+          }
+        }
+      }
+    },
+    "sweep.col.frees": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "FREES"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "KAZAN"
+          }
+        }
+      }
+    },
+    "sweep.col.size": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ON DISK"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DİSKTE"
+          }
+        }
+      }
+    },
+    "sweep.legend": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "* selected at the start"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "* başlangıçta seçili"
+          }
+        }
+      }
+    },
+    "sweep.total.selected": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The categories selected at the start free at least %@."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başlangıçta seçili kategoriler en az %@ yer açar."
+          }
+        }
+      }
+    },
+    "sweep.total.all": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Everything listed frees at least %@."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Listelenenlerin hepsi en az %@ yer açar."
+          }
+        }
+      }
+    },
+    "sweep.note.atLeast": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "\"Frees\" is a lower bound: what is shared with clones, snapshots or other links is not counted."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "\"Kazan\" bir alt sınırdır: klonlarla, anlık görüntülerle ya da başka bağlarla paylaşılan kısım sayılmaz."
+          }
+        }
+      }
+    },
+    "sweep.note.unreadable": {
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "1 entry could not be read."
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld entries could not be read."
+                }
+              }
+            }
+          }
+        },
+        "tr": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "1 öğe okunamadı."
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld öğe okunamadı."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "sweep.nothing": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nothing to clean was found in the categories on this Mac."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu Mac'te kategorilerde temizlenecek bir şey bulunamadı."
+          }
+        }
+      }
+    },
+    "sweep.files": {
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "1 file"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld files"
+                }
+              }
+            }
+          }
+        },
+        "tr": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "1 dosya"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld dosya"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "sweep.more": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "... and %lld more"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "... ve %lld tane daha"
+          }
+        }
+      }
+    },
+    "sweep.detail.total": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Together: frees at least %1$@ of %2$@."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Birlikte: %2$@ içinden en az %1$@ yer açar."
+          }
+        }
+      }
+    },
+    "sweep.group.cheap": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "cache"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "önbellek"
+          }
+        }
+      }
+    },
+    "sweep.group.costly": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "download"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "indirme"
+          }
+        }
+      }
+    },
+    "sweep.group.state": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "your data"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "verileriniz"
+          }
+        }
+      }
+    },
+    "sweep.cat.app-caches.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App caches"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulama önbellekleri"
+          }
+        }
+      }
+    },
+    "sweep.cat.app-caches.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "One folder per application in ~/Library/Caches."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/Library/Caches içinde uygulama başına bir klasör."
+          }
+        }
+      }
+    },
+    "sweep.cat.app-caches.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Applications build their caches again when they need them. Quit an application before its cache goes; Apple's own (com.apple.*) are shown but not selected."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulamalar önbelleklerini gerektiğinde yeniden oluşturur. Önbelleği silinecek uygulamayı önce kapatın; Apple'ın kendi önbellekleri (com.apple.*) gösterilir ama seçili gelmez."
+          }
+        }
+      }
+    },
+    "sweep.cat.logs.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Logs"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günlükler"
+          }
+        }
+      }
+    },
+    "sweep.cat.logs.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Log files of applications in ~/Library/Logs."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/Library/Logs içindeki uygulama günlükleri."
+          }
+        }
+      }
+    },
+    "sweep.cat.logs.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Log files are read only when someone looks for a problem; applications write new ones."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günlük dosyaları yalnızca bir sorun aranırken okunur; uygulamalar yenilerini yazar."
+          }
+        }
+      }
+    },
+    "sweep.cat.xcode-derived.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xcode build products"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xcode derleme ürünleri"
+          }
+        }
+      }
+    },
+    "sweep.cat.xcode-derived.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DerivedData: one folder per Xcode project."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "DerivedData: Xcode projesi başına bir klasör."
+          }
+        }
+      }
+    },
+    "sweep.cat.xcode-derived.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xcode builds DerivedData again with the next build; that first build is slower."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xcode DerivedData'yı bir sonraki derlemede yeniden oluşturur; o ilk derleme daha yavaştır."
+          }
+        }
+      }
+    },
+    "sweep.cat.homebrew.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Homebrew downloads"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Homebrew indirmeleri"
+          }
+        }
+      }
+    },
+    "sweep.cat.homebrew.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/Library/Caches/Homebrew: downloaded packages and the package index."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/Library/Caches/Homebrew: indirilen paketler ve paket dizini."
+          }
+        }
+      }
+    },
+    "sweep.cat.homebrew.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "`brew cleanup` empties the same folder; Homebrew downloads again what it needs."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "`brew cleanup` aynı klasörü boşaltır; Homebrew gerekeni yeniden indirir."
+          }
+        }
+      }
+    },
+    "sweep.cat.npm.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "npm cache"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "npm önbelleği"
+          }
+        }
+      }
+    },
+    "sweep.cat.npm.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/.npm/_cacache: downloaded packages."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/.npm/_cacache: indirilen paketler."
+          }
+        }
+      }
+    },
+    "sweep.cat.npm.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "`npm cache clean --force` removes the same data; npm downloads again what it needs."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "`npm cache clean --force` aynı veriyi siler; npm gerekeni yeniden indirir."
+          }
+        }
+      }
+    },
+    "sweep.cat.yarn.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yarn cache"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yarn önbelleği"
+          }
+        }
+      }
+    },
+    "sweep.cat.yarn.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/Library/Caches/Yarn: downloaded packages."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/Library/Caches/Yarn: indirilen paketler."
+          }
+        }
+      }
+    },
+    "sweep.cat.yarn.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "`yarn cache clean` removes it; Yarn downloads again what it needs."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "`yarn cache clean` bunu siler; Yarn gerekeni yeniden indirir."
+          }
+        }
+      }
+    },
+    "sweep.cat.pip.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "pip cache"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "pip önbelleği"
+          }
+        }
+      }
+    },
+    "sweep.cat.pip.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/Library/Caches/pip: downloaded and built packages."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/Library/Caches/pip: indirilen ve derlenen paketler."
+          }
+        }
+      }
+    },
+    "sweep.cat.pip.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "`pip cache purge` removes it; pip downloads again what it needs."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "`pip cache purge` bunu siler; pip gerekeni yeniden indirir."
+          }
+        }
+      }
+    },
+    "sweep.cat.uv.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "uv cache"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "uv önbelleği"
+          }
+        }
+      }
+    },
+    "sweep.cat.uv.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/.cache/uv: downloaded and built Python packages."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/.cache/uv: indirilen ve derlenen Python paketleri."
+          }
+        }
+      }
+    },
+    "sweep.cat.uv.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "`uv cache clean` removes it; uv downloads again what it needs."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "`uv cache clean` bunu siler; uv gerekeni yeniden indirir."
+          }
+        }
+      }
+    },
+    "sweep.cat.pnpm.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "pnpm store"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "pnpm deposu"
+          }
+        }
+      }
+    },
+    "sweep.cat.pnpm.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "pnpm's package store and its cache."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "pnpm'in paket deposu ve önbelleği."
+          }
+        }
+      }
+    },
+    "sweep.cat.pnpm.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Projects keep their own hard links, so nothing breaks; pnpm downloads again what it needs. Files that projects still link free nothing until those projects go."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Projeler kendi sabit bağlarını tutar, bu yüzden hiçbir şey bozulmaz; pnpm gerekeni yeniden indirir. Projelerin hâlâ bağladığı dosyalar, o projeler gidene kadar yer açmaz."
+          }
+        }
+      }
+    },
+    "sweep.cat.gradle.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gradle caches"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gradle önbellekleri"
+          }
+        }
+      }
+    },
+    "sweep.cat.gradle.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/.gradle/caches: downloaded dependencies and build caches."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/.gradle/caches: indirilen bağımlılıklar ve derleme önbellekleri."
+          }
+        }
+      }
+    },
+    "sweep.cat.gradle.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gradle downloads the dependencies again and rebuilds its caches; the next build is slow."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gradle bağımlılıkları yeniden indirir ve önbelleklerini yeniden kurar; bir sonraki derleme yavaştır."
+          }
+        }
+      }
+    },
+    "sweep.cat.pub-cache.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dart and Flutter packages"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dart ve Flutter paketleri"
+          }
+        }
+      }
+    },
+    "sweep.cat.pub-cache.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/.pub-cache/hosted: packages downloaded from pub.dev."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/.pub-cache/hosted: pub.dev'den indirilen paketler."
+          }
+        }
+      }
+    },
+    "sweep.cat.pub-cache.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "`dart pub cache clean` removes it; packages are downloaded again when a project asks for them."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "`dart pub cache clean` bunu siler; bir proje istediğinde paketler yeniden indirilir."
+          }
+        }
+      }
+    },
+    "sweep.cat.huggingface.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hugging Face models"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hugging Face modelleri"
+          }
+        }
+      }
+    },
+    "sweep.cat.huggingface.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/.cache/huggingface/hub: one folder per model, dataset or space."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/.cache/huggingface/hub: model, veri kümesi veya space başına bir klasör."
+          }
+        }
+      }
+    },
+    "sweep.cat.huggingface.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Each one is downloaded again when a program asks for it; the downloads can be large and slow."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Her biri bir program istediğinde yeniden indirilir; indirmeler büyük ve yavaş olabilir."
+          }
+        }
+      }
+    },
+    "sweep.cat.whisper.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Whisper models"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Whisper modelleri"
+          }
+        }
+      }
+    },
+    "sweep.cat.whisper.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/.cache/whisper: one file per speech model."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/.cache/whisper: konuşma modeli başına bir dosya."
+          }
+        }
+      }
+    },
+    "sweep.cat.whisper.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A model is downloaded again the next time it is used."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir model bir sonraki kullanımda yeniden indirilir."
+          }
+        }
+      }
+    },
+    "sweep.cat.puppeteer.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puppeteer browsers"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puppeteer tarayıcıları"
+          }
+        }
+      }
+    },
+    "sweep.cat.puppeteer.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/.cache/puppeteer: browsers downloaded for Puppeteer."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/.cache/puppeteer: Puppeteer için indirilen tarayıcılar."
+          }
+        }
+      }
+    },
+    "sweep.cat.puppeteer.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puppeteer downloads the browser again on the next install or run."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puppeteer tarayıcıyı bir sonraki kurulumda ya da çalıştırmada yeniden indirir."
+          }
+        }
+      }
+    },
+    "sweep.cat.android-avd.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Android emulators"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Android emülatörleri"
+          }
+        }
+      }
+    },
+    "sweep.cat.android-avd.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/.android/avd: one emulator per .avd folder, with its .ini file."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/.android/avd: .avd klasörü başına bir emülatör ve .ini dosyası."
+          }
+        }
+      }
+    },
+    "sweep.cat.android-avd.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An emulator holds its own apps and data. It can be created again in Android Studio, but what is inside it is lost."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir emülatör kendi uygulamalarını ve verisini tutar. Android Studio'da yeniden oluşturulabilir ama içindekiler kaybolur."
+          }
+        }
+      }
+    },
+    "sweep.cat.nvm-node.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Node versions (nvm)"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Node sürümleri (nvm)"
+          }
+        }
+      }
+    },
+    "sweep.cat.nvm-node.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/.nvm/versions/node: one folder per installed version."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/.nvm/versions/node: kurulu sürüm başına bir klasör."
+          }
+        }
+      }
+    },
+    "sweep.cat.nvm-node.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A version can be installed again with nvm, but the global packages installed in it are lost."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir sürüm nvm ile yeniden kurulabilir ama içine kurulu genel paketler kaybolur."
+          }
+        }
+      }
+    },
+    "sweep.err.needsTerminal": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "neosweep needs a terminal for the full-screen view; use --scan for a report."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "neosweep tam ekran görünüm için bir terminal ister; rapor için --scan kullanın."
+          }
+        }
+      }
+    },
+    "sweep.fail.busy": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "in use"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "kullanımda"
+          }
+        }
+      }
+    },
+    "sweep.fail.changed": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "not what was listed any more"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "listelenen dosya artık değil"
+          }
+        }
+      }
+    },
+    "sweep.fail.deep": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "folders nested too deep"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "klasörler çok derin iç içe"
+          }
+        }
+      }
+    },
+    "sweep.fail.device": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "another file system"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "başka bir dosya sistemi"
+          }
+        }
+      }
+    },
+    "sweep.fail.gone": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "already gone"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "zaten yok"
+          }
+        }
+      }
+    },
+    "sweep.fail.notAllowed": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "not allowed"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "izin verilmiyor"
+          }
+        }
+      }
+    },
+    "sweep.fail.outside": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "outside the allowed folders"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "izin verilen klasörlerin dışında"
+          }
+        }
+      }
+    },
+    "sweep.fail.permission": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "permission denied"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "izin yok"
+          }
+        }
+      }
+    },
+    "sweep.ui.adding": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "adding up"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "toplanıyor"
+          }
+        }
+      }
+    },
+    "sweep.ui.confirmTitle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete for good?"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalıcı olarak silinsin mi?"
+          }
+        }
+      }
+    },
+    "sweep.ui.confirmTotal": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total: frees at least %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toplam: en az %@ yer açar"
+          }
+        }
+      }
+    },
+    "sweep.ui.confirmWord": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "delete"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "silelim"
+          }
+        }
+      }
+    },
+    "sweep.ui.crumbConfirm": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Confirm"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Onay"
+          }
+        }
+      }
+    },
+    "sweep.ui.crumbDisk": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disk clean"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disk temizliği"
+          }
+        }
+      }
+    },
+    "sweep.ui.crumbICloud": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud"
+          }
+        }
+      }
+    },
+    "sweep.ui.crumbLarge": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Large files"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Büyük dosyalar"
+          }
+        }
+      }
+    },
+    "sweep.ui.crumbResult": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Result"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonuç"
+          }
+        }
+      }
+    },
+    "sweep.ui.crumbReview": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Review"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İnceleme"
+          }
+        }
+      }
+    },
+    "sweep.ui.crumbWorking": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deleting"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Siliniyor"
+          }
+        }
+      }
+    },
+    "sweep.ui.deleting": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deleting %1$lld of %2$lld"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Siliniyor: %1$lld / %2$lld"
+          }
+        }
+      }
+    },
+    "sweep.ui.freesAtLeast": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "frees at least %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "en az %@ yer açar"
+          }
+        }
+      }
+    },
+    "sweep.ui.hintConfirm": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "↑↓ list · Type the word, then Enter · Esc cancel"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "↑↓ liste · Kelimeyi yazın, sonra Enter · Esc vazgeç"
+          }
+        }
+      }
+    },
+    "sweep.ui.hintConfirmRunning": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "↑↓ list · Type the word, then Enter · Tab ask the running applications to quit · Esc cancel"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "↑↓ liste · Kelimeyi yazın, sonra Enter · Tab çalışan uygulamalardan kapanmasını ister · Esc vazgeç"
+          }
+        }
+      }
+    },
+    "sweep.ui.hintICloud": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "↑↓ move · Enter open · ← up · Space select · a all · n none · r again · f Finder · d delete · Esc back"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "↑↓ git · Enter aç · ← yukarı · Boşluk seç · a hepsi · n hiçbiri · r yeniden · f Finder · d sil · Esc geri"
+          }
+        }
+      }
+    },
+    "sweep.ui.hintItems": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "↑↓ move · Space select · a safe · A everything · n none · r again · f Finder · d delete · Esc back"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "↑↓ git · Boşluk seç · a güvenli olanlar · A her şey · n hiçbiri · r yeniden · f Finder · d sil · Esc geri"
+          }
+        }
+      }
+    },
+    "sweep.ui.hintItemsReadOnly": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "↑↓ move · f Finder · Esc back (these are only reported and never deleted)"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "↑↓ git · f Finder · Esc geri (bunlar yalnızca bildirilir ve asla silinmez)"
+          }
+        }
+      }
+    },
+    "sweep.ui.hintLarge": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "↑↓ move · Space select · a all · n none · + - size filter · r again · f Finder · d delete · Esc back"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "↑↓ git · Boşluk seç · a hepsi · n hiçbiri · + - boyut süzgeci · r yeniden · f Finder · d sil · Esc geri"
+          }
+        }
+      }
+    },
+    "sweep.ui.hintLoading": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Esc back · q quit"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Esc geri · q çık"
+          }
+        }
+      }
+    },
+    "sweep.ui.hintMenu": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "↑↓ move · Enter open · q quit"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "↑↓ git · Enter aç · q çık"
+          }
+        }
+      }
+    },
+    "sweep.ui.hintPicker": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "↑↓ move · Space select · a all · n none · f Finder · Enter scan · Esc back"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "↑↓ git · Boşluk seç · a hepsi · n hiçbiri · f Finder · Enter tara · Esc geri"
+          }
+        }
+      }
+    },
+    "sweep.ui.hintPickerPermission": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "↑↓ move · Space select · a all · n none · p allow access · f Finder · Enter scan · Esc back"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "↑↓ git · Boşluk seç · a hepsi · n hiçbiri · p erişime izin ver · f Finder · Enter tara · Esc geri"
+          }
+        }
+      }
+    },
+    "sweep.ui.hintResult": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter back to the menu · q quit"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter menüye dön · q çık"
+          }
+        }
+      }
+    },
+    "sweep.ui.hintReview": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "↑↓ move · Enter open · Space select · a safe · A everything · n none · r again · f Finder · d delete · Esc back"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "↑↓ git · Enter aç · Boşluk seç · a güvenli olanlar · A her şey · n hiçbiri · r yeniden · f Finder · d sil · Esc geri"
+          }
+        }
+      }
+    },
+    "sweep.ui.hintWorking": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ctrl-C stops after the item it is on"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ctrl-C, üzerinde olduğu öğeden sonra durdurur"
+          }
+        }
+      }
+    },
+    "sweep.ui.icloudNone": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nothing found in iCloud on this Mac."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu Mac'te iCloud'da bir şey bulunamadı."
+          }
+        }
+      }
+    },
+    "sweep.ui.icloudNotSynced": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Desktop and Documents are not synced with iCloud on this Mac."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Masaüstü ve Belgeler bu Mac'te iCloud ile eşitlenmiyor."
+          }
+        }
+      }
+    },
+    "sweep.ui.icloudNote": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The storage of your iCloud account cannot be read from the command line; these are the folders that can be seen here."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud hesabınızın toplam depolaması komut satırından okunamaz; bunlar burada görülebilen klasörlerdir."
+          }
+        }
+      }
+    },
+    "sweep.ui.icloudScanning": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adding up iCloud Drive"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Drive toplanıyor"
+          }
+        }
+      }
+    },
+    "sweep.ui.icloudTitle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Drive"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Drive"
+          }
+        }
+      }
+    },
+    "sweep.ui.icloudTotal": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In iCloud: %1$@ · on this Mac: %2$@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud'da: %1$@ · bu Mac'te: %2$@"
+          }
+        }
+      }
+    },
+    "sweep.ui.inICloud": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "IN ICLOUD"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ICLOUD'DA"
+          }
+        }
+      }
+    },
+    "sweep.ui.itemCount": {
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "1 item"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld items"
+                }
+              }
+            }
+          }
+        },
+        "tr": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "1 öğe"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld öğe"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "sweep.ui.largeFilter": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Showing files that free at least %1$@ · %2$lld files"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En az %1$@ yer açan dosyalar gösteriliyor · %2$lld dosya"
+          }
+        }
+      }
+    },
+    "sweep.ui.largeNone": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No file is that big."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu kadar büyük dosya yok."
+          }
+        }
+      }
+    },
+    "sweep.ui.largeScanning": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Looking through your home folder: %lld entries"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ev klasörünüz taranıyor: %lld öğe"
+          }
+        }
+      }
+    },
+    "sweep.ui.largeTitle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The biggest files in your home folder"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ev klasörünüzdeki en büyük dosyalar"
+          }
+        }
+      }
+    },
+    "sweep.ui.menuDisk": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disk clean"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disk temizliği"
+          }
+        }
+      }
+    },
+    "sweep.ui.menuDiskWhat": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Caches, logs, old downloads and other leftovers you can clear"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Önbellekler, günlükler, eski indirmeler ve temizleyebileceğiniz artıklar"
+          }
+        }
+      }
+    },
+    "sweep.ui.menuICloud": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud"
+          }
+        }
+      }
+    },
+    "sweep.ui.menuICloudWhat": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "See what is stored in iCloud Drive and remove what you no longer need"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud Drive'da nelerin durduğunu görün, gerekmeyenleri kaldırın"
+          }
+        }
+      }
+    },
+    "sweep.ui.menuIntro": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Find what you can safely delete, see how much space you would really get back, then choose and delete."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neleri güvenle silebileceğinizi bulun, gerçekte ne kadar yer açacağını görün, sonra seçip silin."
+          }
+        }
+      }
+    },
+    "sweep.ui.menuLarge": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Large files"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Büyük dosyalar"
+          }
+        }
+      }
+    },
+    "sweep.ui.menuLargeWhat": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Find the biggest files in your home folder and pick the ones to delete"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ev klasörünüzdeki en büyük dosyaları bulun, silmek istediklerinizi seçin"
+          }
+        }
+      }
+    },
+    "sweep.ui.notReadable": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "not readable: needs Full Disk Access (press p)"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "okunamıyor: Tam Disk Erişimi gerekli (p'ye basın)"
+          }
+        }
+      }
+    },
+    "sweep.ui.onThisMac": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ON THIS MAC"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "BU MAC'TE"
+          }
+        }
+      }
+    },
+    "sweep.ui.pickerTitle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What should we look at?"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nelere bakalım?"
+          }
+        }
+      }
+    },
+    "sweep.ui.resultEstimate": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "estimate: at least %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "tahmin: en az %@"
+          }
+        }
+      }
+    },
+    "sweep.ui.resultFailed": {
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "1 thing could not be removed:"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld things could not be removed:"
+                }
+              }
+            }
+          }
+        },
+        "tr": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "1 şey silinemedi:"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld şey silinemedi:"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "sweep.ui.resultMeasured": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The volume gained %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Birim %@ kazandı"
+          }
+        }
+      }
+    },
+    "sweep.ui.resultRemoved": {
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Deleted 1 item (%2$lld files and folders)."
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Deleted %1$lld items (%2$lld files and folders)."
+                }
+              }
+            }
+          }
+        },
+        "tr": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "1 öğe silindi (%2$lld dosya ve klasör)."
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%1$lld öğe silindi (%2$lld dosya ve klasör)."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "sweep.ui.resultStopped": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stopped before everything was done."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Her şey bitmeden durduruldu."
+          }
+        }
+      }
+    },
+    "sweep.ui.resultTitle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bitti"
+          }
+        }
+      }
+    },
+    "sweep.ui.reviewTitle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What each category frees"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Her kategorinin açtığı yer"
+          }
+        }
+      }
+    },
+    "sweep.ui.selectedTotal": {
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Selected 1 item · frees at least %2$@"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Selected %1$lld items · frees at least %2$@"
+                }
+              }
+            }
+          }
+        },
+        "tr": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "1 öğe seçili · en az %2$@ yer açar"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%1$lld öğe seçili · en az %2$@ yer açar"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "sweep.ui.statusNothing": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select something first."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Önce bir şey seçin."
+          }
+        }
+      }
+    },
+    "sweep.ui.statusPermission": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Press p to allow access first."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Önce erişime izin vermek için p'ye basın."
+          }
+        }
+      }
+    },
+    "sweep.ui.statusReportOnly": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "These need administrator rights; neosweep never deletes them."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bunlar yönetici hakkı ister; neosweep bunları asla silmez."
+          }
+        }
+      }
+    },
+    "sweep.ui.statusScanning": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wait for the scan to finish."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Taramanın bitmesini bekleyin."
+          }
+        }
+      }
+    },
+    "sweep.ui.systemNote": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "These belong to the system and need administrator rights. neosweep only tells you about them and never deletes them."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bunlar sisteme aittir ve yönetici hakkı ister. neosweep yalnızca bunları bildirir, asla silmez."
+          }
+        }
+      }
+    },
+    "sweep.ui.typeWord": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deleting cannot be undone. Type \"%@\" and press Enter:"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Silme geri alınamaz. \"%@\" yazıp Enter'a basın:"
+          }
+        }
+      }
+    },
+    "sweep.ui.waitingPermission": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow %@ in Full Disk Access, then quit %@ and open it again: macOS reads the permission only when a program starts."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ uygulamasına Tam Disk Erişimi verin, sonra %@ uygulamasından çıkıp yeniden açın: macOS izni yalnızca program başlarken okur."
+          }
+        }
+      }
+    },
+    "sweep.ui.warnICloud": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "These are in iCloud: deleting them removes them from iCloud on every device."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bunlar iCloud'da: silmek, onları her cihazdaki iCloud'dan siler."
+          }
+        }
+      }
+    },
+    "sweep.ui.warnNoUndo": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deleting is for good: nothing goes to the Trash."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Silme kalıcıdır: hiçbir şey Çöp Kutusu'na gitmez."
+          }
+        }
+      }
+    },
+    "sweep.ui.warnRunning": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Running now: %@. Quit it first (Tab asks it to quit)."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şu an çalışıyor: %@. Önce kapatın (Tab kapanmasını ister)."
+          }
+        }
+      }
+    },
+    "sweep.ui.warnState": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Holds your own data that cannot come back:"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geri gelmeyecek kendi verilerinizi tutuyor:"
+          }
+        }
+      }
+    },
+    "sweep.ui.wordWrong": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "That is not the word: type \"%@\"."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kelime bu değil: \"%@\" yazın."
+          }
+        }
+      }
+    },
+    "sweep.ui.yourTerminal": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "your terminal"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "terminaliniz"
+          }
+        }
+      }
+    },
+    "sweep.groupTitle.trash": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thrown away already"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zaten atılmış"
+          }
+        }
+      }
+    },
+    "sweep.groupTitle.cheap": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Comes back by itself"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kendiliğinden geri gelir"
+          }
+        }
+      }
+    },
+    "sweep.groupTitle.costly": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Comes back after a download or a rebuild"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İndirme ya da yeniden derlemeyle geri gelir"
+          }
+        }
+      }
+    },
+    "sweep.groupTitle.state": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Holds your own data (cannot come back)"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kendi verilerinizi tutar (geri gelmez)"
+          }
+        }
+      }
+    },
+    "sweep.groupTitle.system": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The system's (needs administrator rights)"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sistemin (yönetici hakkı ister)"
+          }
+        }
+      }
+    },
+    "sweep.group.trash": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "trash"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "çöp"
+          }
+        }
+      }
+    },
+    "sweep.group.system": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "system"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "sistem"
+          }
+        }
+      }
+    },
+    "sweep.cat.trash.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trash"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çöp Kutusu"
+          }
+        }
+      }
+    },
+    "sweep.cat.trash.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What is in the Trash now (the Trash of other volumes too)."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çöp Kutusu'nda şu an olanlar (diğer birimlerin Çöp Kutusu da)."
+          }
+        }
+      }
+    },
+    "sweep.cat.trash.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You already threw it away. Only what was there when the scan started is emptied."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zaten attınız. Yalnızca tarama başladığında orada olanlar boşaltılır."
+          }
+        }
+      }
+    },
+    "sweep.cat.system-updates.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS update downloads"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS güncelleme indirmeleri"
+          }
+        }
+      }
+    },
+    "sweep.cat.system-updates.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "/Library/Updates: software updates that were downloaded."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "/Library/Updates: indirilmiş yazılım güncellemeleri."
+          }
+        }
+      }
+    },
+    "sweep.cat.system-updates.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Needs administrator rights, so neosweep only tells you about it."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yönetici hakkı ister, bu yüzden neosweep yalnızca bildirir."
+          }
+        }
+      }
+    },
+    "sweep.cat.system-logs.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System logs"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sistem günlükleri"
+          }
+        }
+      }
+    },
+    "sweep.cat.system-logs.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "/private/var/log: logs written by the system."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "/private/var/log: sistemin yazdığı günlükler."
+          }
+        }
+      }
+    },
+    "sweep.cat.system-logs.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Needs administrator rights, so neosweep only tells you about it."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yönetici hakkı ister, bu yüzden neosweep yalnızca bildirir."
+          }
+        }
+      }
+    },
+    "sweep.cat.system-caches.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System caches"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sistem önbellekleri"
+          }
+        }
+      }
+    },
+    "sweep.cat.system-caches.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "/Library/Caches: caches shared by all users."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "/Library/Caches: tüm kullanıcıların paylaştığı önbellekler."
+          }
+        }
+      }
+    },
+    "sweep.cat.system-caches.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Needs administrator rights, so neosweep only tells you about it."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yönetici hakkı ister, bu yüzden neosweep yalnızca bildirir."
+          }
+        }
+      }
+    },
+    "sweep.cat.system-library-logs.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System library logs"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sistem kitaplığı günlükleri"
+          }
+        }
+      }
+    },
+    "sweep.cat.system-library-logs.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "/Library/Logs: logs of system-wide software."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "/Library/Logs: sistem genelindeki yazılımların günlükleri."
+          }
+        }
+      }
+    },
+    "sweep.cat.system-library-logs.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Needs administrator rights, so neosweep only tells you about it."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yönetici hakkı ister, bu yüzden neosweep yalnızca bildirir."
+          }
+        }
+      }
+    },
+    "sweep.apps.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Removes the application and what it left in your Library. Application Support, Containers and Group Containers are listed but not chosen: they may hold your documents."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulamayı ve Library'nizde bıraktıklarını siler. Application Support, Containers ve Group Containers listelenir ama seçili gelmez: belgelerinizi tutuyor olabilirler."
+          }
+        }
+      }
+    },
+    "sweep.apps.appStore": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App Store"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App Store"
+          }
+        }
+      }
+    },
+    "sweep.apps.needsPassword": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "needs your password (Finder)"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "parolanızı ister (Finder)"
+          }
+        }
+      }
+    },
+    "sweep.apps.lastOpened": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "last opened %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "son açılış %@"
+          }
+        }
+      }
+    },
+    "sweep.apps.leftovers.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Left behind by removed applications"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaldırılmış uygulamaların bıraktıkları"
+          }
+        }
+      }
+    },
+    "sweep.apps.leftovers.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data in your Library that belongs to applications that are not installed any more."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Library'nizde, artık kurulu olmayan uygulamalara ait veriler."
+          }
+        }
+      }
+    },
+    "sweep.apps.leftovers.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Caches, logs, preferences and saved state of an application that is gone are safe to delete. Application Support, Containers and Group Containers may hold your documents: they are listed, not chosen."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Silinmiş bir uygulamanın önbellekleri, günlükleri, tercihleri ve kayıtlı durumu güvenle silinebilir. Application Support, Containers ve Group Containers belgelerinizi tutuyor olabilir: listelenir, seçili gelmez."
+          }
+        }
+      }
+    },
+    "sweep.apps.includes": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "includes %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "şunları içerir: %@"
+          }
+        }
+      }
+    },
+    "sweep.brew.formulae.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Packages you installed"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kurduğunuz paketler"
+          }
+        }
+      }
+    },
+    "sweep.brew.formulae.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Homebrew packages you installed yourself (brew install)."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kendi kurduğunuz Homebrew paketleri (brew install)."
+          }
+        }
+      }
+    },
+    "sweep.brew.formulae.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "`brew uninstall` removes the package; Homebrew refuses when another package needs it."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "`brew uninstall` paketi kaldırır; başka bir paket ona ihtiyaç duyuyorsa Homebrew reddeder."
+          }
+        }
+      }
+    },
+    "sweep.brew.deps.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Libraries nothing needs any more"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Artık kimsenin ihtiyaç duymadığı kitaplıklar"
+          }
+        }
+      }
+    },
+    "sweep.brew.deps.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Packages that were installed only for others, and nothing installed needs now."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yalnızca başkaları için kurulmuş ve artık kurulu hiçbir şeyin ihtiyaç duymadığı paketler."
+          }
+        }
+      }
+    },
+    "sweep.brew.deps.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Removing them is what `brew autoremove` does."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bunları kaldırmak `brew autoremove`'un yaptığı iştir."
+          }
+        }
+      }
+    },
+    "sweep.brew.casks.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apps installed with Homebrew"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Homebrew ile kurulan uygulamalar"
+          }
+        }
+      }
+    },
+    "sweep.brew.casks.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Applications installed with brew install --cask."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "brew install --cask ile kurulan uygulamalar."
+          }
+        }
+      }
+    },
+    "sweep.brew.casks.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "`brew uninstall --cask` removes the application. Some need your password and fail here: run the command yourself."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "`brew uninstall --cask` uygulamayı kaldırır. Bazıları parolanızı ister ve burada başarısız olur: komutu kendiniz çalıştırın."
+          }
+        }
+      }
+    },
+    "sweep.brew.old.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Old versions of packages"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paketlerin eski sürümleri"
+          }
+        }
+      }
+    },
+    "sweep.brew.old.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Versions that Homebrew keeps next to the current one."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Homebrew'un güncel sürümün yanında tuttuğu sürümler."
+          }
+        }
+      }
+    },
+    "sweep.brew.old.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "`brew cleanup` removes them; the current version is not touched."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "`brew cleanup` bunları siler; güncel sürüme dokunulmaz."
+          }
+        }
+      }
+    },
+    "sweep.brew.leftovers.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data left by removed packages"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaldırılmış paketlerin bıraktığı veri"
+          }
+        }
+      }
+    },
+    "sweep.brew.leftovers.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The var folders of packages that are not installed any more (databases, state)."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Artık kurulu olmayan paketlerin var klasörleri (veritabanları, durum)."
+          }
+        }
+      }
+    },
+    "sweep.brew.leftovers.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "`brew uninstall` leaves a package's data on purpose. It may be a database you want: listed, not chosen."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "`brew uninstall` bir paketin verisini bilerek bırakır. İstediğiniz bir veritabanı olabilir: listelenir, seçili gelmez."
+          }
+        }
+      }
+    },
+    "sweep.brew.neededBy": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "needed by %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "şunlara gerekli: %@"
+          }
+        }
+      }
+    },
+    "sweep.group.app": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "app"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "uygulama"
+          }
+        }
+      }
+    },
+    "sweep.groupTitle.app": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Applications"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulamalar"
+          }
+        }
+      }
+    },
+    "sweep.group.leftover": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "left behind"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "artık"
+          }
+        }
+      }
+    },
+    "sweep.groupTitle.leftover": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Left behind by something that was removed"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaldırılmış bir şeyin bıraktıkları"
+          }
+        }
+      }
+    },
+    "sweep.ui.crumbApps": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Applications"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulamalar"
+          }
+        }
+      }
+    },
+    "sweep.ui.crumbBrew": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Homebrew"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Homebrew"
+          }
+        }
+      }
+    },
+    "sweep.ui.reviewTitleApps": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What each application takes"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Her uygulamanın kapladığı yer"
+          }
+        }
+      }
+    },
+    "sweep.ui.reviewTitleBrew": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What Homebrew keeps"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Homebrew'un tuttukları"
+          }
+        }
+      }
+    },
+    "sweep.ui.appsNone": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No applications found."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulama bulunamadı."
+          }
+        }
+      }
+    },
+    "sweep.ui.brewNone": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Homebrew has nothing installed here."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Homebrew'da burada kurulu bir şey yok."
+          }
+        }
+      }
+    },
+    "sweep.ui.holdsData": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "holds data"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "veri tutar"
+          }
+        }
+      }
+    },
+    "sweep.ui.menuApps": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Applications"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulamalar"
+          }
+        }
+      }
+    },
+    "sweep.ui.menuAppsWhat": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uninstall apps together with the files they leave in your Library"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulamaları, Library'de bıraktıkları dosyalarla birlikte kaldırın"
+          }
+        }
+      }
+    },
+    "sweep.ui.menuBrew": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Homebrew"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Homebrew"
+          }
+        }
+      }
+    },
+    "sweep.ui.menuBrewWhat": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Packages, apps, old versions and what removed packages left behind"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paketler, uygulamalar, eski sürümler ve kaldırılan paketlerin artıkları"
+          }
+        }
+      }
+    },
+    "sweep.ui.menuOverview": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This Mac"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu Mac"
+          }
+        }
+      }
+    },
+    "sweep.ui.menuOverviewWhat": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Browse every folder and file on this Mac, biggest first"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu Mac'teki tüm klasör ve dosyalara göz atın, en büyükten başlayarak"
+          }
+        }
+      }
+    },
+    "sweep.fail.command": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "the program said no"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "program reddetti"
+          }
+        }
+      }
+    },
+    "sweep.role.applications": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "handled in Applications"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulamalar menüsünde"
+          }
+        }
+      }
+    },
+    "sweep.role.homebrew": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "handled in Homebrew"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Homebrew menüsünde"
+          }
+        }
+      }
+    },
+    "sweep.role.trash": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "handled in Disk clean (Trash)"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disk temizliğinde (Çöp Kutusu)"
+          }
+        }
+      }
+    },
+    "sweep.role.system": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "system: only reported"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "sistem: yalnızca bildirilir"
+          }
+        }
+      }
+    },
+    "sweep.role.foreign": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "not yours"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "sizin değil"
+          }
+        }
+      }
+    },
+    "sweep.role.library": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "application data"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "uygulama verileri"
+          }
+        }
+      }
+    },
+    "sweep.warn.applicationData": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "application data"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "uygulama verisi"
+          }
+        }
+      }
+    },
+    "sweep.warn.iCloud": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "in iCloud"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud'da"
+          }
+        }
+      }
+    },
+    "sweep.ui.statusSystem": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This belongs to the system; neosweep only tells you about it."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu sisteme aittir; neosweep yalnızca bildirir."
+          }
+        }
+      }
+    },
+    "sweep.ui.statusForeign": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This is not yours (another user's, or a Time Machine disk)."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu sizin değil (başka bir kullanıcının ya da bir Time Machine diskinin)."
+          }
+        }
+      }
+    },
+    "sweep.ui.statusKeep": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This folder stays as it is: open it and choose what is inside."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu klasör olduğu gibi kalır: içine girip içindekileri seçin."
+          }
+        }
+      }
+    },
+    "sweep.ui.statusManaged.applications": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Applications are removed from the Applications menu, together with what they left."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulamalar, bıraktıklarıyla birlikte Uygulamalar menüsünden kaldırılır."
+          }
+        }
+      }
+    },
+    "sweep.ui.statusManaged.homebrew": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Homebrew is managed from the Homebrew menu: it knows what depends on what."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Homebrew, Homebrew menüsünden yönetilir: neyin neye bağlı olduğunu o bilir."
+          }
+        }
+      }
+    },
+    "sweep.ui.statusManaged.trash": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The Trash is emptied from Disk clean."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çöp Kutusu Disk temizliğinden boşaltılır."
+          }
+        }
+      }
+    },
+    "sweep.ui.overviewEmpty": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nothing here."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Burada bir şey yok."
+          }
+        }
+      }
+    },
+    "sweep.ui.overviewSizing": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adding up the folders"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Klasörler toplanıyor"
+          }
+        }
+      }
+    },
+    "sweep.ui.hintOverview": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "↑↓ move · Enter open · ← up · Space select · a all · n none · r again · f Finder · d delete · Esc back"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "↑↓ git · Enter aç · ← yukarı · Boşluk seç · a hepsi · n hiçbiri · r yeniden · f Finder · d sil · Esc geri"
+          }
+        }
+      }
+    },
+    "sweep.group.report": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "report"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "rapor"
+          }
+        }
+      }
+    },
+    "sweep.groupTitle.report": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Only told (another program should do it)"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yalnızca bildirilir (bunu başka bir program yapmalı)"
+          }
+        }
+      }
+    },
+    "sweep.cat.xcode-device-support.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xcode device support"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xcode cihaz desteği"
+          }
+        }
+      }
+    },
+    "sweep.cat.xcode-device-support.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/Library/Developer/Xcode/*DeviceSupport: symbols Xcode copied from the devices you connected."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/Library/Developer/Xcode/*DeviceSupport: Xcode'un bağladığınız cihazlardan kopyaladığı semboller."
+          }
+        }
+      }
+    },
+    "sweep.cat.xcode-device-support.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xcode copies them again the next time you connect that device."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xcode, o cihazı bir sonraki bağlayışınızda bunları yeniden kopyalar."
+          }
+        }
+      }
+    },
+    "sweep.cat.downloads-installers.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Old installers in Downloads"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İndirilenler'deki eski yükleyiciler"
+          }
+        }
+      }
+    },
+    "sweep.cat.downloads-installers.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disk images, packages and archives in Downloads that are more than 30 days old."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İndirilenler'deki 30 günden eski disk görüntüleri, paketler ve arşivler."
+          }
+        }
+      }
+    },
+    "sweep.cat.downloads-installers.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You downloaded them yourself, so they can be downloaded again. Look before you choose: an archive may hold your own files."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Onları kendiniz indirdiniz, yeniden indirilebilirler. Seçmeden önce bakın: bir arşiv kendi dosyalarınızı tutuyor olabilir."
+          }
+        }
+      }
+    },
+    "sweep.cat.ios-backups.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone and iPad backups"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone ve iPad yedekleri"
+          }
+        }
+      }
+    },
+    "sweep.cat.ios-backups.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/Library/Application Support/MobileSync/Backup: one folder per device backup."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/Library/Application Support/MobileSync/Backup: her cihaz yedeği için bir klasör."
+          }
+        }
+      }
+    },
+    "sweep.cat.ios-backups.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A backup may be the only copy of what is on the device if it is lost. It cannot come back. Reading it needs Full Disk Access."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir yedek, cihaz kaybolursa içindekilerin tek kopyası olabilir. Geri gelmez. Okunması Tam Disk Erişimi ister."
+          }
+        }
+      }
+    },
+    "sweep.cat.xcode-archives.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xcode archives"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xcode arşivleri"
+          }
+        }
+      }
+    },
+    "sweep.cat.xcode-archives.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/Library/Developer/Xcode/Archives: the builds you archived for distribution."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "~/Library/Developer/Xcode/Archives: dağıtım için arşivlediğiniz derlemeler."
+          }
+        }
+      }
+    },
+    "sweep.cat.xcode-archives.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An archive holds the symbols of a release you shipped; without it a crash report of that version cannot be read. It cannot come back."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir arşiv, yayınladığınız sürümün sembollerini tutar; onsuz o sürümün çökme raporu okunamaz. Geri gelmez."
+          }
+        }
+      }
+    },
+    "sweep.cat.ios-simulators.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Simulators (Xcode)"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Simülatörler (Xcode)"
+          }
+        }
+      }
+    },
+    "sweep.cat.ios-simulators.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "One folder per simulator device, with its apps and data."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Her simülatör cihazı için bir klasör: uygulamaları ve verisiyle."
+          }
+        }
+      }
+    },
+    "sweep.cat.ios-simulators.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Removed with xcrun simctl delete, as Xcode does. The apps and data inside are lost; a device can be created again."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xcode'un yaptığı gibi xcrun simctl delete ile kaldırılır. İçindeki uygulamalar ve veri kaybolur; cihaz yeniden oluşturulabilir."
+          }
+        }
+      }
+    },
+    "sweep.cat.virtual-machines.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Virtual machines"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sanal makineler"
+          }
+        }
+      }
+    },
+    "sweep.cat.virtual-machines.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parallels, VMware Fusion and UTM machines in the usual folders."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Olağan klasörlerdeki Parallels, VMware Fusion ve UTM makineleri."
+          }
+        }
+      }
+    },
+    "sweep.cat.virtual-machines.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A virtual machine is a disk of its own: everything inside is lost, and it cannot come back."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sanal makine kendi başına bir disktir: içindeki her şey kaybolur ve geri gelmez."
+          }
+        }
+      }
+    },
+    "sweep.cat.docker.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Docker disk image"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Docker disk görüntüsü"
+          }
+        }
+      }
+    },
+    "sweep.cat.docker.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Everything Docker keeps (images, containers, volumes) lives in one disk image."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Docker'ın tuttuğu her şey (imajlar, konteynerler, birimler) tek bir disk görüntüsündedir."
+          }
+        }
+      }
+    },
+    "sweep.cat.docker.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "neosweep cannot look inside it and never deletes it. Run docker system prune to free the space."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "neosweep içine bakamaz ve onu asla silmez. Yer açmak için docker system prune çalıştırın."
+          }
+        }
+      }
+    },
+    "sweep.ui.finderOffer": {
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "1 application needs your password. Press p to ask Finder to move it to the Trash."
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld applications need your password. Press p to ask Finder to move them to the Trash."
+                }
+              }
+            }
+          }
+        },
+        "tr": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "1 uygulama parolanızı ister. Finder'dan Çöp Kutusu'na taşımasını istemek için p'ye basın."
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld uygulama parolanızı ister. Finder'dan Çöp Kutusu'na taşımasını istemek için p'ye basın."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "sweep.ui.finderNote": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder:"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder:"
+          }
+        }
+      }
+    },
+    "sweep.ui.finderWorking": {
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Asking Finder to move 1 application to the Trash (it may ask for your password)…"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Asking Finder to move %lld applications to the Trash (it may ask for your password)…"
+                }
+              }
+            }
+          }
+        },
+        "tr": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Finder'dan 1 uygulamayı Çöp Kutusu'na taşıması isteniyor (parolanızı isteyebilir)…"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Finder'dan %lld uygulamayı Çöp Kutusu'na taşıması isteniyor (parolanızı isteyebilir)…"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "sweep.ui.finderMoved": {
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Moved 1 application to the Trash; the space comes back when the Trash is emptied."
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Moved %lld applications to the Trash; the space comes back when the Trash is emptied."
+                }
+              }
+            }
+          }
+        },
+        "tr": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "1 uygulama Çöp Kutusu'na taşındı; yer, Çöp Kutusu boşaltılınca geri gelir."
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld uygulama Çöp Kutusu'na taşındı; yer, Çöp Kutusu boşaltılınca geri gelir."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "sweep.ui.finderNotMoved": {
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "1 was not moved: %2$@"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%1$lld were not moved: %2$@"
+                }
+              }
+            }
+          }
+        },
+        "tr": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "1 tanesi taşınmadı: %2$@"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%1$lld tanesi taşınmadı: %2$@"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "sweep.ui.hintResultFinder": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter back to the menu · p ask Finder for the applications that need a password · q quit"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter menüye dön · p parola isteyen uygulamalar için Finder'a sor · q çık"
+          }
+        }
+      }
+    },
+    "sweep.role.group": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System and hidden"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sistem ve gizli olanlar"
+          }
+        }
+      }
+    },
+    "sweep.role.groupTitle": {
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "System and hidden (1)"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "System and hidden (%lld)"
+                }
+              }
+            }
+          }
+        },
+        "tr": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Sistem ve gizli olanlar (1)"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Sistem ve gizli olanlar (%lld)"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "sweep.ui.statusGroup": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "These are only reported: the system's folders and the hidden files of the top of the disk. Open the row to look inside."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bunlar yalnızca bildirilir: sistemin klasörleri ve diskin üstündeki gizli dosyalar. İçine bakmak için satırı açın."
+          }
+        }
+      }
+    },
+    "sweep.ui.statusNotThere": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "That is not there any more."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu artık yok."
+          }
+        }
+      }
+    },
+    "sweep.cat.tool-caches.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Developer tool caches"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geliştirici aracı önbellekleri"
+          }
+        }
+      }
+    },
+    "sweep.cat.tool-caches.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The caches of the tools you have installed (linters, build tools, test runners, terminal tools). Only the tools found on this Mac are listed."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kurulu araçların önbellekleri (denetleyiciler, derleme araçları, test araçları, terminal araçları). Yalnızca bu Mac'te bulunan araçlar listelenir."
+          }
+        }
+      }
+    },
+    "sweep.cat.tool-caches.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Each tool builds its cache again the next time it runs; the first run is a little slower. Logins and settings are not in these folders."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Her araç bir sonraki çalışmada önbelleğini yeniden oluşturur; ilk çalışma biraz yavaş olur. Oturum bilgileri ve ayarlar bu klasörlerde değildir."
+          }
+        }
+      }
+    },
+    "sweep.cat.tool-downloads.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Developer tool downloads"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geliştirici aracı indirmeleri"
+          }
+        }
+      }
+    },
+    "sweep.cat.tool-downloads.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Packages, models and datasets that tools downloaded (Cargo, Go, Maven, PyTorch, Ollama, LM Studio, Conda...). Only the tools found on this Mac are listed."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Araçların indirdiği paketler, modeller ve veri kümeleri (Cargo, Go, Maven, PyTorch, Ollama, LM Studio, Conda...). Yalnızca bu Mac'te bulunan araçlar listelenir."
+          }
+        }
+      }
+    },
+    "sweep.cat.tool-downloads.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "They are downloaded again when a project or a model needs them, which takes time and data. Nothing you wrote is in them, but a model you pulled yourself is gone until you pull it again."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir proje ya da model gerektirdiğinde yeniden indirilirler; bu zaman ve veri harcar. İçlerinde yazdığınız bir şey yoktur, ama kendi çektiğiniz bir model yeniden çekene kadar gider."
+          }
+        }
+      }
+    },
+    "sweep.cat.tool-versions.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Installed tool versions"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kurulu araç sürümleri"
+          }
+        }
+      }
+    },
+    "sweep.cat.tool-versions.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toolchains, language versions, environments, extensions and virtual machines you installed (pyenv, rustup, Conda, Android SDK, Colima...). Only the ones found on this Mac are listed."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kurduğunuz araç takımları, dil sürümleri, ortamlar, eklentiler ve sanal makineler (pyenv, rustup, Conda, Android SDK, Colima...). Yalnızca bu Mac'te bulunanlar listelenir."
+          }
+        }
+      }
+    },
+    "sweep.cat.tool-versions.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "They can be installed again, but not by themselves: the packages and settings inside an environment or a virtual machine are lost, and a project that needs the version stops building until it is installed."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeniden kurulabilirler ama kendiliğinden değil: bir ortamın ya da sanal makinenin içindeki paketler ve ayarlar kaybolur, o sürümü isteyen bir proje yeniden kurulana kadar derlenmez."
+          }
+        }
+      }
+    },
+    "sweep.brew.home.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings and data of removed packages"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaldırılmış paketlerin ayarları ve verileri"
+          }
+        }
+      }
+    },
+    "sweep.brew.home.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Folders in ~/.config, Application Support and Homebrew's etc that carry the name of a Homebrew package that is not installed."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kurulu olmayan bir Homebrew paketinin adını taşıyan ~/.config, Application Support ve Homebrew etc içindeki klasörler."
+          }
+        }
+      }
+    },
+    "sweep.brew.home.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Found by name only, so none is chosen: the name may belong to something else, and these folders can hold settings and data you made. Look before you choose."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yalnızca adına göre bulundu, bu yüzden hiçbiri seçili değil: ad başka bir şeye ait olabilir ve bu klasörlerde sizin yaptığınız ayarlar ve veriler olabilir. Seçmeden önce bakın."
+          }
+        }
+      }
+    },
+    "sweep.brew.homeNote": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "not installed, folder still here"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "kurulu değil, klasörü duruyor"
+          }
+        }
+      }
+    },
+    "sweep.ui.statusSizing": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Still adding this up; wait a moment, the list is moving"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu hâlâ toplanıyor; biraz bekleyin, liste hareket ediyor"
+          }
+        }
+      }
+    },
+    "sweep.ui.partial": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$lld of %2$lld chosen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%2$lld içinden %1$lld seçili"
+          }
+        }
+      }
+    },
+    "sweep.ui.previewLoading": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reading the folder"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Klasör okunuyor"
+          }
+        }
+      }
+    },
+    "sweep.ui.previewEmpty": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Empty"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Boş"
+          }
+        }
+      }
+    },
+    "sweep.ui.statusAppPane": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The parts are on the right: Space chooses the application and everything it left, o opens the parts one by one"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parçalar sağda: Boşluk uygulamayı ve geride bıraktığı her şeyi seçer, o parçaları tek tek seçmek için açar"
+          }
+        }
+      }
+    },
+    "sweep.ui.cachedAge": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "sizes from %1$lld min ago · r adds them up again"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "boyutlar %1$lld dk önceki · r yeniden toplar"
+          }
+        }
+      }
+    },
+    "sweep.ui.andMorePlaces": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "+%1$lld more places"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "+%1$lld yer daha"
+          }
+        }
+      }
+    },
+    "sweep.ui.trashMode": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "NEO_TRASH: what you choose is moved to the Trash, not deleted (the Trash itself and programs such as brew are refused)"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "NEO_TRASH: seçtikleriniz silinmez, Çöp Kutusu'na taşınır (Çöp Kutusu'nun kendisi ve brew gibi programlar reddedilir)"
+          }
+        }
+      }
+    },
+    "sweep.ui.resultTrash": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "They are in the Trash: put them back from there if something is missing."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çöp Kutusu'ndalar: bir şey eksikse oradan geri koyun."
+          }
+        }
+      }
+    },
+    "sweep.ui.hintReviewApps": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "↑↓ move · Enter open · o parts · Space select · a safe · A everything · n none · r again · f Finder · d delete · Esc back"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "↑↓ git · Enter aç · o parçalar · Boşluk seç · a güvenli olanlar · A her şey · n hiçbiri · r yeniden · f Finder · d sil · Esc geri"
+          }
+        }
+      }
+    },
+    "sweep.projects.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rebuildable folders of your projects"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Projelerinizin yeniden kurulabilen klasörleri"
+          }
+        }
+      }
+    },
+    "sweep.projects.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "node_modules, Python virtual environments (.venv), Rust target folders, Python caches (__pycache__, .pytest_cache, .mypy_cache) and Git LFS objects, found by walking your home folder."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "node_modules, Python sanal ortamları (.venv), Rust target klasörleri, Python önbellekleri (__pycache__, .pytest_cache, .mypy_cache) ve Git LFS nesneleri; home klasörünüz gezilerek bulunur."
+          }
+        }
+      }
+    },
+    "sweep.projects.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Each comes back with one command (npm install, python -m venv, cargo build, running the tests, git lfs pull) but takes time and a download. A folder is found only when the file that proves it is next to it (package.json, pyproject.toml, Cargo.toml, pyvenv.cfg). Nothing is chosen at the start."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Her biri tek komutla geri gelir (npm install, python -m venv, cargo build, testleri çalıştırmak, git lfs pull) ama zaman ve indirme ister. Bir klasör, onu kanıtlayan dosya yanındaysa bulunur (package.json, pyproject.toml, Cargo.toml, pyvenv.cfg). Başlangıçta hiçbiri seçili değildir."
+          }
+        }
+      }
+    },
+    "sweep.projects.caches": {
+      "localizations": {
+        "en": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld cache folder"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld cache folders"
+                }
+              }
+            }
+          }
+        },
+        "tr": {
+          "variations": {
+            "plural": {
+              "one": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld önbellek klasörü"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "%lld önbellek klasörü"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "sweep.ui.projectsSearch": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "searches your home"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "home'u arar"
+          }
+        }
+      }
+    },
+    "sweep.err.cannotWrite": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: cannot write %2$@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: %2$@ yazılamıyor"
+          }
+        }
+      }
+    },
+    "sweep.err.exists": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: %2$@ exists already; nothing was written"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: %2$@ zaten var; hiçbir şey yazılmadı"
+          }
+        }
+      }
+    },
+    "sweep.unsure.name": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not sure whose they are"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kimin olduğundan emin olunamayanlar"
+          }
+        }
+      }
+    },
+    "sweep.unsure.what": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Folders and files in your Library that the careful search does not take for leftovers: another product of an installed application's maker, a name that contains an installed application's, a name that is not an identifier (\"Spotify\", \"Adobe\"). Many are leftovers you will want to delete."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Library'nizdeki, temkinli aramanın artık saymadığı klasör ve dosyalar: kurulu bir uygulamanın üreticisinin başka bir ürünü, içinde kurulu bir uygulamanın adı geçen ad, kimlik gibi görünmeyen ad (\"Spotify\", \"Adobe\"). Çoğu silmek isteyeceğiniz artıklardır."
+          }
+        }
+      }
+    },
+    "sweep.unsure.why": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Look at the reason beside each one: it may belong to an application you still use (its settings or documents are in it). Nothing is chosen, and what can hold your data is marked."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Her birinin yanındaki nedene bakın: hâlâ kullandığınız bir uygulamaya ait olabilir (ayarları ya da belgeleri içindedir). Hiçbiri seçili değildir, veri tutabilecekler işaretlidir."
+          }
+        }
+      }
+    },
+    "sweep.unsure.sameFamily": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "same maker as %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ ile aynı üretici"
+          }
+        }
+      }
+    },
+    "sweep.unsure.knownWord": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "its name has \"%@\", an installed application"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "adında kurulu bir uygulama olan \"%@\" geçiyor"
+          }
+        }
+      }
+    },
+    "sweep.unsure.notIdentifier": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "not an identifier: may be anyone's"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "kimlik değil: herkesin olabilir"
+          }
+        }
+      }
+    },
+    "sweep.unsure.notFolder": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "a file where an application keeps a folder"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "bir uygulamanın klasör tuttuğu yerde bir dosya"
+          }
+        }
+      }
+    },
+    "sweep.ui.scrollList": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "↑↓ scroll · lines %1$lld-%2$lld of %3$lld"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "↑↓ kaydır · %3$lld satırdan %1$lld-%2$lld"
+          }
+        }
+      }
+    },
+    "sweep.role.appdata": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "belongs to an app or macOS"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "bir uygulamaya ya da macOS'a ait"
+          }
+        }
+      }
+    },
+    "sweep.ui.statusManaged.appdata": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This belongs to an installed app or to macOS. Remove the app from the Applications menu and its data goes with it."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu, kurulu bir uygulamaya ya da macOS'a ait. Uygulamayı Uygulamalar menüsünden kaldırırsanız verisi de gider."
+          }
+        }
+      }
+    },
+    "sweep.ui.statusRevealMany": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This opens %lld Finder windows. Press f again to open them, any other key to cancel."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu, %lld Finder penceresi açar. Açmak için f'ye tekrar basın, vazgeçmek için başka bir tuşa."
+          }
+        }
+      }
+    },
+    "docs.error.noText": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "there is no text in it (a scan?); make it searchable first with neodocs ocr"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "içinde metin yok (taranmış olabilir); önce neodocs ocr ile aranabilir yapın"
+          }
+        }
+      }
+    },
+    "docs.error.noRouteApp": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ cannot be changed into %2$@ here; open it in %3$@ and use File > Export To"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ biçimi burada %2$@ biçimine çevrilemez; %3$@ ile açıp Dosya > Şuraya Aktar'ı kullanın"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

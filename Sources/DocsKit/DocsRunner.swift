@@ -431,7 +431,18 @@ final class DocsRun {
             trashOriginal(item)
             return
         }
-        if item.kind == .apple || item.kind == .presentation { throw DocsFailure.other(messages.label("docs.error.noRoute", item.ext.uppercased(), target)) }
+        if item.ext == "pptx", ["txt", "md"].contains(target) {
+            let text = try slidesText(path: item.path, format: target)
+            try emit(item, to: outputFolder(for: item) + "/" + (item.name as NSString).deletingPathExtension + "." + target) { Data(text.utf8) }
+            trashOriginal(item)
+            return
+        }
+        if item.kind == .apple {
+            // no way of ours: the app that made the file can export it
+            let app = ["pages": "Pages", "numbers": "Numbers", "key": "Keynote"][item.ext] ?? item.ext
+            throw DocsFailure.other(messages.label("docs.error.noRouteApp", item.ext.uppercased(), target, app))
+        }
+        if item.kind == .presentation { throw DocsFailure.other(messages.label("docs.error.noRoute", item.ext.uppercased(), target)) }
         if item.kind == .text {
             try convertText(item, format: target)
             trashOriginal(item)
@@ -440,6 +451,11 @@ final class DocsRun {
         if item.kind == .table {
             guard docsTableFormats.contains(target) else { throw DocsFailure.other(messages.label("docs.error.noRoute", item.ext.uppercased(), target)) }
             try convertTable(item, format: target)
+            trashOriginal(item)
+            return
+        }
+        if ["docx", "rtf", "odt", "html", "md"].contains(target) {
+            try convertText(item, format: target)
             trashOriginal(item)
             return
         }

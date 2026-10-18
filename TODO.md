@@ -13,6 +13,7 @@ yours to claim it. Tasks marked **needs hardware** cannot be finished without a 
 - [x] GitHub Actions: build on macOS 14, 15 and 26 (`.github/workflows/build.yml`).
 - [ ] GitHub Actions: also run the tests that do not need a particular machine (mark GPU, Trash, iCloud, Spotlight and terminal tests so CI can skip them). Who: maintainer
 - [ ] Release notes, a `v0.1.0` tag, checksums. Who: maintainer
+- [ ] The 0.2.0 release with `neosweep`: tag, release notes, the formula's `desc` and caveats (thirteen commands), the bottles. Who: maintainer
 - [ ] Decide on prebuilt (notarized) binaries; needs a paid Developer ID. Who: maintainer
 - [ ] Test installation on a clean user account: `neo-setup --install`, every command, `neo-setup --uninstall`. Who:
 
@@ -27,6 +28,9 @@ yours to claim it. Tasks marked **needs hardware** cannot be finished without a 
 - [ ] `neomedia`: HDR video, a real iPhone Live Photo, a GoPro or Insta360 file (is the 360 mark kept?), iCloud-only photos. Who:
 - [ ] `neotop`: GPU and device power under a real load (a video, a game) against the charger's reading. Who:
 - [ ] `neolsof`: the camera (IOKit user clients). Who:
+- [ ] `neosweep`: press `p` on the unreadable Trash row in a real terminal: is the Full Disk Access seen at once, or only after the terminal is reopened? Who:
+- [ ] `neosweep`: the Finder fallback (`p` in the result of Applications) on an App Store application you can lose; macOS asks the terminal for Automation permission for Finder the first time. Who:
+- [ ] `neosweep`: the iCloud and This Mac views on a real Mac (macOS asks the terminal for Documents, Desktop and iCloud Drive access the first time); the careful leftover search shows 48 applications on one Mac: is that the right side to err on (`--leftovers file`)? Who:
 
 ## Commands: small gaps
 
@@ -61,6 +65,6 @@ yours to claim it. Tasks marked **needs hardware** cannot be finished without a 
 
 ## Done
 
-- [x] The twelve commands and `neo-setup`, with differential tests against the originals.
+- [x] The thirteen commands and `neo-setup`, with differential tests against the originals.
 - [x] Benchmarks against the originals, documented in [docs/performance.md](docs/performance.md).
 - [x] Five rounds of independent code review: crashes from hostile files, hangs, leaks and silent failures found and fixed.

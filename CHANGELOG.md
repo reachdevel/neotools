@@ -5,6 +5,10 @@ the project intends to follow [Semantic Versioning](https://semver.org/) once it
 
 ## [Unreleased]
 
+### Added
+
+- **`neofind`**: a word that is no path needs no `-name` either: `neofind settings.local.json` is `neofind . -name settings.local.json` (it was only for words with `*`, `?` or `[`).
+
 ### Changed
 
 - **`neofind`**: on a terminal, directories it cannot read below the path are counted and reported in one line at the end instead of one `Permission denied` line each, as `neodu` does; piped, the error lines are `find`'s.

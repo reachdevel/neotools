@@ -23,7 +23,7 @@ The options of macOS `find` (`-H -L -P -d -s -x -f`), the primaries `-name -inam
 
 - **Faster.** Directories are read with one bulk call, several at a time. `find /Applications` 11.0 s, `neofind` 2.1 s.
 - **Without a path it searches `.`** (`find` stops with a usage error).
-- **A bare pattern is a name:** `neofind '*.md' -type f` is `neofind . -name '*.md' -type f`, and `neofind -type f '*.md'` works too. Only a word with `*`, `?` or `[` that is not an existing path and has no `/` counts; quote it, or the shell expands it first.
+- **A bare word is a name:** `neofind '*.md' -type f` is `neofind . -name '*.md' -type f`, `neofind notes.txt` is `neofind . -name notes.txt`, and `neofind -type f '*.md'` works too. A word counts when it is no existing path, has no `/` and is no operator. A word with `*`, `?` or `[` counts anywhere an expression may stand; quote it, or the shell expands it first. A word without them counts as the first word only when what follows is not a path (`neofind nowhere .` is still the error `find` gives), so a mistyped directory name is searched for as a name instead of failing.
 - **On a terminal, unreadable directories are counted, not listed:** `neofind: ./.git: Permission denied` lines would bury the result, so below the paths you gave they become one line at the end (`neofind: 3 entries could not be read (run with --plain to list them)`), and the status is still 1. A path you gave that cannot be entered, and piped output, print the error line like `find`.
 - **`-mtime` and friends accept units:** `-mtime -1h30m` (`s m h d w`).
 - **Extras:**

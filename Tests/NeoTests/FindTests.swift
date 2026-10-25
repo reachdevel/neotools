@@ -222,6 +222,13 @@ struct FindRuleTests {
             (["-type", "f", "*.md"], [".", "-type", "f", "-name", "*.md"]),
             ([".", "-type", "f", "*.md", "-size", "+0c"], [".", "-type", "f", "-name", "*.md", "-size", "+0c"]),
             (["*.md", "-o", "*.txt"], [".", "-name", "*.md", "-o", "-name", "*.txt"]),
+            (["inside"], [".", "-name", "inside"]),                                          // a word without glob characters is a name too
+            (["inside", "-type", "f"], [".", "-name", "inside", "-type", "f"]),
+            (["-type", "f", "inside"], [".", "-type", "f", "-name", "inside"]),
+            ([".", "-type", "f", "inside"], [".", "-type", "f", "-name", "inside"]),
+            (["docs"], ["docs"]),                                                            // an existing path stays a path
+            (["-type", "f", "!", "inside"], [".", "-type", "f", "!", "-name", "inside"]),     // and the operators stay operators
+            (["-type", "f", "(", "inside", "-o", "docs", ")"], [".", "-type", "f", "(", "-name", "inside", "-o", "-name", "docs", ")"]),
         ]
         for c in cases {
             let n = try Harness.run(neofind, c.neo, in: root)
@@ -232,9 +239,10 @@ struct FindRuleTests {
     }
 
     @Test func aGlobThatExistsIsStillAPath() throws {
-        let dir = FindFixture.shared.root.appendingPathComponent("empty")
+        let dir = FileManager.default.temporaryDirectory.appendingPathComponent("neofind-glob-\(getpid())", isDirectory: true)     // not the shared fixture: other tests walk it at the same time
+        try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: dir) }
         try Data().write(to: dir.appendingPathComponent("a*b"))
-        defer { try? FileManager.default.removeItem(at: dir.appendingPathComponent("a*b")) }
         let n = try Harness.run(neofind, ["a*b"], in: dir)
         #expect(n.stdout == "a*b\n")
     }

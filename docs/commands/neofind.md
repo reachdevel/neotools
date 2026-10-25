@@ -24,6 +24,7 @@ The options of macOS `find` (`-H -L -P -d -s -x -f`), the primaries `-name -inam
 - **Faster.** Directories are read with one bulk call, several at a time. `find /Applications` 11.0 s, `neofind` 2.1 s.
 - **Without a path it searches `.`** (`find` stops with a usage error).
 - **A bare pattern is a name:** `neofind '*.md' -type f` is `neofind . -name '*.md' -type f`, and `neofind -type f '*.md'` works too. Only a word with `*`, `?` or `[` that is not an existing path and has no `/` counts; quote it, or the shell expands it first.
+- **On a terminal, unreadable directories are counted, not listed:** `neofind: ./.git: Permission denied` lines would bury the result, so below the paths you gave they become one line at the end (`neofind: 3 entries could not be read (run with --plain to list them)`), and the status is still 1. A path you gave that cannot be entered, and piped output, print the error line like `find`.
 - **`-mtime` and friends accept units:** `-mtime -1h30m` (`s m h d w`).
 - **Extras:**
   - `--tag [name]`: files with a Finder tag. Without a name, all tagged files, with their tags. Asks Spotlight for files under your

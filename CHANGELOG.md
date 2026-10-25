@@ -5,6 +5,10 @@ the project intends to follow [Semantic Versioning](https://semver.org/) once it
 
 ## [Unreleased]
 
+### Changed
+
+- **`neofind`**: on a terminal, directories it cannot read below the path are counted and reported in one line at the end instead of one `Permission denied` line each, as `neodu` does; piped, the error lines are `find`'s.
+
 ## [0.2.0] - 2026-10-19
 
 ### Changed

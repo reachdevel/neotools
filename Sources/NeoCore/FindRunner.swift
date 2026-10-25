@@ -65,6 +65,13 @@ final class FindRun {
         status = 1
     }
 
+    private var unreadableTotal = 0
+
+    /// A read error below an operand: on a terminal it is counted and summed up at the end (like `neodu`), piped it is an error line like `find`'s.
+    func warnBelow(_ text: String, level: Int) {
+        if style.enabled && level > 0 { unreadableTotal += 1; status = 1 } else { warn(text) }
+    }
+
     // MARK: running
 
     func run() -> Int32 {
@@ -114,6 +121,7 @@ final class FindRun {
             fputs("\(program): stdout: \(String(cString: strerror(writeError)))\n", stderr)
             return 1
         }
+        if style.enabled && unreadableTotal > 0 { fputs(messages.unreadableSummary(program, unreadableTotal) + "\n", stderr) }
         return status
     }
 
@@ -177,7 +185,7 @@ final class FindRun {
     func visit(_ e: FindEntry, path: [UInt8], level: Int) {
         if quit { return }
         if e.statError != 0 {
-            warn("\(String(decoding: path, as: UTF8.self)): \(String(cString: strerror(e.statError)))")
+            warnBelow("\(String(decoding: path, as: UTF8.self)): \(String(cString: strerror(e.statError)))", level: level)
             return
         }
         if level == 0, e.type == S_IFDIR, withNUL(path, { access($0, X_OK) }) != 0 {     // an operand find cannot enter is only an error
@@ -195,7 +203,7 @@ final class FindRun {
         if descend, let task = e.task {
             lister.wait(task)
             if task.error != 0 {
-                warn("\(String(decoding: path, as: UTF8.self)): \(String(cString: strerror(task.error)))")
+                warnBelow("\(String(decoding: path, as: UTF8.self)): \(String(cString: strerror(task.error)))", level: level)
                 if o.depthFirst { return }       // fts hands an unreadable directory back as an error, never as a file
             } else {
                 var prefix = path
@@ -267,7 +275,7 @@ final class FindRun {
             switch t {
             case .name, .path, .print, .print0, .prune, .quit, .always, .depth: break
             default:
-                warn("\(String(decoding: path, as: UTF8.self)): \(String(cString: strerror(EACCES)))")
+                warnBelow("\(String(decoding: path, as: UTF8.self)): \(String(cString: strerror(EACCES)))", level: level)
                 return false
             }
         }

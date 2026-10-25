@@ -190,6 +190,19 @@ struct FindRuleTests {
         }
     }
 
+    @Test func unreadableDirectoriesAreCountedOnATerminalAndPrintedWhenPiped() throws {
+        let root = FindFixture.shared.root
+        let piped = try Harness.run(neofind, [".", "-name", "inside"], in: root)
+        #expect(piped.stderr == "neofind: ./locked: Permission denied\n")                  // piped: an error line, as for find
+        #expect(piped.status == 1)
+        let tty = try Harness.runInTerminal(neofind, [".", "-name", "inside"], in: root, env: ["NEO_LANG": "en"])
+        #expect(!tty.stdout.contains("Permission denied"), "\(tty.stdout)")                // a terminal: counted, not printed
+        #expect(tty.stdout.contains("neofind: 1 entry could not be read (run with --plain to list them)"), "\(tty.stdout)")
+        #expect(tty.status == 1)
+        let operand = try Harness.runInTerminal(neofind, ["locked", "-name", "inside"], in: root, env: ["NEO_LANG": "en"])
+        #expect(operand.stdout.contains("neofind: locked: Permission denied"), "\(operand.stdout)")     // an operand itself is still an error
+    }
+
     @Test func noPathMeansTheCurrentDirectory() throws {
         let n = try Harness.run(neofind, ["-name", "*.md"], in: FindFixture.shared.root)
         let o = try Harness.run(realFind, [".", "-name", "*.md"], in: FindFixture.shared.root)

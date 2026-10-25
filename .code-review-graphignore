@@ -1,0 +1,7 @@
+# Vendored upstream C libraries (same list as .claudeignore)
+Sources/CWebP/
+Sources/CVPX/
+Sources/CDAV1D/
+Sources/CVORBIS/
+Sources/CFLAC/
+Sources/CCARQUET/

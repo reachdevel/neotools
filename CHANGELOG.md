@@ -12,6 +12,7 @@ the project intends to follow [Semantic Versioning](https://semver.org/) once it
 ### Changed
 
 - **`neofind`**: on a terminal, directories it cannot read below the path are counted and reported in one line at the end instead of one `Permission denied` line each, as `neodu` does; piped, the error lines are `find`'s.
+- **`neofind`**: on a terminal, matches appear as they are found and a "scanning, N entries" line shows while it works (as in `neodu`). A signal while a directory is opened no longer prints `Interrupted system call`.
 
 ## [0.2.0] - 2026-10-19
 

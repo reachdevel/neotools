@@ -5,6 +5,8 @@ the project intends to follow [Semantic Versioning](https://semver.org/) once it
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-11-09
+
 ### Added
 
 - **`neofind`**: a word that is no path needs no `-name` either: `neofind settings.local.json` is `neofind . -name settings.local.json` (it was only for words with `*`, `?` or `[`).

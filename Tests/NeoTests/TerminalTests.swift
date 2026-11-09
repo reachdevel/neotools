@@ -111,7 +111,11 @@ struct DuTerminalTests {
     /// The text a terminal shows at the end: everything after the last cursor-up, escape sequences removed.
     private func finalScreen(_ out: String) -> [String] {
         var text = out
-        if let range = text.range(of: #"\u001B\[\d+A"#, options: [.regularExpression, .backwards]) { text = String(text[range.upperBound...]) }
+        // the last match of all of them (a backwards regular-expression search can stop at an earlier one when a slow scan redrew the table many times)
+        if let cursorUp = try? NSRegularExpression(pattern: #"\u001B\[\d+A"#),
+           let last = cursorUp.matches(in: text, range: NSRange(text.startIndex..., in: text)).last, let range = Range(last.range, in: text) {
+            text = String(text[range.upperBound...])
+        }
         text = text.replacingOccurrences(of: #"\u001B\[[0-9;?]*[A-Za-z]"#, with: "", options: .regularExpression)
         text = text.replacingOccurrences(of: "\r", with: "")
         return text.split(separator: "\n").map { $0.split(separator: " ").joined(separator: " ") }.filter { !$0.isEmpty && !$0.hasPrefix("neodu:") }

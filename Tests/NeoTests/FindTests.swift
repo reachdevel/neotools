@@ -203,6 +203,15 @@ struct FindRuleTests {
         #expect(operand.stdout.contains("neofind: locked: Permission denied"), "\(operand.stdout)")     // an operand itself is still an error
     }
 
+    @Test func aTerminalShowsAScanningLineOnALongWalkAndPipedOutputHasNone() throws {
+        // /System/Library takes seconds, far above the half second after which the line appears
+        let tty = try Harness.runInTerminal(neofind, ["/System/Library", "-name", "no-such-name-zz"], in: FindFixture.shared.root, env: ["NEO_LANG": "en"])
+        #expect(tty.stdout.contains("scanning, "), "\(tty.stdout.suffix(300))")
+        #expect(!tty.stdout.contains("Permission denied"))
+        let piped = try Harness.run(neofind, ["/System/Library", "-name", "no-such-name-zz"], in: FindFixture.shared.root)
+        #expect(!piped.stdout.contains("scanning") && !piped.stderr.contains("scanning"))
+    }
+
     @Test func noPathMeansTheCurrentDirectory() throws {
         let n = try Harness.run(neofind, ["-name", "*.md"], in: FindFixture.shared.root)
         let o = try Harness.run(realFind, [".", "-name", "*.md"], in: FindFixture.shared.root)

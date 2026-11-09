@@ -178,7 +178,7 @@ Most of the work is done by Apple's own frameworks, and the parts that matter ar
 - Homebrew installs a prebuilt package on macOS 15 and 26 (Apple silicon) and macOS 15 (Intel); on other versions it builds from source in a
   minute or two.
 - To build from source: Swift 6.0 or newer (the Command Line Tools 16 or newer are enough, the Xcode app is not needed). Every push is built
-  on macOS 14, 15 and 26.
+  on macOS 15 and 26 (GitHub no longer offers a macOS 14 runner, so 14 is not built in CI).
 - `neotop` is built for Apple silicon (the split between performance and efficiency cores).
 
 ## Build from source

@@ -5,6 +5,14 @@ the project intends to follow [Semantic Versioning](https://semver.org/) once it
 
 ## [Unreleased]
 
+### Changed
+
+- CI builds on macOS 15 and 26 (GitHub no longer provides a macOS 14 runner).
+
+### Fixed
+
+- Two tests no longer fail on a loaded machine (`neodu` terminal table read the wrong redraw; `neotop` key test waits for the first frame). New test for the `neofind` scanning line.
+
 ## [0.2.1] - 2026-11-09
 
 ### Added

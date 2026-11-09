@@ -99,6 +99,14 @@ final class StatusLine: @unchecked Sendable {
         lock.unlock()
     }
 
+    /// Runs `body` (which writes to the terminal) with the line wiped; the next tick draws it again.
+    func suspended(_ body: () -> Void) {
+        lock.lock()
+        if drawn { fputs("\r\u{1B}[2K", stderr); fflush(stderr); drawn = false }
+        body()
+        lock.unlock()
+    }
+
     private func draw() {
         let frames = style.spinnerFrames
         frame = (frame + 1) % frames.count

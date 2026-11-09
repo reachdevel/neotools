@@ -72,6 +72,7 @@ struct FindListConfig: Sendable {
 /// Lists directories on several threads while one consumer walks the result in `find`'s order.
 final class FindLister: @unchecked Sendable {
     private let config: FindListConfig
+    let progress = ScanProgress()
     private let lock = NSCondition()
     private var stack: [FindDir] = []
     private var closed = false
@@ -177,6 +178,7 @@ final class FindLister: @unchecked Sendable {
         var entries: [FindEntry] = []
         var error: Int32 = 0
         list(dir, buffer: own, into: &entries, error: &error)
+        progress.add(entries.count)
         if config.sorted { sortByCollation(&entries) }
 
         // child directories get their tasks here, so that workers run ahead of the consumer
@@ -228,7 +230,8 @@ final class FindLister: @unchecked Sendable {
     private func list(_ dir: FindDir, buffer: UnsafeMutableRawPointer, into entries: inout [FindEntry], error: inout Int32) {
         var cpath = dir.path.map { CChar(bitPattern: $0) }
         cpath.append(0)
-        let fd = open(cpath, O_RDONLY | O_DIRECTORY | O_CLOEXEC)
+        var fd: Int32
+        repeat { fd = open(cpath, O_RDONLY | O_DIRECTORY | O_CLOEXEC) } while fd < 0 && errno == EINTR        // a signal is not a read error
         if fd < 0 { error = errno; return }
         defer { close(fd) }
         // find changes into each directory: one that can be read but not searched shows no entries (and no complaint)

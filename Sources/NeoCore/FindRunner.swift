@@ -49,7 +49,15 @@ final class FindRun {
     /// The first failed write (a full disk, a closed pipe when SIGPIPE is ignored); the walk stops, since nothing it finds can be shown.
     var writeError: Int32 = 0
 
+    /// The "scanning" line of a terminal: wiped while something is written, drawn again after a moment.
+    var statusLine: StatusLine?
+
     func flush() {
+        guard !out.isEmpty else { return }
+        if let statusLine { statusLine.suspended { writeOut() } } else { writeOut() }
+    }
+
+    private func writeOut() {
         var offset = 0
         while offset < out.count, writeError == 0 {
             let n = out[offset...].withUnsafeBytes { write(1, $0.baseAddress, $0.count) }
@@ -60,9 +68,19 @@ final class FindRun {
     }
 
     func warn(_ text: String) {
-        flush()
-        fputs("\(program): \(text)\n", stderr)
+        let write = {
+            self.writeOut()
+            fputs("\(self.program): \(text)\n", stderr)
+        }
+        if let statusLine { statusLine.suspended(write) } else { write() }
         status = 1
+    }
+
+    private var unreadableTotal = 0
+
+    /// A read error below an operand: on a terminal it is counted and summed up at the end (like `neodu`), piped it is an error line like `find`'s.
+    func warnBelow(_ text: String, level: Int) {
+        if style.enabled && level > 0 { unreadableTotal += 1; status = 1 } else { warn(text) }
     }
 
     // MARK: running
@@ -93,6 +111,11 @@ final class FindRun {
             roots.append(Root(path: Array(r.utf8), entry: e))
         }
         lister.submit(tasks)
+        if style.enabled {
+            let (messages, progress) = (self.messages, lister.progress)
+            statusLine = StatusLine(style: style, delay: 0.5) { messages.scanning(progress.count) }
+            statusLine?.start()
+        }
         for (n, r) in roots.enumerated() {
             if indexed.contains(n), let e = r.entry, let tag = indexedTag, runIndexed(rootGiven: o.roots[n], root: e, tag: tag) { continue }
             if indexed.contains(n), let e = r.entry, e.task == nil, e.type == S_IFDIR {       // the index could not answer: walk after all
@@ -108,12 +131,15 @@ final class FindRun {
             visit(e, path: r.path, level: 0)
         }
         lister.shutdown()
+        statusLine?.stop()
+        statusLine = nil
         if o.json { out.append(contentsOf: Array((jsonStarted ? "]\n" : "[]\n").utf8)) }
         flush()
         if writeError != 0 {
             fputs("\(program): stdout: \(String(cString: strerror(writeError)))\n", stderr)
             return 1
         }
+        if style.enabled && unreadableTotal > 0 { fputs(messages.unreadableSummary(program, unreadableTotal) + "\n", stderr) }
         return status
     }
 
@@ -177,7 +203,7 @@ final class FindRun {
     func visit(_ e: FindEntry, path: [UInt8], level: Int) {
         if quit { return }
         if e.statError != 0 {
-            warn("\(String(decoding: path, as: UTF8.self)): \(String(cString: strerror(e.statError)))")
+            warnBelow("\(String(decoding: path, as: UTF8.self)): \(String(cString: strerror(e.statError)))", level: level)
             return
         }
         if level == 0, e.type == S_IFDIR, withNUL(path, { access($0, X_OK) }) != 0 {     // an operand find cannot enter is only an error
@@ -193,9 +219,10 @@ final class FindRun {
             }
         }
         if descend, let task = e.task {
+            if style.enabled { flush() }           // a terminal shows what is found before the walk waits for the next directory
             lister.wait(task)
             if task.error != 0 {
-                warn("\(String(decoding: path, as: UTF8.self)): \(String(cString: strerror(task.error)))")
+                warnBelow("\(String(decoding: path, as: UTF8.self)): \(String(cString: strerror(task.error)))", level: level)
                 if o.depthFirst { return }       // fts hands an unreadable directory back as an error, never as a file
             } else {
                 var prefix = path
@@ -267,7 +294,7 @@ final class FindRun {
             switch t {
             case .name, .path, .print, .print0, .prune, .quit, .always, .depth: break
             default:
-                warn("\(String(decoding: path, as: UTF8.self)): \(String(cString: strerror(EACCES)))")
+                warnBelow("\(String(decoding: path, as: UTF8.self)): \(String(cString: strerror(EACCES)))", level: level)
                 return false
             }
         }

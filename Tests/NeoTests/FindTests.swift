@@ -190,6 +190,19 @@ struct FindRuleTests {
         }
     }
 
+    @Test func unreadableDirectoriesAreCountedOnATerminalAndPrintedWhenPiped() throws {
+        let root = FindFixture.shared.root
+        let piped = try Harness.run(neofind, [".", "-name", "inside"], in: root)
+        #expect(piped.stderr == "neofind: ./locked: Permission denied\n")                  // piped: an error line, as for find
+        #expect(piped.status == 1)
+        let tty = try Harness.runInTerminal(neofind, [".", "-name", "inside"], in: root, env: ["NEO_LANG": "en"])
+        #expect(!tty.stdout.contains("Permission denied"), "\(tty.stdout)")                // a terminal: counted, not printed
+        #expect(tty.stdout.contains("neofind: 1 entry could not be read (run with --plain to list them)"), "\(tty.stdout)")
+        #expect(tty.status == 1)
+        let operand = try Harness.runInTerminal(neofind, ["locked", "-name", "inside"], in: root, env: ["NEO_LANG": "en"])
+        #expect(operand.stdout.contains("neofind: locked: Permission denied"), "\(operand.stdout)")     // an operand itself is still an error
+    }
+
     @Test func noPathMeansTheCurrentDirectory() throws {
         let n = try Harness.run(neofind, ["-name", "*.md"], in: FindFixture.shared.root)
         let o = try Harness.run(realFind, [".", "-name", "*.md"], in: FindFixture.shared.root)
@@ -209,6 +222,13 @@ struct FindRuleTests {
             (["-type", "f", "*.md"], [".", "-type", "f", "-name", "*.md"]),
             ([".", "-type", "f", "*.md", "-size", "+0c"], [".", "-type", "f", "-name", "*.md", "-size", "+0c"]),
             (["*.md", "-o", "*.txt"], [".", "-name", "*.md", "-o", "-name", "*.txt"]),
+            (["inside"], [".", "-name", "inside"]),                                          // a word without glob characters is a name too
+            (["inside", "-type", "f"], [".", "-name", "inside", "-type", "f"]),
+            (["-type", "f", "inside"], [".", "-type", "f", "-name", "inside"]),
+            ([".", "-type", "f", "inside"], [".", "-type", "f", "-name", "inside"]),
+            (["docs"], ["docs"]),                                                            // an existing path stays a path
+            (["-type", "f", "!", "inside"], [".", "-type", "f", "!", "-name", "inside"]),     // and the operators stay operators
+            (["-type", "f", "(", "inside", "-o", "docs", ")"], [".", "-type", "f", "(", "-name", "inside", "-o", "-name", "docs", ")"]),
         ]
         for c in cases {
             let n = try Harness.run(neofind, c.neo, in: root)
@@ -219,9 +239,10 @@ struct FindRuleTests {
     }
 
     @Test func aGlobThatExistsIsStillAPath() throws {
-        let dir = FindFixture.shared.root.appendingPathComponent("empty")
+        let dir = FileManager.default.temporaryDirectory.appendingPathComponent("neofind-glob-\(getpid())", isDirectory: true)     // not the shared fixture: other tests walk it at the same time
+        try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: dir) }
         try Data().write(to: dir.appendingPathComponent("a*b"))
-        defer { try? FileManager.default.removeItem(at: dir.appendingPathComponent("a*b")) }
         let n = try Harness.run(neofind, ["a*b"], in: dir)
         #expect(n.stdout == "a*b\n")
     }

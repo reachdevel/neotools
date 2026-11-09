@@ -127,6 +127,21 @@ enum FindKnown {
         return lstat(arg, &st) != 0
     }
 
+    /// Any word that is no path and no operator: `neofind settings.local.json` means `-name settings.local.json`. Where a path may still come
+    /// (the first word, see `endsTheOperands`) a typo in a path is a name too; `find` would stop with "No such file or directory".
+    static func isBareName(_ arg: String) -> Bool {
+        if isBarePattern(arg) { return true }
+        guard !arg.isEmpty, !arg.hasPrefix("-"), !arg.contains("/"), !["!", "(", ")"].contains(arg) else { return false }
+        var st = stat()
+        return lstat(arg, &st) != 0
+    }
+
+    /// What may follow a first word for it to be a name rather than a mistyped path: nothing, an expression or another name (`neofind nowhere .` is a path error).
+    static func endsTheOperands(_ next: String?) -> Bool {
+        guard let next else { return true }
+        return (next.hasPrefix("-") && next != "-") || next == "!" || next == "(" || isBareName(next)
+    }
+
     static func isPrimaryName(_ arg: String) -> Bool {
         implemented.contains(arg) || refusedPrimaries.contains(arg) || isNewerXY(arg)
     }
@@ -196,7 +211,7 @@ func parseFindArguments(_ argv: [String], program: String) -> FindParse {
     }
     if rest.first == "--" { rest.removeFirst() }
     var operands: [String] = extraRoots
-    while let a = rest.first, !a.hasPrefix("-") || a == "-", a != "!", a != "(", !FindKnown.isBarePattern(a) {
+    while let a = rest.first, !a.hasPrefix("-") || a == "-", a != "!", a != "(", !(operands.isEmpty ? FindKnown.isBareName(a) && FindKnown.endsTheOperands(rest.dropFirst().first) : FindKnown.isBarePattern(a)) {
         operands.append(a); rest.removeFirst()
     }
     o.roots = operands
@@ -347,7 +362,7 @@ func parseFindArguments(_ argv: [String], program: String) -> FindParse {
             o.tagListing = true
             return t(.tag(nil))
         default:
-            if FindKnown.isBarePattern(tok) { return t(.name(cString(tok), fold: false)) }
+            if FindKnown.isBareName(tok) { return t(.name(cString(tok), fold: false)) }
             if tok.hasPrefix("--tag=") {
                 need(.extFlags)
                 return t(.tag(String(tok.dropFirst(6))))

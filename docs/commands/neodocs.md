@@ -7,7 +7,7 @@ pictures, OCR scans, shrink them and strip the metadata, with nothing to install
 neodocs info|text|convert|merge|split|images|strip|ocr|shrink PATH... [options]
 ```
 
-`PATH` is a file or a folder (`-r` goes into folders). Anything that is not a document is counted and left alone. Nothing is
+`PATH` is a file or a folder (`-r` goes into folders; `-v` / `--verbose` also says what was left out). Anything that is not a document is counted and left alone. Nothing is
 installed at run time: PDFs, images, text documents and OCR use Apple's frameworks (PDFKit, Vision, AppKit); spreadsheets, Word
 files and Parquet are read and written by the program itself.
 

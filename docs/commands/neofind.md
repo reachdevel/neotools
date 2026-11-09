@@ -25,6 +25,7 @@ The options of macOS `find` (`-H -L -P -d -s -x -f`), the primaries `-name -inam
 - **Without a path it searches `.`** (`find` stops with a usage error).
 - **A bare word is a name:** `neofind '*.md' -type f` is `neofind . -name '*.md' -type f`, `neofind notes.txt` is `neofind . -name notes.txt`, and `neofind -type f '*.md'` works too. A word counts when it is no existing path, has no `/` and is no operator. A word with `*`, `?` or `[` counts anywhere an expression may stand; quote it, or the shell expands it first. A word without them counts as the first word only when what follows is not a path (`neofind nowhere .` is still the error `find` gives), so a mistyped directory name is searched for as a name instead of failing.
 - **On a terminal, unreadable directories are counted, not listed:** `neofind: ./.git: Permission denied` lines would bury the result, so below the paths you gave they become one line at the end (`neofind: 3 entries could not be read (run with --plain to list them)`), and the status is still 1. A path you gave that cannot be entered, and piped output, print the error line like `find`.
+- **On a terminal, a long search shows a `scanning, N entries` line** (after half a second) and matches appear as they are found, not in blocks. Piped output has neither.
 - **`-mtime` and friends accept units:** `-mtime -1h30m` (`s m h d w`).
 - **Extras:**
   - `--tag [name]`: files with a Finder tag. Without a name, all tagged files, with their tags. Asks Spotlight for files under your

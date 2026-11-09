@@ -7,7 +7,7 @@ location out, with nothing to install: no `sips`, `ffmpeg`, `cwebp` or `exiftool
 neomedia info|convert|shrink|strip PATH... [options]
 ```
 
-`PATH` is a file or a folder (`-r` goes into folders). Anything that is not a photo or a video is counted and left alone.
+`PATH` is a file or a folder (`-r` goes into folders; `-v` / `--verbose` also says what was left out). Anything that is not a photo or a video is counted and left alone.
 Everything is done with Apple's frameworks (ImageIO, AVFoundation, VideoToolbox) plus a few small compiled-in codecs.
 
 ## Commands

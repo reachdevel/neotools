@@ -24,7 +24,7 @@ as available), local snapshots, or what is in the Trash.
   and opens the right pane of System Settings.
 - Helper volumes (VM, Preboot, Update, Recovery...) are folded into one line; `-a` shows everything.
 - Other volumes (HFS+, exFAT, network) get their own block.
-- Sizes are GiB-style (`-h`) or GB-style (`-H`).
+- Sizes are GiB-style (`-h`) or GB-style (`-H`, also `--si`).
 
 ## The classic view
 
